@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/dva/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -67,6 +67,7 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
+export EDITOR="vim"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
