@@ -78,6 +78,9 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 
+" HTML plugins
+Plugin 'mattn/emmet-vim'
+
 " Linting plugins
 Plugin 'scrooloose/syntastic'
 
@@ -123,3 +126,9 @@ let g:syntastic_javascript_checkers = ['eslint']
 " Set ctrlp ignores
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
+" Emmet settings
+let g:user_emmet_settings = {
+\  'javascript' : {
+\      'extends' : 'jsx',
+\  },
+\}
