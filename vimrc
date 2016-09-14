@@ -14,7 +14,7 @@ set softtabstop=2
 
 " UI config
 set number
-set showcmd			    " show last command in bottom bar
+set showcmd	    " show last command in bottom bar
 set noshowmode      " hide mode (shown in airline)
 set cursorline      " highlight current line
 set wildmenu        " visual autocomplete for command menu
@@ -83,6 +83,7 @@ Plugin 'mattn/emmet-vim'
 
 " Linting plugins
 Plugin 'scrooloose/syntastic'
+Plugin 'whatyouhide/vim-lengthmatters'
 
 " All of your Plugins must be added before the following line
 call vundle#end()	      	" required
@@ -111,6 +112,7 @@ colorscheme solarized
 
 " JSX config
 let g:jsx_ext_required = 0
+autocmd FileType javascript.jsx set tw=100
 
 " Syntastic config
 set statusline+=%#warningmsg#
