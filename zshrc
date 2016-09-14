@@ -86,3 +86,5 @@ export EDITOR="vim"
 
 source .zsh_alias
 
+# Configure ls colors
+eval `dircolors ~/.dircolors`
