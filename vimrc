@@ -7,9 +7,9 @@ filetype off		  	" required
 set mouse=a
 
 " Set tabstops
-set tabstop=2
-set softtabstop=2
 set expandtab 			" Tabs are spaces
+set shiftwidth=2
+set softtabstop=2
 
 
 " UI config
