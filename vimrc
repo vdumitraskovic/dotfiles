@@ -136,5 +136,5 @@ let g:user_emmet_settings = {
 \}
 
 " Set CSS filetypes
-autocmd FileType scss ts=4 sts=4 sw=4 expandtab
-autocmd FileType css ts=4 sts=4 sw=4 expandtab
+autocmd FileType scss setlocal ts=4 sts=4 sw=4
+autocmd FileType css setlocal ts=4 sts=4 sw=4
