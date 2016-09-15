@@ -112,7 +112,7 @@ colorscheme solarized
 
 " JSX config
 let g:jsx_ext_required = 0
-autocmd FileType javascript.jsx set tw=100
+autocmd FileType javascript.jsx setlocal tw=100
 
 " Syntastic config
 set statusline+=%#warningmsg#
