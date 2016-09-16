@@ -72,7 +72,18 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'Konfekt/FastFold'
+Plugin 'cohama/lexima.vim'
+
+" Autocomplete
+Plugin 'Shougo/neocomplete.vim'
+
+" Git plugins
 Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
 
 " Javascript plugins
 Plugin 'pangloss/vim-javascript'
@@ -80,6 +91,8 @@ Plugin 'mxw/vim-jsx'
 
 " HTML plugins
 Plugin 'mattn/emmet-vim'
+Plugin 'alvan/vim-closetag'
+Plugin 'Valloric/MatchTagAlways'
 
 " Linting plugins
 Plugin 'scrooloose/syntastic'
@@ -138,3 +151,17 @@ let g:user_emmet_settings = {
 " Set CSS filetypes
 autocmd FileType scss setlocal ts=4 sts=4 sw=4
 autocmd FileType css setlocal ts=4 sts=4 sw=4
+
+" Vim close tag config
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.js"
+
+" Match tag always config
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'xhtml' : 1,
+    \ 'xml' : 1,
+    \ 'jinja' : 1,
+    \ 'javascript.jsx': 1}
+
+" Enable neocomplete
+let g:neocomplete#enable_at_startup = 1
