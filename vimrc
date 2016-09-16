@@ -59,7 +59,11 @@ set foldnestmax=10  " 10 nested folds max
 set foldmethod=syntax
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+if has("win32")
+  set rtp+=%HOME%/vimfiles/bundle/Vundle.vim
+else
+ set rtp+=~/.vim/bundle/Vundle.vim
+endif
 call vundle#begin()
 
 " let Vundle manage Vundle, required
@@ -104,6 +108,9 @@ filetype plugin indent on	" required
 
 " Enable syntax highlighting
 syntax on
+
+" Set encoding
+set encoding=utf-8
 
 " Airline powerline fonts
 let g:airline_powerline_fonts = 1
@@ -165,3 +172,16 @@ let g:mta_filetypes = {
 
 " Enable neocomplete
 let g:neocomplete#enable_at_startup = 1
+
+" Set gui font
+if has('gui_running')
+  set guioptions-=T   "no toolbar
+
+  if has('gui_win32')
+    " Set font
+    set guifont=Inconsolata_for_Powerline:h12:cANSI
+    " Start maximized
+    au GUIEnter * simalt ~x
+  endif
+endif
+
