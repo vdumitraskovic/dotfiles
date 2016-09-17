@@ -185,3 +185,14 @@ if has('gui_running')
   endif
 endif
 
+" Config backup
+set backupdir-=.
+set dir-=.
+if has("win32")
+  set backupdir^=$TEMP
+  set dir^=$TEMP
+else
+  set backupdir^=~/tmp,/tmp
+  set dir^=~/tmp,/tmp
+endif
+
