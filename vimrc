@@ -88,6 +88,7 @@ Plugin 'Shougo/neocomplete.vim'
 " Git plugins
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
+Plugin 'idanarye/vim-merginal'
 
 " Javascript plugins
 Plugin 'pangloss/vim-javascript'
