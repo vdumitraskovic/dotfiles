@@ -200,3 +200,8 @@ else
   set dir^=~/tmp,/tmp
 endif
 
+" Set to auto read when a file is changed from the outside
+set autoread
+
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
