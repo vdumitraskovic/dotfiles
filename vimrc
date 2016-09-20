@@ -55,6 +55,9 @@ nmap <leader>bl :ls<CR>
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
 
+" Quick save
+noremap <Leader>w :update<CR>
+
 " Folding
 set foldenable      " enable folding
 set foldlevelstart=10 " open most folds by default
@@ -149,8 +152,9 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 
-" Set ctrlp ignores
+" Set ctrlp
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_show_hidden = 1
 
 " Emmet settings
 let g:user_emmet_settings = {
