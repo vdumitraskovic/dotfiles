@@ -191,6 +191,11 @@ if has('gui_running')
     " Start maximized
     au GUIEnter * simalt ~x
   endif
+
+  if has('gui_macvim')
+    set guifont=Inconsolata_for_Powerline:h14
+    set lines=60 columns=110
+  endif
 endif
 
 " Config backup
