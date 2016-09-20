@@ -209,3 +209,8 @@ set autoread
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
+
+" Config Nerdcommenter
+let g:NERDSpaceDelims = 1
+let g:NERDCommentEmptyLines = 1
+let g:NERDTrimTrailingWhitespace = 1
