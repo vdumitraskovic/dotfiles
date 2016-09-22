@@ -87,6 +87,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'Konfekt/FastFold'
 Plugin 'cohama/lexima.vim'
+Plugin 'myusuf3/numbers.vim'
 
 " Autocomplete
 Plugin 'Shougo/neocomplete.vim'
