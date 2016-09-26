@@ -183,6 +183,7 @@ let g:mta_filetypes = {
     \ 'xml' : 1,
     \ 'jinja' : 1,
     \ 'javascript.jsx': 1}
+nnoremap <leader>% :MtaJumpToOtherTag<cr>
 
 " Enable neocomplete
 let g:neocomplete#enable_at_startup = 1
