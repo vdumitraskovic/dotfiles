@@ -93,6 +93,7 @@ Plugin 'cohama/lexima.vim'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
+Plugin 'tpope/vim-capslock'
 
 " Autocomplete
 Plugin 'Shougo/neocomplete.vim'
