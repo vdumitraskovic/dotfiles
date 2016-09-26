@@ -22,6 +22,9 @@ set lazyredraw      " redraw only when we need to
 set showmatch       " highlight matching [{()}]
 set laststatus=2    " fix airline
 
+" Sets how many lines of history VIM has to remember
+set history=500
+
 " Searching
 set incsearch       " search as characters are entered
 set hlsearch        " highlight matches
