@@ -8,6 +8,7 @@ set mouse=a
 
 " Set tabstops
 set expandtab 			" Tabs are spaces
+set smarttab                     " Be smart when using tabs
 set shiftwidth=2
 set softtabstop=2
 
@@ -22,16 +23,33 @@ set lazyredraw      " redraw only when we need to
 set showmatch       " highlight matching [{()}]
 set laststatus=2    " fix airline
 
+" No annoying sound on errors
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+
 " Sets how many lines of history VIM has to remember
 set history=500
 
 " Searching
+" Ignore case when searching
+set ignorecase
+
+" When searching try to be smart about cases
+set smartcase
+
 set incsearch       " search as characters are entered
 set hlsearch        " highlight matches
 
 " Keymaps
-" turn off search highlight
+" Configure backspace so it acts as it should act
+set backspace=eol,start,indent
+
+" Remap leader to ','
 let mapleader=","
+
+" turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
 map <C-n> :NERDTreeToggle<CR>
 inoremap jk <esc>
@@ -141,8 +159,11 @@ set hidden
 autocmd BufWritePre * StripWhitespace
 
 " Theme setup
+try
+  colorscheme solarized
+catch
+endtry
 set background=dark
-colorscheme solarized
 
 " JSX config
 let g:jsx_ext_required = 0
@@ -189,9 +210,10 @@ nnoremap <leader>% :MtaJumpToOtherTag<cr>
 " Enable neocomplete
 let g:neocomplete#enable_at_startup = 1
 
-" Set gui font
+" Set gui (font, colors, options)
 if has('gui_running')
   set guioptions-=T   "no toolbar
+  set t_Co=256
 
   if has('gui_win32')
     " Set font
