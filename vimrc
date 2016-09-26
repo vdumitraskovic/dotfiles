@@ -121,9 +121,11 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'idanarye/vim-merginal'
 
+" Programming languages pack
+Plugin 'sheerun/vim-polyglot'
+
 " Javascript plugins
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
+Plugin 'moll/vim-node'
 
 " HTML plugins
 Plugin 'mattn/emmet-vim'
@@ -179,6 +181,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
+
+let g:syntastic_scss_checkers = ['scss_lint']
 
 " Set ctrlp
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
