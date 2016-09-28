@@ -1,6 +1,67 @@
-" Vundle setup
-set nocompatible		" be iMproved, required
-filetype off		  	" required
+" Plug
+" Install vim-plug if we don't already have it
+if (has('win32'))
+  if empty(glob("$HOME/vimfiles/autoload/plug.vim"))
+      " Ensure all needed directories exist  (Thanks @kapadiamush)
+      execute '!mkdir -p $HOME/vimfiles/plugged'
+      execute '!mkdir -p $HOME/vimfiles/autoload'
+      " Download the actual plugin manager
+      execute '!curl -fLo ~/vimfiles/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+  endif
+else
+  if empty(glob("~/.vim/autoload/plug.vim"))
+      " Ensure all needed directories exist  (Thanks @kapadiamush)
+      execute '!mkdir -p ~/.vim/plugged'
+      execute '!mkdir -p ~/.vim/autoload'
+      " Download the actual plugin manager
+      execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+  endif
+endif
+
+
+call plug#begin('~/.vim/plugged')
+
+" Put plugins here
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'altercation/vim-colors-solarized'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'scrooloose/nerdcommenter'
+Plug 'easymotion/vim-easymotion'
+Plug 'Konfekt/FastFold'
+Plug 'jiangmiao/auto-pairs'
+Plug 'myusuf3/numbers.vim'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'tpope/vim-capslock'
+
+" Autocomplete
+Plug 'Shougo/neocomplete.vim'
+
+" Git plugins
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'idanarye/vim-merginal'
+
+" Programming languages pack
+Plug 'sheerun/vim-polyglot'
+
+" Javascript plugins
+Plug 'moll/vim-node'
+
+" HTML plugins
+Plug 'mattn/emmet-vim'
+Plug 'alvan/vim-closetag'
+Plug 'Valloric/MatchTagAlways'
+
+" Linting plugins
+Plug 'scrooloose/syntastic'
+Plug 'whatyouhide/vim-lengthmatters'
+
+call plug#end()
 
 
 " Enable mouse
@@ -8,12 +69,13 @@ set mouse=a
 
 " Set tabstops
 set expandtab 			" Tabs are spaces
-set smarttab                     " Be smart when using tabs
+set smarttab                    " Be smart when using tabs
 set shiftwidth=2
 set softtabstop=2
 
 
 " UI config
+set nocompatible    " be iMproved, required
 set number
 set showcmd	    " show last command in bottom bar
 set noshowmode      " hide mode (shown in airline)
@@ -85,59 +147,7 @@ set foldlevelstart=10 " open most folds by default
 set foldnestmax=10  " 10 nested folds max
 set foldmethod=syntax
 
-" set the runtime path to include Vundle and initialize
-if has("win32")
-  set rtp+=%HOME%/vimfiles/bundle/Vundle.vim
-else
- set rtp+=~/.vim/bundle/Vundle.vim
-endif
-call vundle#begin()
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" Put plugins here
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'Konfekt/FastFold'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'myusuf3/numbers.vim'
-Plugin 'Shougo/neosnippet'
-Plugin 'Shougo/neosnippet-snippets'
-Plugin 'tpope/vim-capslock'
-
-" Autocomplete
-Plugin 'Shougo/neocomplete.vim'
-
-" Git plugins
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-fugitive'
-Plugin 'idanarye/vim-merginal'
-
-" Programming languages pack
-Plugin 'sheerun/vim-polyglot'
-
-" Javascript plugins
-Plugin 'moll/vim-node'
-
-" HTML plugins
-Plugin 'mattn/emmet-vim'
-Plugin 'alvan/vim-closetag'
-Plugin 'Valloric/MatchTagAlways'
-
-" Linting plugins
-Plugin 'scrooloose/syntastic'
-Plugin 'whatyouhide/vim-lengthmatters'
-
-" All of your Plugins must be added before the following line
-call vundle#end()	      	" required
 filetype plugin indent on	" required
 
 " Enable syntax highlighting
