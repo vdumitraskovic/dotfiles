@@ -3,10 +3,10 @@
 if (has('win32'))
   if empty(glob("$HOME/vimfiles/autoload/plug.vim"))
       " Ensure all needed directories exist  (Thanks @kapadiamush)
-      execute '!mkdir -p $HOME/vimfiles/plugged'
-      execute '!mkdir -p $HOME/vimfiles/autoload'
+      execute '!mkdir \%USERPROFILE\%\\vimfiles\\plugged'
+      execute '!mkdir \%USERPROFILE\%\\vimfiles\\autoload'
       " Download the actual plugin manager
-      execute '!curl -fLo ~/vimfiles/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+      execute '!curl -fkLo \%USERPROFILE\%\\vimfiles\\autoload\\plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
   endif
 else
   if empty(glob("~/.vim/autoload/plug.vim"))
