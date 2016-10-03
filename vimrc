@@ -38,6 +38,9 @@ Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'tpope/vim-capslock'
 
+" Nice icons
+Plug 'ryanoasis/vim-devicons'
+
 " Autocomplete
 Plug 'Shougo/neocomplete.vim'
 
@@ -51,6 +54,7 @@ Plug 'sheerun/vim-polyglot'
 
 " Javascript plugins
 Plug 'moll/vim-node'
+Plug 'jelera/vim-javascript-syntax'
 
 " HTML plugins
 Plug 'mattn/emmet-vim'
@@ -154,7 +158,15 @@ filetype plugin indent on	" required
 syntax on
 
 " Set encoding
-set encoding=utf-8
+if has("multi_byte")
+  if &termencoding == ""
+    let &termencoding = &encoding
+  endif
+  set encoding=utf-8
+  setglobal fileencoding=utf-8
+  "setglobal bomb
+  set fileencodings=ucs-bom,utf-8,latin1
+endif
 
 " Airline powerline fonts
 let g:airline_powerline_fonts = 1
@@ -176,6 +188,18 @@ try
 catch
 endtry
 set background=dark
+
+" Javascript config
+let g:javascript_conceal_function       = "ƒ"
+let g:javascript_conceal_null           = "ø"
+let g:javascript_conceal_this           = "@"
+let g:javascript_conceal_return         = "←"
+let g:javascript_conceal_undefined      = "¿"
+"let g:javascript_conceal_NaN            = "ℕ"
+let g:javascript_conceal_prototype      = "¶"
+let g:javascript_conceal_static         = "•"
+"let g:javascript_conceal_super          = "Ω"
+let g:javascript_conceal_arrow_function = "⇒"
 
 " JSX config
 let g:jsx_ext_required = 0
@@ -231,13 +255,13 @@ if has('gui_running')
 
   if has('gui_win32')
     " Set font
-    set guifont=Inconsolata_for_Powerline:h12:cANSI
+    set guifont=InconsolataForPowerline_NF:h12
     " Start maximized
     au GUIEnter * simalt ~x
   endif
 
   if has('gui_macvim')
-    set guifont=Inconsolata_for_Powerline:h14
+    set guifont=InconsolataForPowerline_NF:h14
     set lines=60 columns=110
   endif
 endif
