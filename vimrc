@@ -261,7 +261,7 @@ if has('gui_running')
   endif
 
   if has('gui_macvim')
-    set guifont=InconsolataForPowerline_NF:h14
+    set guifont=InconsolataForPowerline_Nerd_Font:h14
     set lines=60 columns=110
   endif
 endif
