@@ -253,6 +253,7 @@ let g:neocomplete#enable_at_startup = 1
 if has('gui_running')
   set guioptions-=T   "no toolbar
   set t_Co=256
+  set ambiwidth=double
 
   if has('gui_win32')
     " Set font
