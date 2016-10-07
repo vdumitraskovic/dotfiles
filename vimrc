@@ -64,6 +64,7 @@ Plug 'Valloric/MatchTagAlways'
 " Linting plugins
 Plug 'scrooloose/syntastic'
 Plug 'whatyouhide/vim-lengthmatters'
+Plug 'Chiel92/vim-autoformat'
 
 call plug#end()
 
@@ -306,3 +307,9 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
+
+" Set key for autoformat
+noremap <F3> :Autoformat<CR>
+
+" Enable autoformat for SVG
+let g:formatters_svg = ['tidy_xml']
