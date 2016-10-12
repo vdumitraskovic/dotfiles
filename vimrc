@@ -37,6 +37,7 @@ Plug 'myusuf3/numbers.vim'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'tpope/vim-capslock'
+Plug 'godlygeek/tabular'
 
 " Nice icons
 Plug 'ryanoasis/vim-devicons'
@@ -253,11 +254,12 @@ let g:neocomplete#enable_at_startup = 1
 if has('gui_running')
   set guioptions-=T   "no toolbar
   set t_Co=256
-  set ambiwidth=double
+  "set ambiwidth=double
 
   if has('gui_win32')
     " Set font
     set guifont=InconsolataForPowerline_NF:h12
+    set rop=type:directx,gamma:1.0,contrast:0.5,level:1,geom:1,renmode:4,taamode:1
     " Start maximized
     au GUIEnter * simalt ~x
   endif
