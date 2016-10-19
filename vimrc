@@ -56,6 +56,7 @@ Plug 'sheerun/vim-polyglot'
 " Javascript plugins
 Plug 'moll/vim-node'
 Plug 'jelera/vim-javascript-syntax'
+Plug 'mtscout6/syntastic-local-eslint.vim'
 
 " HTML plugins
 Plug 'mattn/emmet-vim'
