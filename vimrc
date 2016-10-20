@@ -56,7 +56,6 @@ Plug 'sheerun/vim-polyglot'
 " Javascript plugins
 Plug 'moll/vim-node'
 Plug 'jelera/vim-javascript-syntax'
-Plug 'mtscout6/syntastic-local-eslint.vim'
 
 " HTML plugins
 Plug 'mattn/emmet-vim'
@@ -198,10 +197,10 @@ let g:javascript_conceal_null           = "ø"
 let g:javascript_conceal_this           = "@"
 let g:javascript_conceal_return         = "←"
 let g:javascript_conceal_undefined      = "¿"
-"let g:javascript_conceal_NaN            = "ℕ"
+let g:javascript_conceal_NaN            = "ℕ"
 let g:javascript_conceal_prototype      = "¶"
 let g:javascript_conceal_static         = "•"
-"let g:javascript_conceal_super          = "Ω"
+let g:javascript_conceal_super          = "Ω"
 let g:javascript_conceal_arrow_function = "⇒"
 
 " JSX config
@@ -218,7 +217,13 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
-
+let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
+if matchstr(local_eslint, "^\/\\w") == ''
+    let local_eslint = getcwd() . "/" . local_eslint
+endif
+if executable(local_eslint)
+    let g:syntastic_javascript_eslint_exec = local_eslint
+endif
 let g:syntastic_scss_checkers = ['scss_lint']
 
 " Set ctrlp
