@@ -34,8 +34,6 @@ Plug 'easymotion/vim-easymotion'
 Plug 'Konfekt/FastFold'
 Plug 'jiangmiao/auto-pairs'
 Plug 'myusuf3/numbers.vim'
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
 Plug 'tpope/vim-capslock'
 Plug 'godlygeek/tabular'
 
@@ -44,6 +42,12 @@ Plug 'ryanoasis/vim-devicons'
 
 " Autocomplete
 Plug 'Shougo/neocomplete.vim'
+Plug 'othree/jspc.vim'
+
+" Snippets
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+Plug '1995eaton/vim-better-javascript-completion'
 
 " Git plugins
 Plug 'airblade/vim-gitgutter'
@@ -55,7 +59,7 @@ Plug 'sheerun/vim-polyglot'
 
 " Javascript plugins
 Plug 'moll/vim-node'
-Plug 'jelera/vim-javascript-syntax'
+Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 
 " HTML plugins
 Plug 'mattn/emmet-vim'
@@ -255,6 +259,14 @@ nnoremap <leader>% :MtaJumpToOtherTag<cr>
 
 " Enable neocomplete
 let g:neocomplete#enable_at_startup = 1
+if !exists('g:neocomplete#sources#omni#functions')
+  let g:neocomplete#sources#omni#functions = {}
+endif
+let g:neocomplete#sources#omni#functions.javascript = [
+      \   'jspc:#omni',
+      \   'js#CompleteJS',
+      \   'tern#Complete'
+      \ ]
 
 " Set gui (font, colors, options)
 if has('gui_running')
