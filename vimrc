@@ -41,6 +41,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'myusuf3/numbers.vim'
 Plug 'tpope/vim-capslock'
 Plug 'godlygeek/tabular'
+Plug 'dyng/ctrlsf.vim'
 
 " Autocomplete
 Plug 'Shougo/neocomplete.vim'
@@ -353,3 +354,18 @@ set colorcolumn=+1
 " Set ignored files
 set wildignore+=*.bpm,*.gif,*.ico,*.jpg,*.png
 set wildignore+=*.mp4
+
+" Setup ag (the_silver_searcher)
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+" CtrlSF config
+let g:ctrlsf_position = 'bottom'
