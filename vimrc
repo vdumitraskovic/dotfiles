@@ -337,3 +337,7 @@ let g:formatters_svg = ['tidy_xml']
 
 " Add color column
 set colorcolumn=+1
+
+" Set ignored files
+set wildignore+=*.bpm,*.gif,*.ico,*.jpg,*.png
+set wildignore+=*.mp4
