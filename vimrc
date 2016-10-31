@@ -29,6 +29,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tacahiroy/ctrlp-funky'
 Plug 'scrooloose/nerdtree'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ntpeters/vim-better-whitespace'
@@ -232,8 +233,18 @@ endif
 let g:syntastic_scss_checkers = ['scss_lint']
 
 " Set ctrlp
+let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let g:ctrlp_show_hidden = 1
+
+" Use the nearest .git directory as the cwd
+" This makes a lot of sense if you are working on a project that is in version
+" control. It also supports works with .svn, .hg, .bzr.
+let g:ctrlp_working_path_mode = 'r'
+
+" Easy bindings for its various modes
+nmap <leader>bb :CtrlPBuffer<cr>
+nnoremap <leader>fu :CtrlPFunky<cr>
 
 " Emmet settings
 let g:user_emmet_settings = {
