@@ -22,6 +22,10 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Put plugins here
+" Nice icons
+Plug 'ryanoasis/vim-devicons'
+
+" Generic
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -36,9 +40,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'myusuf3/numbers.vim'
 Plug 'tpope/vim-capslock'
 Plug 'godlygeek/tabular'
-
-" Nice icons
-Plug 'ryanoasis/vim-devicons'
 
 " Autocomplete
 Plug 'Shougo/neocomplete.vim'
