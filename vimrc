@@ -50,6 +50,7 @@ Plug 'othree/jspc.vim'
 " Snippets
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
+Plug 'honza/vim-snippets'
 Plug '1995eaton/vim-better-javascript-completion'
 
 " Git plugins
@@ -65,6 +66,7 @@ Plug 'moll/vim-node'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 
 " HTML plugins
+Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'mattn/emmet-vim'
 Plug 'alvan/vim-closetag'
 Plug 'Valloric/MatchTagAlways'
@@ -336,6 +338,9 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 " \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
 
 " For conceal markers.
 if has('conceal')
