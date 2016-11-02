@@ -278,7 +278,7 @@ if !exists('g:neocomplete#sources#omni#functions')
   let g:neocomplete#sources#omni#functions = {}
 endif
 let g:neocomplete#sources#omni#functions.javascript = [
-      \   'jspc:#omni',
+      \   'jspc#omni',
       \   'js#CompleteJS',
       \   'tern#Complete'
       \ ]
