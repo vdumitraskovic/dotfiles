@@ -352,6 +352,9 @@ noremap <F3> :Autoformat<CR>
 
 " Enable autoformat for SVG
 let g:formatters_svg = ['tidy_xml']
+" Use esformatter for autoformating javascript
+let g:formatdef_esformatter_javascript='"esformatter"'
+let g:formatters_javascript = ['esformatter_javascript']
 
 " Add color column
 set colorcolumn=+1
