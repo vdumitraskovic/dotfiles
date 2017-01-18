@@ -42,6 +42,7 @@ Plug 'myusuf3/numbers.vim'
 Plug 'tpope/vim-capslock'
 Plug 'godlygeek/tabular'
 Plug 'dyng/ctrlsf.vim'
+Plug 'flazz/vim-colorschemes'
 
 " Autocomplete
 Plug 'Shougo/neocomplete.vim'
@@ -77,7 +78,7 @@ Plug 'whatyouhide/vim-lengthmatters'
 Plug 'Chiel92/vim-autoformat'
 
 " PairProgramming
-Plug 'Floobits/floobits-vim'
+" Plug 'Floobits/floobits-vim'
 
 call plug#end()
 
@@ -285,6 +286,14 @@ let g:neocomplete#sources#omni#functions.javascript = [
       \   'js#CompleteJS',
       \   'tern#Complete'
       \ ]
+
+" Set term colors
+if !has("gui_running")
+  set term=xterm
+  set t_Co=256
+  let &t_AB="\e[48;5;%dm"
+  let &t_AF="\e[38;5;%dm"
+endif
 
 " Set gui (font, colors, options)
 if has('gui_running')
