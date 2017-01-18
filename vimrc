@@ -76,6 +76,9 @@ Plug 'scrooloose/syntastic'
 Plug 'whatyouhide/vim-lengthmatters'
 Plug 'Chiel92/vim-autoformat'
 
+" PairProgramming
+Plug 'Floobits/floobits-vim'
+
 call plug#end()
 
 
