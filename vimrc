@@ -1,4 +1,4 @@
-" Plug
+
 " Install vim-plug if we don't already have it
 if (has('win32'))
   if empty(glob("$HOME/vimfiles/autoload/plug.vim"))
@@ -293,6 +293,7 @@ if !has("gui_running")
   set t_Co=256
   let &t_AB="\e[48;5;%dm"
   let &t_AF="\e[38;5;%dm"
+  colorscheme monokai
 endif
 
 " Set gui (font, colors, options)
