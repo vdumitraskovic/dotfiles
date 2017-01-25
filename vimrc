@@ -42,6 +42,7 @@ Plug 'tpope/vim-capslock'
 Plug 'godlygeek/tabular'
 Plug 'dyng/ctrlsf.vim'
 Plug 'flazz/vim-colorschemes'
+Plug 'schickling/vim-bufonly'
 
 " Autocomplete
 Plug 'Shougo/neocomplete.vim'
