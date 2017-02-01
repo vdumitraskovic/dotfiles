@@ -113,6 +113,9 @@ set tm=500
 " Sets how many lines of history VIM has to remember
 set history=500
 
+" Reduce updatetime
+set updatetime=750
+
 " Searching
 " Ignore case when searching
 set ignorecase
@@ -274,16 +277,28 @@ let g:mta_filetypes = {
     \ 'javascript.jsx': 1}
 nnoremap <leader>% :MtaJumpToOtherTag<cr>
 
+" Set tern plugin
+let g:tern_map_keys = 1
+let g:tern_show_argument_hints = 'on_hold'
+let g:tern_show_signature_in_pnum = 1
+
 " Enable neocomplete
 let g:neocomplete#enable_at_startup = 1
 if !exists('g:neocomplete#sources#omni#functions')
   let g:neocomplete#sources#omni#functions = {}
 endif
 let g:neocomplete#sources#omni#functions.javascript = [
+      \   'tern#Complete',
       \   'jspc#omni',
-      \   'js#CompleteJS',
-      \   'tern#Complete'
+      \   'js#CompleteJS'
       \ ]
+
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+let g:neocomplete#sources#omni#input_patterns.javascript = '\h\w*\|[^. \t]\.\w*'
+au FileType javascript  setl omnifunc=tern#Complete
+
 
 " Set term colors
 if !has("gui_running")
