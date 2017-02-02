@@ -113,9 +113,6 @@ set tm=500
 " Sets how many lines of history VIM has to remember
 set history=500
 
-" Reduce updatetime
-set updatetime=750
-
 " Searching
 " Ignore case when searching
 set ignorecase
@@ -277,28 +274,16 @@ let g:mta_filetypes = {
     \ 'javascript.jsx': 1}
 nnoremap <leader>% :MtaJumpToOtherTag<cr>
 
-" Set tern plugin
-let g:tern_map_keys = 1
-let g:tern_show_argument_hints = 'on_hold'
-let g:tern_show_signature_in_pnum = 1
-
 " Enable neocomplete
 let g:neocomplete#enable_at_startup = 1
 if !exists('g:neocomplete#sources#omni#functions')
   let g:neocomplete#sources#omni#functions = {}
 endif
 let g:neocomplete#sources#omni#functions.javascript = [
-      \   'tern#Complete',
       \   'jspc#omni',
-      \   'js#CompleteJS'
+      \   'js#CompleteJS',
+      \   'tern#Complete'
       \ ]
-
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-let g:neocomplete#sources#omni#input_patterns.javascript = '\h\w*\|[^. \t]\.\w*'
-au FileType javascript  setl omnifunc=tern#Complete
-
 
 " Set term colors
 if !has("gui_running")
@@ -316,13 +301,16 @@ endif
 " Set gui (font, colors, options)
 if has('gui_running')
   set guioptions-=T   "no toolbar
+  set guioptions-=m  "remove menu bar
+  set guioptions-=r  "remove right-hand scroll bar
+  set guioptions-=L  "remove left-hand scroll bar
   set t_Co=256
   "set ambiwidth=double
 
   if has('gui_win32')
     " Set font
     set guifont=InconsolataForPowerline_NF:h12
-    set rop=type:directx,gamma:1.0,contrast:0.5,level:1,geom:1,renmode:4,taamode:1
+    set rop=type:directx,gamma:1,contrast:1,level:.5,geom:1,renmode:5,taamode:1
     " Start maximized
     au GUIEnter * simalt ~x
   endif
