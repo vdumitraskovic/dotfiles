@@ -1,6 +1,5 @@
-
 " Install vim-plug if we don't already have it
-if (has('win32'))
+if has('win32')
   if empty(glob("$HOME/vimfiles/autoload/plug.vim"))
       " Ensure all needed directories exist  (Thanks @kapadiamush)
       execute '!mkdir \%USERPROFILE\%\\vimfiles\\plugged'
@@ -76,6 +75,9 @@ Plug 'Valloric/MatchTagAlways'
 Plug 'scrooloose/syntastic'
 Plug 'whatyouhide/vim-lengthmatters'
 Plug 'Chiel92/vim-autoformat'
+
+" Windows enhancements
+Plug 'kkoenig/wimproved.vim', { 'on': [] }
 
 " PairProgramming
 " Plug 'Floobits/floobits-vim'
@@ -312,7 +314,8 @@ if has('gui_running')
     set guifont=InconsolataForPowerline_NF:h12
     set rop=type:directx,gamma:1,contrast:1,level:.5,geom:1,renmode:5,taamode:1
     " Start maximized
-    au GUIEnter * simalt ~x
+    call plug#load('wimproved.vim')
+    au GUIEnter * silent! WToggleFullscreen
   endif
 
   if has('gui_macvim')
