@@ -125,6 +125,9 @@ set smartcase
 set incsearch       " search as characters are entered
 set hlsearch        " highlight matches
 
+" Reduce update time
+set updatetime=750
+
 " Keymaps
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
@@ -215,6 +218,11 @@ let g:javascript_conceal_prototype      = "¶"
 let g:javascript_conceal_static         = "•"
 let g:javascript_conceal_super          = "Ω"
 let g:javascript_conceal_arrow_function = "⇒"
+
+" Tern config
+let g:tern_map_keys=1
+let g:tern_show_argument_hints='on_hold'
+
 
 " JSX config
 let g:jsx_ext_required = 0
