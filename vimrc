@@ -42,6 +42,7 @@ Plug 'godlygeek/tabular'
 Plug 'dyng/ctrlsf.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'schickling/vim-bufonly'
+Plug 'chaoren/vim-wordmotion'
 
 " Autocomplete
 Plug 'Shougo/neocomplete.vim'
@@ -406,3 +407,6 @@ endif
 
 " CtrlSF config
 let g:ctrlsf_position = 'bottom'
+
+" WordMotion config
+let g:wordmotion_prefix = '<localleader>'
