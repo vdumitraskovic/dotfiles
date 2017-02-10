@@ -21,8 +21,6 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Put plugins here
-" Nice icons
-Plug 'ryanoasis/vim-devicons'
 
 " Generic
 Plug 'vim-airline/vim-airline'
@@ -209,16 +207,6 @@ colorscheme lightning
 set background=light
 
 " Javascript config
-let g:javascript_conceal_function       = "ƒ"
-let g:javascript_conceal_null           = "ø"
-let g:javascript_conceal_this           = "@"
-let g:javascript_conceal_return         = "←"
-let g:javascript_conceal_undefined      = "¿"
-let g:javascript_conceal_NaN            = "ℕ"
-let g:javascript_conceal_prototype      = "¶"
-let g:javascript_conceal_static         = "•"
-let g:javascript_conceal_super          = "Ω"
-let g:javascript_conceal_arrow_function = "⇒"
 
 " Tern config
 let g:tern_map_keys=1
@@ -328,7 +316,8 @@ if has('gui_running')
   endif
 
   if has('gui_macvim')
-    set guifont=InconsolataForPowerline_Nerd_Font:h14
+    set guifont=Fira\ Code:h12
+    set macligatures
     set lines=60 columns=110
   endif
 endif
@@ -371,11 +360,6 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 
 " Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1
-
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=nc
-endif
 
 " Set key for autoformat
 noremap <F3> :Autoformat<CR>
