@@ -28,6 +28,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'scrooloose/nerdcommenter'
@@ -338,6 +339,9 @@ set autoread
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
+
+" Config NerdTree
+let NERDTreeWinPos = "right"
 
 " Config Nerdcommenter
 let g:NERDSpaceDelims = 1
