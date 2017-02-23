@@ -128,7 +128,21 @@ set hlsearch        " highlight matches
 " Reduce update time
 set updatetime=750
 
+
 " Keymaps
+
+" Disable Arrow keys in Escape mode
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+
+" Disable Arrow keys in Insert mode
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
 
