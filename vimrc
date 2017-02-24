@@ -79,6 +79,11 @@ Plug 'Chiel92/vim-autoformat'
 " Note taking
 Plug 'vimwiki/vimwiki'
 
+" Prose writing
+Plug 'reedes/vim-pencil'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+
 " Windows enhancements
 Plug 'kkoenig/wimproved.vim', { 'on': [] }
 
@@ -415,3 +420,20 @@ let g:ctrlsf_position = 'bottom'
 
 " WordMotion config
 let g:wordmotion_prefix = '<localleader>'
+
+" Set writing plugins
+let g:vimwiki_folding = 'list'
+
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd call pencil#init()
+  autocmd FileType text         call pencil#init()
+  autocmd FileType vimwiki      call pencil#init()
+augroup END
+
+autocmd! User GoyoEnter Limelight
+autocmd User GoyoEnter NumbersToggle
+autocmd User GoyoEnter NumbersOnOff
+autocmd! User GoyoLeave Limelight!
+autocmd User GoyoLeave NumbersToggle
+autocmd User GoyoLeave NumbersOnOff
