@@ -331,7 +331,7 @@ if has('gui_running')
 
   if has('gui_win32')
     " Set font
-    set guifont=InconsolataForPowerline_NF:h12
+    set guifont=Fira_Code:h10:cANSI:qCLEARTYPE
     set rop=type:directx,gamma:1,contrast:1,level:.5,geom:1,renmode:5,taamode:1
     " Start maximized
     call plug#load('wimproved.vim')
