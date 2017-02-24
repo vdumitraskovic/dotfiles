@@ -76,6 +76,9 @@ Plug 'scrooloose/syntastic'
 Plug 'whatyouhide/vim-lengthmatters'
 Plug 'Chiel92/vim-autoformat'
 
+" Note taking
+Plug 'vimwiki/vimwiki'
+
 " Windows enhancements
 Plug 'kkoenig/wimproved.vim', { 'on': [] }
 
@@ -331,7 +334,7 @@ if has('gui_running')
   endif
 
   if has('gui_macvim')
-    set guifont=Fira\ Code:h12
+    set guifont=Iosevka:h13
     set macligatures
     set lines=60 columns=110
   endif
