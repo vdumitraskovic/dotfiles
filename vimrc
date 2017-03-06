@@ -61,6 +61,9 @@ Plug 'idanarye/vim-merginal'
 " Programming languages pack
 Plug 'sheerun/vim-polyglot'
 
+" Graphviz
+Plug 'wannesm/wmgraphviz.vim'
+
 " Javascript plugins
 Plug 'moll/vim-node'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
