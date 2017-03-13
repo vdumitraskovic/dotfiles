@@ -42,6 +42,8 @@ Plug 'dyng/ctrlsf.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'schickling/vim-bufonly'
 Plug 'chaoren/vim-wordmotion'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'majutsushi/tagbar'
 
 " Autocomplete
 Plug 'Shougo/neocomplete.vim'
@@ -66,7 +68,6 @@ Plug 'wannesm/wmgraphviz.vim'
 
 " Javascript plugins
 Plug 'moll/vim-node'
-Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 
 " HTML plugins
 Plug 'Glench/Vim-Jinja2-Syntax'
@@ -234,11 +235,6 @@ set background=light
 
 " Javascript config
 
-" Tern config
-let g:tern_map_keys=1
-let g:tern_show_argument_hints='on_hold'
-
-
 " JSX config
 let g:jsx_ext_required = 0
 autocmd FileType javascript.jsx setlocal tw=100
@@ -305,7 +301,6 @@ endif
 let g:neocomplete#sources#omni#functions.javascript = [
       \   'jspc#omni',
       \   'js#CompleteJS',
-      \   'tern#Complete'
       \ ]
 
 " Set term colors
@@ -438,3 +433,7 @@ autocmd User GoyoEnter NumbersOnOff
 autocmd! User GoyoLeave Limelight!
 autocmd User GoyoLeave NumbersToggle
 autocmd User GoyoLeave NumbersOnOff
+
+" Tagbar config
+nmap <F8> :TagbarToggle<CR>
+
