@@ -24,7 +24,6 @@ call plug#begin('~/.vim/plugged')
 
 " Generic
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'scrooloose/nerdtree'
@@ -39,11 +38,15 @@ Plug 'myusuf3/numbers.vim'
 Plug 'tpope/vim-capslock'
 Plug 'godlygeek/tabular'
 Plug 'dyng/ctrlsf.vim'
-Plug 'flazz/vim-colorschemes'
 Plug 'schickling/vim-bufonly'
 Plug 'chaoren/vim-wordmotion'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
+
+" Themes
+Plug 'flazz/vim-colorschemes'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'reedes/vim-thematic'
 
 " Autocomplete
 Plug 'Shougo/neocomplete.vim'
@@ -232,6 +235,20 @@ autocmd BufWritePre * StripWhitespace
 " Theme setup
 colorscheme lightning
 set background=light
+
+" Thematic setup
+let g:thematic#themes = {
+\ 'light'       :{ 'colorscheme': 'lightning',
+\                  'airline-theme': 'papercolor',
+\                  'background': 'light'
+\                },
+\ 'dark'        :{ 'colorscheme': 'cobalt2',
+\                  'background': 'dark',
+\                  'airline-theme': 'cobalt2',
+\                }
+\ }
+
+let g:thematic#theme_name = 'light'
 
 " Javascript config
 
