@@ -245,9 +245,9 @@ let g:thematic#themes = {
 \                  'airline-theme': 'papercolor',
 \                  'background': 'light'
 \                },
-\ 'dark'        :{ 'colorscheme': 'cobalt2',
+\ 'dark'        :{ 'colorscheme': 'molokai',
 \                  'background': 'dark',
-\                  'airline-theme': 'cobalt2',
+\                  'airline-theme': 'molokai',
 \                }
 \ }
 
