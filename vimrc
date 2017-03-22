@@ -35,6 +35,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'Konfekt/FastFold'
 Plug 'jiangmiao/auto-pairs'
 Plug 'myusuf3/numbers.vim'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-capslock'
 Plug 'godlygeek/tabular'
 Plug 'dyng/ctrlsf.vim'
@@ -450,3 +452,6 @@ nmap <F8> :TagbarToggle<CR>
 " Always in hard mode
 let g:hardtime_default_on = 1
 let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
+
+" Auto pairs fly mode
+let g:AutoPairsFlyMode = 1
