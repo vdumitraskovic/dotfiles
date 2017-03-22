@@ -42,6 +42,7 @@ Plug 'schickling/vim-bufonly'
 Plug 'chaoren/vim-wordmotion'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
+Plug 'terryma/vim-expand-region'
 
 " Themes
 Plug 'flazz/vim-colorschemes'
