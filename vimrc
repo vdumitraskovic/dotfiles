@@ -79,7 +79,7 @@ Plug 'alvan/vim-closetag'
 Plug 'Valloric/MatchTagAlways'
 
 " Linting plugins
-Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 Plug 'whatyouhide/vim-lengthmatters'
 Plug 'Chiel92/vim-autoformat'
 
@@ -259,22 +259,11 @@ let g:thematic#theme_name = 'light'
 let g:jsx_ext_required = 0
 autocmd FileType javascript.jsx setlocal tw=100
 
-" Syntastic config
+" Ale config
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%{ALEGetStatusLine()}
 set statusline+=%*
-
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
-if matchstr(local_eslint, "^\/\\w") == ''
-    let local_eslint = getcwd() . "/" . local_eslint
-endif
-if executable(local_eslint)
-    let g:syntastic_javascript_eslint_exec = local_eslint
-endif
-let g:syntastic_scss_checkers = ['scss_lint']
+let g:ale_linters = {'javascript': ['eslint']}
 
 " Set ctrlp
 let g:ctrlp_cmd = 'CtrlPMixed'
@@ -351,7 +340,7 @@ if has('gui_running')
     set rop=type:directx,gamma:1,contrast:1,level:.5,geom:1,renmode:5,taamode:1
     " Start maximized
     call plug#load('wimproved.vim')
-    au GUIEnter * silent! WToggleFullscreen
+    au GUIEnter * silent! WToggleScreen
   endif
 
   if has('gui_macvim')
