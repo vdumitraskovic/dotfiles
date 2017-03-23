@@ -350,6 +350,7 @@ if has('gui_running')
     set guifont=Iosevka:h13
     set macligatures
     set lines=60 columns=110
+    set macmeta
   endif
 endif
 
