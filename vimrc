@@ -456,3 +456,7 @@ let g:hardtime_ignore_buffer_patterns = [ "NERD.*", "fugitive.*", "\.git.*" ]
 
 " Auto pairs fly mode
 let g:AutoPairsFlyMode = 1
+
+" Map vim expand region keys
+vmap _ <Plug>(expand_region_shrink)
+vmap + <Plug>(expand_region_expand)
