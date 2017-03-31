@@ -341,7 +341,18 @@ if exists('$ITERM_PROFILE')
     let &t_SI = "\<Esc>]50;CursorShape=1\x7"
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
   endif
-end
+endif
+
+" Mac keys setup
+if has('mac')
+  " fix meta-keys which generate <Esc>a .. <Esc>z
+  let c='a'
+  while c <= 'z'
+    exec "set <M-".c.">=\e".c
+    exec "imap \e".c." <M-".c.">"
+    let c = nr2char(1+char2nr(c))
+  endw
+endif
 
 " Set gui (font, colors, options)
 if has('gui_running')
