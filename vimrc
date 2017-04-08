@@ -164,6 +164,12 @@ set updatetime=750
 " imap <left> <nop>
 " imap <right> <nop>
 "
+" Window movement
+map <m-h> <C-W>h
+map <m-j> <C-W>j
+map <m-k> <C-W>k
+map <m-l> <C-W>l
+
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
 
