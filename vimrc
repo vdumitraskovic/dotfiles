@@ -164,11 +164,6 @@ set updatetime=750
 " imap <left> <nop>
 " imap <right> <nop>
 "
-" Window movement
-map <m-h> <C-W>h
-map <m-j> <C-W>j
-map <m-k> <C-W>k
-map <m-l> <C-W>l
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
@@ -228,6 +223,12 @@ if has("multi_byte")
   "setglobal bomb
   set fileencodings=ucs-bom,utf-8,latin1
 endif
+
+" Window movement
+map <M-h> <C-w>h
+map <M-j> <C-w>j
+map <M-k> <C-w>k
+map <M-l> <C-w>l
 
 " Airline powerline fonts
 let g:airline_powerline_fonts = 1
@@ -350,7 +351,7 @@ if exists('$ITERM_PROFILE')
 endif
 
 " Mac keys setup
-if has('mac')
+if has('mac') || has('win32')
   " fix meta-keys which generate <Esc>a .. <Esc>z
   let c='a'
   while c <= 'z'
