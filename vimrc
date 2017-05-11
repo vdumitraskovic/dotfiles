@@ -103,11 +103,15 @@ Plug 'kkoenig/wimproved.vim', { 'on': [] }
 " Hard mode (disable some keys)
 Plug 'takac/vim-hardtime'
 
+" Misc
+Plug 'vim-scripts/restore_view.vim'
+
 call plug#end()
 
 
 " Enable mouse
 set mouse=a
+set viewoptions=cursor,folds,slash,unix
 
 " Set tabstops
 set expandtab 			" Tabs are spaces
