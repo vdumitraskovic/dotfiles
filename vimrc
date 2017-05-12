@@ -104,7 +104,7 @@ Plug 'kkoenig/wimproved.vim', { 'on': [] }
 Plug 'takac/vim-hardtime'
 
 " Misc
-Plug 'vim-scripts/restore_view.vim'
+"Plug 'vim-scripts/restore_view.vim'
 
 call plug#end()
 
