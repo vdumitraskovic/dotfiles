@@ -249,22 +249,26 @@ set hidden
 autocmd BufWritePre * StripWhitespace
 
 " Theme setup
-colorscheme lightning
-set background=light
+colorscheme solarized
+set background=dark
 
 " Thematic setup
 let g:thematic#themes = {
-\ 'light'       :{ 'colorscheme': 'lightning',
-\                  'airline-theme': 'papercolor',
-\                  'background': 'light'
-\                },
-\ 'dark'        :{ 'colorscheme': 'molokai',
-\                  'background': 'dark',
-\                  'airline-theme': 'molokai',
-\                }
+\ 'light'         :{ 'colorscheme': 'lightning',
+\                    'airline-theme': 'papercolor',
+\                    'background': 'light'
+\                  },
+\ 'dark'          :{ 'colorscheme': 'molokai',
+\                    'background': 'dark',
+\                    'airline-theme': 'molokai'
+\                  },
+\ 'solarized-dark':{ 'colorscheme': 'solarized',
+\                    'airline-theme': 'solarized',
+\                    'background': 'dark'
+\                  }
 \ }
 
-let g:thematic#theme_name = 'light'
+let g:thematic#theme_name = 'solarized-dark'
 
 " Javascript config
 
