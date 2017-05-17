@@ -44,7 +44,6 @@ Plug 'schickling/vim-bufonly'
 Plug 'chaoren/vim-wordmotion'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
-Plug 'terryma/vim-expand-region'
 
 " Themes
 Plug 'flazz/vim-colorschemes'
@@ -495,6 +494,3 @@ let g:hardtime_ignore_buffer_patterns = [ "NERD.*", "fugitive.*", "\.git.*" ]
 " Auto pairs fly mode
 let g:AutoPairsFlyMode = 1
 
-" Map vim expand region keys
-vmap _ <Plug>(expand_region_shrink)
-vmap + <Plug>(expand_region_expand)
