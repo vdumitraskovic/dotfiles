@@ -466,6 +466,10 @@ endif
 
 " CtrlSF config
 let g:ctrlsf_position = 'bottom'
+let g:ctrlsf_default_root = 'project'
+let g:ctrlsf_extra_backend_args = {
+\  'ag': '-a'
+\}
 
 " WordMotion config
 let g:wordmotion_prefix = '<localleader>'
