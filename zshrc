@@ -88,3 +88,8 @@ source ~/.zsh_alias
 
 # Configure ls colors
 eval `dircolors ~/.dircolors`
+
+# Init nodenv
+if type nodenv > /dev/null; then
+  eval "$(nodenv init -)"
+fi
