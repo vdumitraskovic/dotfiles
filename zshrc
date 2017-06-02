@@ -93,3 +93,6 @@ eval `dircolors ~/.dircolors`
 if type nodenv > /dev/null; then
   eval "$(nodenv init -)"
 fi
+
+# Show funny Chuck Norris quite
+chuck
