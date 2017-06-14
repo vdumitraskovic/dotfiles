@@ -478,7 +478,7 @@ augroup pencil
   autocmd!
   autocmd FileType markdown,mkd call pencil#init()
   autocmd FileType text         call pencil#init()
-  autocmd FileType vimwiki      call pencil#init()
+  autocmd FileType vimwiki      call pencil#init({'autoformat': 0})
 augroup END
 
 autocmd! User GoyoEnter Limelight
