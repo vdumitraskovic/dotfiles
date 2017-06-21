@@ -238,7 +238,6 @@ let g:airline_powerline_fonts = 1
 
 " Airline config
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='papercolor'
 
 " This allows buffers to be hidden if you've modified a buffer.
 " This is almost a must if you wish to use buffers in this way.
@@ -267,8 +266,6 @@ let g:thematic#themes = {
 \                    'background': 'dark'
 \                  }
 \ }
-
-let g:thematic#theme_name = 'solarized-dark'
 
 " Javascript config
 
@@ -337,7 +334,6 @@ if !has("gui_running")
   set t_Co=256
   let &t_AB="\e[48;5;%dm"
   let &t_AF="\e[38;5;%dm"
-  colorscheme lightning
   if has("win32")
     inoremap <Char-0x07F> <BS>
     nnoremap <Char-0x07F> <BS>
