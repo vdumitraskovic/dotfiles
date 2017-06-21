@@ -277,10 +277,12 @@ let g:jsx_ext_required = 0
 autocmd FileType javascript.jsx setlocal tw=100
 
 " Ale config
-set statusline+=%#warningmsg#
-set statusline+=%{ALEGetStatusLine()}
-set statusline+=%*
 let g:ale_linters = {'javascript': ['eslint']}
+if !exists('g:ale_fixers')
+  let g:ale_fixers = {}
+endif
+let g:ale_fixers.javascript = ['eslint']
+let g:ale_lint_delay = 1000
 
 " Set ctrlp
 let g:ctrlp_cmd = 'CtrlPMixed'
