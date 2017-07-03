@@ -32,7 +32,6 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'scrooloose/nerdcommenter'
 Plug 'easymotion/vim-easymotion'
-Plug 'Konfekt/FastFold'
 Plug 'jiangmiao/auto-pairs'
 Plug 'myusuf3/numbers.vim'
 Plug 'tpope/vim-repeat'
@@ -471,7 +470,7 @@ let g:ctrlsf_default_root = 'project'
 let g:wordmotion_prefix = '<localleader>'
 
 " Set writing plugins
-let g:vimwiki_folding = 'list'
+let g:vimwiki_folding = 'syntax'
 
 augroup pencil
   autocmd!
