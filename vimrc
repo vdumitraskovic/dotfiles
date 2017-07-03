@@ -392,9 +392,10 @@ if has('gui_running')
   endif
 endif
 
-" Config backup
+" Config Directories
 set backupdir-=.
 set dir-=.
+set viewdir=~/.vimviews
 if has("win32")
   set backupdir^=$TEMP
   set dir^=$TEMP
