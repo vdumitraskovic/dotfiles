@@ -41,7 +41,6 @@ Plug 'godlygeek/tabular'
 Plug 'dyng/ctrlsf.vim'
 Plug 'schickling/vim-bufonly'
 Plug 'chaoren/vim-wordmotion'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 
 " Themes
