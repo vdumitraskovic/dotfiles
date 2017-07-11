@@ -492,6 +492,8 @@ nmap <F8> :TagbarToggle<CR>
 let g:hardtime_default_on = 1
 let g:hardtime_ignore_quickfix = 1
 let g:hardtime_ignore_buffer_patterns = [ "NERD.*", "fugitive.*", "\.git.*" ]
+let g:hardtime_allow_different_key = 1
+let g:hardtime_maxcount = 2
 
 " Auto pairs fly mode
 let g:AutoPairsFlyMode = 1
