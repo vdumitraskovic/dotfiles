@@ -102,6 +102,7 @@ Plug 'takac/vim-hardtime'
 
 " Misc
 "Plug 'vim-scripts/restore_view.vim'
+Plug 'mtth/scratch.vim'
 
 call plug#end()
 
