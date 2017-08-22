@@ -1,3 +1,6 @@
+" Native packages
+packadd! matchit
+
 " Install vim-plug if we don't already have it
 if has('win32')
   if empty(glob("$HOME/vimfiles/autoload/plug.vim"))
@@ -107,6 +110,13 @@ Plug 'mtth/scratch.vim'
 call plug#end()
 
 
+" Globals
+set noswapfile
+set autowrite
+
+" Use one space, not two, after punctuation.
+set nojoinspaces
+
 " Enable mouse
 set mouse=a
 set viewoptions=cursor,folds,slash,unix
@@ -151,6 +161,12 @@ set hlsearch        " highlight matches
 " Reduce update time
 set updatetime=750
 
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
+" Always use vertical diffs
+set diffopt+=vertical
 
 " Keymaps
 
@@ -279,6 +295,18 @@ if !exists('g:ale_fixers')
 endif
 let g:ale_fixers.javascript = ['eslint']
 let g:ale_lint_delay = 1000
+let g:ale_lint_on_text_changed = 0
+
+" Ale linting events
+autocmd CursorHold * call ale#Lint()
+autocmd CursorHoldI * call ale#Lint()
+autocmd InsertEnter * call ale#Lint()
+autocmd InsertLeave * call ale#Lint()
+
+" Move between linting errors
+nnoremap ]r :ALENextWrap<CR>
+nnoremap [r :ALEPreviousWrap<CR>
+
 
 " Set ctrlp
 let g:ctrlp_cmd = 'CtrlPMixed'
