@@ -74,6 +74,7 @@ Plug 'wannesm/wmgraphviz.vim'
 
 " Javascript plugins
 Plug 'moll/vim-node'
+Plug 'galooshi/vim-import-js'
 
 " HTML plugins
 Plug 'Glench/Vim-Jinja2-Syntax'
