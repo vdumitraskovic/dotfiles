@@ -52,7 +52,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'reedes/vim-thematic'
 
 " Autocomplete
-Plug 'Shougo/neocomplete.vim'
+" Plug 'Shougo/neocomplete.vim'
+Plug 'Valloric/YouCompleteMe'
 Plug 'othree/jspc.vim'
 
 " Snippets
@@ -313,6 +314,7 @@ nnoremap [r :ALEPreviousWrap<CR>
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let g:ctrlp_show_hidden = 1
+let g:user_command_async = 1
 
 " Use the nearest .git directory as the cwd
 " This makes a lot of sense if you are working on a project that is in version
@@ -347,14 +349,14 @@ let g:mta_filetypes = {
 nnoremap <leader>% :MtaJumpToOtherTag<cr>
 
 " Enable neocomplete
-let g:neocomplete#enable_at_startup = 1
-if !exists('g:neocomplete#sources#omni#functions')
-  let g:neocomplete#sources#omni#functions = {}
-endif
-let g:neocomplete#sources#omni#functions.javascript = [
-      \   'jspc#omni',
-      \   'js#CompleteJS',
-      \ ]
+" let g:neocomplete#enable_at_startup = 1
+" if !exists('g:neocomplete#sources#omni#functions')
+  " let g:neocomplete#sources#omni#functions = {}
+" endif
+" let g:neocomplete#sources#omni#functions.javascript = [
+      " \   'jspc#omni',
+      " \   'js#CompleteJS',
+      " \ ]
 
 " Set term colors
 if !has("gui_running")
