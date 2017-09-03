@@ -481,8 +481,12 @@ set colorcolumn=+1
 set wildignore+=*.bpm,*.gif,*.ico,*.jpg,*.png
 set wildignore+=*.mp4
 
-" Setup ag (the_silver_searcher)
-if executable('ag')
+" Setup rg(ripgrep) / ag (the_silver_searcher)
+if executable('rg')
+  set grepprg=rg\ --color=never
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g:ctrlp_use_caching = 0
+elseif executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
 
