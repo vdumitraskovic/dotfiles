@@ -264,6 +264,31 @@ set hidden
 " Strip whitespace on save
 autocmd BufWritePre * StripWhitespace
 
+" Set term colors
+if !has("gui_running")
+  set termguicolors
+  set t_Co=256
+  " let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  " let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  if has("win32")
+    set term=xterm
+    let &t_AB="\e[48;5;%dm"
+    let &t_AF="\e[38;5;%dm"
+    inoremap <Char-0x07F> <BS>
+    nnoremap <Char-0x07F> <BS>
+  endif
+endif
+
+if exists('$ITERM_PROFILE')
+  if exists('$TMUX')
+    let &t_SI = "\<Esc>[3 q"
+    let &t_EI = "\<Esc>[0 q"
+  else
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  endif
+endif
+
 " Theme setup
 colorscheme solarized8_dark
 set background=dark
@@ -358,27 +383,6 @@ nnoremap <leader>% :MtaJumpToOtherTag<cr>
       " \   'jspc#omni',
       " \   'js#CompleteJS',
       " \ ]
-
-" Set term colors
-if !has("gui_running")
-  set termguicolors
-  " let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  " let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  if has("win32")
-    inoremap <Char-0x07F> <BS>
-    nnoremap <Char-0x07F> <BS>
-  endif
-endif
-
-if exists('$ITERM_PROFILE')
-  if exists('$TMUX')
-    let &t_SI = "\<Esc>[3 q"
-    let &t_EI = "\<Esc>[0 q"
-  else
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-  endif
-endif
 
 " Mac keys setup
 if has('mac') || has('win32')
