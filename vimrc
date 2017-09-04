@@ -47,7 +47,7 @@ Plug 'chaoren/vim-wordmotion'
 Plug 'majutsushi/tagbar'
 
 " Themes
-Plug 'flazz/vim-colorschemes'
+Plug 'rafi/awesome-vim-colorschemes'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'reedes/vim-thematic'
 
@@ -265,8 +265,9 @@ set hidden
 autocmd BufWritePre * StripWhitespace
 
 " Theme setup
-colorscheme solarized
+colorscheme solarized8_dark
 set background=dark
+let g:solarized_term_italics=1
 
 " Thematic setup
 let g:thematic#themes = {
@@ -278,7 +279,7 @@ let g:thematic#themes = {
 \                    'background': 'dark',
 \                    'airline-theme': 'molokai'
 \                  },
-\ 'solarized-dark':{ 'colorscheme': 'solarized',
+\ 'solarized-dark':{ 'colorscheme': 'solarized8_dark',
 \                    'airline-theme': 'solarized',
 \                    'background': 'dark'
 \                  }
@@ -360,19 +361,13 @@ nnoremap <leader>% :MtaJumpToOtherTag<cr>
 
 " Set term colors
 if !has("gui_running")
-  set term=xterm
-  set t_Co=256
-  let &t_AB="\e[48;5;%dm"
-  let &t_AF="\e[38;5;%dm"
+  set termguicolors
+  " let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  " let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   if has("win32")
     inoremap <Char-0x07F> <BS>
     nnoremap <Char-0x07F> <BS>
   endif
-endif
-
-" Better tmux integration
-if exists('$TMUX')
-  set term=screen-256color
 endif
 
 if exists('$ITERM_PROFILE')
