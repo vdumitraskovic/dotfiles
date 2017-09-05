@@ -49,6 +49,7 @@ Plug 'majutsushi/tagbar'
 " Themes
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'reedes/vim-thematic'
 
 " Autocomplete
@@ -290,9 +291,11 @@ if exists('$ITERM_PROFILE')
 endif
 
 " Theme setup
-colorscheme solarized8_dark
+colorscheme hybrid_material
 set background=dark
-let g:solarized_term_italics=1
+let g:airline_theme = "hybrid"
+let g:enable_bold_font=1
+let g:enable_italic_font=1
 
 " Thematic setup
 let g:thematic#themes = {
@@ -307,6 +310,10 @@ let g:thematic#themes = {
 \ 'solarized-dark':{ 'colorscheme': 'solarized8_dark',
 \                    'airline-theme': 'solarized',
 \                    'background': 'dark'
+\                  },
+\ 'hybrid_material':{ 'colorscheme': 'hybrid_material',
+\                    'background': 'dark',
+\                    'airline-theme': 'hybrid'
 \                  }
 \ }
 
