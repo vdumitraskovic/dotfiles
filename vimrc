@@ -291,11 +291,12 @@ if exists('$ITERM_PROFILE')
 endif
 
 " Theme setup
-colorscheme hybrid_material
-set background=dark
-let g:airline_theme = "hybrid"
 let g:enable_bold_font=1
 let g:enable_italic_font=1
+let g:airline_theme = "hybrid"
+colorscheme hybrid_material
+set background=dark
+set fillchars+=vert:\│
 
 " Thematic setup
 let g:thematic#themes = {
