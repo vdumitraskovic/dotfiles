@@ -162,7 +162,11 @@ set incsearch       " search as characters are entered
 set hlsearch        " highlight matches
 
 " Reduce update time
-set updatetime=750
+set updatetime=250
+
+" Reduce key timeout
+set ttimeout
+set ttimeoutlen=10
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
@@ -256,6 +260,8 @@ let g:airline_powerline_fonts = 1
 
 " Airline config
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_highlighting_cache = 1
+let g:airline_skip_empty_sections = 1
 
 " This allows buffers to be hidden if you've modified a buffer.
 " This is almost a must if you wish to use buffers in this way.
@@ -330,8 +336,8 @@ if !exists('g:ale_fixers')
   let g:ale_fixers = {}
 endif
 let g:ale_fixers.javascript = ['eslint']
-let g:ale_lint_delay = 1000
-let g:ale_lint_on_text_changed = 0
+let g:ale_lint_delay = 200
+let g:ale_lint_on_text_changed = 'normal'
 
 " Ale linting events
 autocmd CursorHold * call ale#Lint()
