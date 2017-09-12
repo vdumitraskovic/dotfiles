@@ -39,7 +39,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'myusuf3/numbers.vim'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-capslock'
+Plug 'tpope/tpope-vim-abolish'
+" Plug 'tpope/vim-capslock'
 Plug 'godlygeek/tabular'
 Plug 'dyng/ctrlsf.vim'
 Plug 'schickling/vim-bufonly'
@@ -55,13 +56,13 @@ Plug 'reedes/vim-thematic'
 " Autocomplete
 " Plug 'Shougo/neocomplete.vim'
 Plug 'Valloric/YouCompleteMe'
-Plug 'othree/jspc.vim'
+" Plug 'othree/jspc.vim'
 
 " Snippets
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
-Plug 'honza/vim-snippets'
-Plug '1995eaton/vim-better-javascript-completion'
+" Plug 'honza/vim-snippets'
+" Plug '1995eaton/vim-better-javascript-completion'
 
 " Git plugins
 Plug 'airblade/vim-gitgutter'
@@ -103,9 +104,6 @@ Plug 'kkoenig/wimproved.vim', { 'on': [] }
 " PairProgramming
 " Plug 'Floobits/floobits-vim'
 
-" Hard mode (disable some keys)
-Plug 'takac/vim-hardtime'
-
 " Misc
 "Plug 'vim-scripts/restore_view.vim'
 Plug 'mtth/scratch.vim'
@@ -136,7 +134,7 @@ set nocompatible    " be iMproved, required
 set number
 set showcmd	    " show last command in bottom bar
 set noshowmode      " hide mode (shown in airline)
-set cursorline      " highlight current line
+set nocursorline      " highlight current line
 set wildmenu        " visual autocomplete for command menu
 set lazyredraw      " redraw only when we need to
 set showmatch       " highlight matching [{()}]
@@ -515,7 +513,7 @@ let g:ctrlsf_position = 'bottom'
 let g:ctrlsf_default_root = 'project'
 
 " WordMotion config
-let g:wordmotion_prefix = '<localleader>'
+" let g:wordmotion_prefix = '<localleader>'
 
 " Set writing plugins
 let g:vimwiki_folding = 'syntax'
@@ -537,13 +535,5 @@ autocmd User GoyoLeave NumbersOnOff
 " Tagbar config
 nmap <F8> :TagbarToggle<CR>
 
-" Always in hard mode
-let g:hardtime_default_on = 1
-let g:hardtime_ignore_quickfix = 1
-let g:hardtime_ignore_buffer_patterns = [ "NERD.*", "fugitive.*", "\.git.*", ".*\.wiki" ]
-let g:hardtime_allow_different_key = 1
-let g:hardtime_maxcount = 2
-
 " Auto pairs fly mode
 let g:AutoPairsFlyMode = 1
-
