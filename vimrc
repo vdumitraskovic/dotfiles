@@ -546,4 +546,4 @@ let g:AutoPairsFlyMode = 1
 " Vim startify config
 let g:startify_session_autoload = 1
 let g:startify_session_persistence = 0
-
+let g:startify_change_to_vcs_root = 1
