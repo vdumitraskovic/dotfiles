@@ -135,11 +135,23 @@ set nocompatible    " be iMproved, required
 set number
 set showcmd	    " show last command in bottom bar
 set noshowmode      " hide mode (shown in airline)
-set nocursorline      " highlight current line
+set cursorline      " highlight current line
 set wildmenu        " visual autocomplete for command menu
 set lazyredraw      " redraw only when we need to
 set showmatch       " highlight matching [{()}]
 set laststatus=2    " fix airline
+
+augroup highlight_follows_focus
+  autocmd!
+  autocmd WinEnter * set cursorline
+  autocmd WinLeave * set nocursorline
+augroup END
+
+augroup highligh_follows_vim
+  autocmd!
+  autocmd FocusGained * set cursorline
+  autocmd FocusLost * set nocursorline
+augroup END
 
 " No annoying sound on errors
 set noerrorbells
