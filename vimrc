@@ -46,6 +46,7 @@ Plug 'dyng/ctrlsf.vim'
 Plug 'schickling/vim-bufonly'
 Plug 'chaoren/vim-wordmotion'
 Plug 'majutsushi/tagbar'
+Plug 'mhinz/vim-startify'
 
 " Themes
 Plug 'rafi/awesome-vim-colorschemes'
@@ -88,7 +89,7 @@ Plug 'Valloric/MatchTagAlways'
 " Linting plugins
 Plug 'w0rp/ale'
 Plug 'whatyouhide/vim-lengthmatters'
-Plug 'Chiel92/vim-autoformat'
+Plug 'sbdchd/neoformat'
 
 " Note taking
 Plug 'vimwiki/vimwiki'
@@ -478,13 +479,16 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 let g:neosnippet#enable_snipmate_compatibility = 1
 
 " Set key for autoformat
-noremap <F3> :Autoformat<CR>
+noremap <F3> :Neoformat<CR>
 
 " Enable autoformat for SVG
-let g:formatters_svg = ['tidy_xml']
+" let g:formatters_svg = ['tidy_xml']
 " Use prettier for autoformating javascript
-let g:formatdef_prettier_javascript='"prettier-eslint --stdin"'
-let g:formatters_javascript = ['prettier_javascript']
+" let g:formatdef_prettier_javascript='"prettier-eslint --stdin"'
+" let g:formatters_javascript = ['prettier_javascript']
+autocmd FileType javascript setlocal formatprg=prettier-eslint\ --stdin\ --single-quote\ --trailing-comma\ all
+" Use formatprg when available
+let g:neoformat_try_formatprg = 1
 
 " Add color column
 set colorcolumn=+1
@@ -538,3 +542,8 @@ nmap <F8> :TagbarToggle<CR>
 
 " Auto pairs fly mode
 let g:AutoPairsFlyMode = 1
+
+" Vim startify config
+let g:startify_session_autoload = 1
+let g:startify_session_persistence = 0
+
