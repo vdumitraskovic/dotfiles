@@ -59,8 +59,8 @@ Plug 'Valloric/YouCompleteMe'
 " Plug 'othree/jspc.vim'
 
 " Snippets
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
+"Plug 'Shougo/neosnippet'
+"Plug 'Shougo/neosnippet-snippets'
 " Plug 'honza/vim-snippets'
 " Plug '1995eaton/vim-better-javascript-completion'
 
@@ -362,6 +362,7 @@ let g:ctrlp_working_path_mode = 'r'
 " Easy bindings for its various modes
 nmap <leader>bb :CtrlPBuffer<cr>
 nnoremap <leader>fu :CtrlPFunky<cr>
+let g:ctrlp_funky_syntax_highlight = 1
 
 " Emmet settings
 let g:user_emmet_settings = {
@@ -481,9 +482,9 @@ noremap <F3> :Autoformat<CR>
 
 " Enable autoformat for SVG
 let g:formatters_svg = ['tidy_xml']
-" Use esformatter for autoformating javascript
-let g:formatdef_esformatter_javascript='"esformatter"'
-let g:formatters_javascript = ['esformatter_javascript']
+" Use prettier for autoformating javascript
+let g:formatdef_prettier_javascript='"prettier-eslint --stdin"'
+let g:formatters_javascript = ['prettier_javascript']
 
 " Add color column
 set colorcolumn=+1
