@@ -378,8 +378,9 @@ nnoremap <leader>fu :CtrlPFunky<cr>
 let g:ctrlp_funky_syntax_highlight = 1
 
 " Emmet settings
+let g:user_emmet_leader_key = '<Tab>'
 let g:user_emmet_settings = {
-\  'javascript' : {
+\  'javascript.jsx' : {
 \      'extends' : 'jsx',
 \  },
 \}
