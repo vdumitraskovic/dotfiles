@@ -29,8 +29,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'scrooloose/nerdtree'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'scrooloose/nerdcommenter'
@@ -209,7 +209,6 @@ let mapleader=","
 
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
-map <C-n> :NERDTreeToggle<CR>
 inoremap jk <esc>
 
 " Buffer keys
@@ -470,7 +469,17 @@ set autoread
 set ffs=unix,dos,mac
 
 " Config NerdTree
-let NERDTreeWinPos = "right"
+" let NERDTreeWinPos = "right"
+" map <C-n> :NERDTreeToggle<CR>
+
+" Config netrw
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 1
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+map <C-n> :Lexplore!<CR>
+
 
 " Config Nerdcommenter
 let g:NERDSpaceDelims = 1
