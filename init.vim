@@ -88,6 +88,7 @@ augroup END
 set foldmethod=syntax
 set foldlevelstart=3
 
+set termguicolors
 let g:enable_bold_font=1
 let g:enable_italic_font=1
 set background=dark
