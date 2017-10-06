@@ -20,17 +20,23 @@ endif
 " }}}
 " ============================ Plugins =================================== {{{
 call plug#begin(plugged_dir)
+Plug 'tpope/vim-repeat'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'vimwiki/vimwiki'
+Plug 'tpope/vim-surround'
+Plug 'galooshi/vim-import-js'
 call plug#end()
 " }}}
 " ============================ General =================================== {{{
 set path+=src/**,frontend/**
 let mapleader="\<Space>"
+set ttimeout
+set ttimeoutlen=100
 " }}}
 " =========================== Shortcuts ================================== {{{
 " Remap leader to '<Space>'
@@ -88,6 +94,8 @@ augroup END
 set foldmethod=syntax
 set foldlevelstart=3
 
+set wildignorecase
+
 set termguicolors
 let g:enable_bold_font=1
 let g:enable_italic_font=1
@@ -101,6 +109,7 @@ colorscheme gotham256
 set expandtab
 set shiftwidth=2
 set softtabstop=2
+set showmatch
 " }}}
 " ======================== Linter settings =============================== {{{
 " Ale config
@@ -109,6 +118,7 @@ if !exists('g:ale_fixers')
   let g:ale_fixers = {}
 endif
 let g:ale_fixers.javascript = ['eslint']
+let g:ale_fix_on_save = 1
 
 " Move between linting errors
 nnoremap ]r :ALENextWrap<CR>
@@ -122,5 +132,8 @@ elseif executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
 endif
+" }}}
+" ======================== Writing plugins =============================== {{{
+let g:vimwiki_folding = 'syntax'
 " }}}
 " vim:foldenable:foldmethod=marker
