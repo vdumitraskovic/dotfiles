@@ -26,17 +26,19 @@ call plug#begin('~/.vim/plugged')
 " Put plugins here
 
 " Generic
-Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline'
+Plug 'itchyny/lightline.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
 " Plug 'scrooloose/nerdtree'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'scrooloose/nerdcommenter'
+" Plug 'scrooloose/nerdcommenter'
 Plug 'easymotion/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
 Plug 'myusuf3/numbers.vim'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/tpope-vim-abolish'
@@ -50,14 +52,15 @@ Plug 'mhinz/vim-startify'
 
 " Themes
 Plug 'rafi/awesome-vim-colorschemes'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline-themes'
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'reedes/vim-thematic'
 
 " Autocomplete
 " Plug 'Shougo/neocomplete.vim'
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 " Plug 'othree/jspc.vim'
+Plug 'ajh17/VimCompletesMe'
 
 " Snippets
 "Plug 'Shougo/neosnippet'
@@ -115,6 +118,7 @@ call plug#end()
 " Globals
 set noswapfile
 set autowrite
+set path+=src/**,frontend/**
 
 " Use one space, not two, after punctuation.
 set nojoinspaces
@@ -204,8 +208,8 @@ set diffopt+=vertical
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
 
-" Remap leader to ','
-let mapleader=","
+" Remap leader to '<Space>'
+let mapleader="\<Space>"
 
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
@@ -266,12 +270,12 @@ map <M-k> <C-w>k
 map <M-l> <C-w>l
 
 " Airline powerline fonts
-let g:airline_powerline_fonts = 1
+" let g:airline_powerline_fonts = 1
 
-" Airline config
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_highlighting_cache = 1
-let g:airline_skip_empty_sections = 1
+" " Airline config
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline_highlighting_cache = 1
+" let g:airline_skip_empty_sections = 1
 
 " This allows buffers to be hidden if you've modified a buffer.
 " This is almost a must if you wish to use buffers in this way.
@@ -309,8 +313,8 @@ endif
 " Theme setup
 let g:enable_bold_font=1
 let g:enable_italic_font=1
-let g:airline_theme = "hybrid"
-colorscheme hybrid_material
+" let g:airline_theme = "hybrid"
+colorscheme gruvbox
 set background=dark
 set fillchars+=vert:\│
 
@@ -401,7 +405,7 @@ let g:mta_filetypes = {
 nnoremap <leader>% :MtaJumpToOtherTag<cr>
 
 " YouCompleteMe config
-let g:ycm_collect_identifiers_from_tags_files = 1
+" let g:ycm_collect_identifiers_from_tags_files = 1
 
 " Enable neocomplete
 " let g:neocomplete#enable_at_startup = 1
@@ -439,7 +443,7 @@ if has('gui_running')
     set rop=type:directx,gamma:1,contrast:1,level:.5,geom:1,renmode:5,taamode:1
     " Start maximized
     call plug#load('wimproved.vim')
-    au GUIEnter * silent! WToggleScreen
+    au GUIEnter * silent! WToggleClean
   endif
 
   if has('gui_macvim')
@@ -544,6 +548,15 @@ let g:ctrlsf_default_root = 'project'
 
 " WordMotion config
 " let g:wordmotion_prefix = '<localleader>'
+let g:wordmotion_mappings = {
+  \ 'w': '<M-w>',
+  \ 'b': '<M-b>',
+  \ 'e': '<M-e>',
+  \ 'ge': 'g<M-e>',
+  \ 'aw': 'a<M-w>',
+  \ 'iw': 'i<M-w>',
+  \ '<C-R><C-W>': '<C-R><C-W>',
+\}
 
 " Set writing plugins
 let g:vimwiki_folding = 'syntax'
