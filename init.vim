@@ -30,6 +30,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'vimwiki/vimwiki'
 Plug 'tpope/vim-surround'
 Plug 'galooshi/vim-import-js'
+Plug 'sbdchd/neoformat'
 call plug#end()
 " }}}
 " ============================ General =================================== {{{
@@ -50,19 +51,25 @@ inoremap jk <esc>
 " To open a new empty buffer
 " This replaces :tabnew which I used to bind to this mapping
 nmap <leader>T :enew<cr>
-
-" Move to the next buffer
-nmap <leader>l :bnext<CR>
-
-" Move to the previous buffer
-nmap <leader>h :bprevious<CR>
+nmap [b :bprevious<CR>                " Move to the previous buffer
+nmap ]b :bnext<CR>                    " Move to the next buffer
+nmap [B :bfirst<CR>                   " Move to the first buffer
+nmap ]B :blast<CR>                    " Move to the last buffer
 
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
 nmap <leader>bq :bp <BAR> bd #<CR>
+nmap <leader>bl :ls<CR> " Show all open buffers and their status
 
-" Show all open buffers and their status
-nmap <leader>bl :ls<CR>
+" Quickfix/loclist mapping
+nmap [q :cprevious<CR>                " Move to the previous quickfix
+nmap ]q :cnext<CR>                    " Move to the next quickfix
+nmap [Q :cfirst<CR>                   " Move to the first quickfix
+nmap ]Q :clast<CR>                    " Move to the last quickfix
+nmap [l :lprevious<CR>                " Move to the previous loclist
+nmap ]l :lnext<CR>                    " Move to the next loclist
+nmap [L :lfirst<CR>                   " Move to the first loclist
+nmap ]L :llast<CR>                    " Move to the last loclist
 
 " Quickly insert an empty new line without entering insert mode
 nnoremap <Leader>o o<Esc>
@@ -71,6 +78,8 @@ nnoremap <Leader>O O<Esc>
 " Quick save
 noremap <Leader>w :update<CR>
 
+" Autoformat
+nnoremap <F2> :Neoformat<CR>
 " }}}
 " ======================== Visual settings =============================== {{{
 set cursorline
@@ -117,6 +126,9 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 set showmatch
+
+" Use prettier for formating javascript
+let g:neoformat_enabled_javascript = ['prettier']
 " }}}
 " ======================== Linter settings =============================== {{{
 " Ale config
@@ -126,10 +138,6 @@ if !exists('g:ale_fixers')
 endif
 let g:ale_fixers.javascript = ['eslint']
 let g:ale_fix_on_save = 1
-
-" Move between linting errors
-nnoremap ]r :ALENextWrap<CR>
-nnoremap [r :ALEPreviousWrap<CR>
 " }}}
 " =========================== Searching ================================== {{{
 set ignorecase
