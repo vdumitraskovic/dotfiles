@@ -132,9 +132,12 @@ nnoremap ]r :ALENextWrap<CR>
 nnoremap [r :ALEPreviousWrap<CR>
 " }}}
 " =========================== Searching ================================== {{{
+set ignorecase
+set smartcase
+
 " Setup rg(ripgrep) / ag (the_silver_searcher)
 if executable('rg')
-  set grepprg=rg\ --vimgrep\ --color=never
+  set grepprg=rg\ -S\ --vimgrep\ --color=never
 elseif executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
