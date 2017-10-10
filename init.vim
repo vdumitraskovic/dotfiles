@@ -31,6 +31,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'tpope/vim-surround'
 Plug 'galooshi/vim-import-js'
 Plug 'sbdchd/neoformat'
+Plug 'mattn/emmet-vim'
 call plug#end()
 " }}}
 " ============================ General =================================== {{{
@@ -129,6 +130,14 @@ set showmatch
 
 " Use prettier for formating javascript
 let g:neoformat_enabled_javascript = ['prettier']
+
+" Emmet settings
+let g:user_emmet_leader_key = '<Tab>'
+let g:user_emmet_settings = {
+\  'javascript.jsx' : {
+\      'extends' : 'jsx',
+\  },
+\}
 " }}}
 " ======================== Linter settings =============================== {{{
 " Ale config
