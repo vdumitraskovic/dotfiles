@@ -4,7 +4,7 @@ let g:plugged_dir = '~/.local/share/nvim/plugged'
 
 if has('win32')
   let g:plugged_dir = '~/AppData/Local/nvim/plugged'
-  if empty(glob("$HOME/AppData/Local/nvim/autoload/plug.vim"))
+  if empty(glob('$HOME/AppData/Local/nvim/autoload/plug.vim'))
     " Ensure all needed directories exist  (Thanks @kapadiamush)
     execute '!mkdir \%USERPROFILE\%\\AppData\\Local\\nvim\\plugged'
     execute '!mkdir \%USERPROFILE\%\\AppData\\Local\\nvim\\autoload'
@@ -12,14 +12,14 @@ if has('win32')
     execute '!curl -fkLo \%USERPROFILE\%\\AppData\\Local\\nvim\\autoload\\plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
   endif
 else
-  if empty(glob("~/.local/share/nvim/site/autoload/plug.vim"))
+  if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
     " Download the actual plugin manager
     execute '!curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
   endif
 endif
 " }}}
 " ============================ Plugins =================================== {{{
-call plug#begin(plugged_dir)
+call plug#begin(g:plugged_dir)
 Plug 'tpope/vim-repeat'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'sheerun/vim-polyglot'
@@ -37,13 +37,12 @@ call plug#end()
 " }}}
 " ============================ General =================================== {{{
 set path+=src/**,frontend/**
-let mapleader="\<Space>"
 set ttimeout
 set ttimeoutlen=100
 " }}}
 " =========================== Shortcuts ================================== {{{
 " Remap leader to '<Space>'
-let mapleader="\<Space>"
+let g:mapleader='\<Space>'
 
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
@@ -73,8 +72,8 @@ nmap [L :lfirst<CR>                   " Move to the first loclist
 nmap ]L :llast<CR>                    " Move to the last loclist
 
 " Tabs mapping
-nmap <leader>T :tabnew<CR>            " Open new tab 
-nmap <leader>tq :tabclose<CR>         " Close tab 
+nmap <leader>T :tabnew<CR>            " Open new tab
+nmap <leader>tq :tabclose<CR>         " Close tab
 nmap [t :tabprevious<CR>              " Move to the previous quickfix
 nmap ]t :tabnext<CR>                  " Move to the next quickfix
 nmap [T :tabfirst<CR>                 " Move to the first quickfix
@@ -122,12 +121,14 @@ set diffopt+=vertical
 set splitbelow
 set splitright
 
+set list
+
 set termguicolors
 let g:enable_bold_font=1
 let g:enable_italic_font=1
 set background=dark
 " colorscheme angr
-colorscheme gotham256
+colorscheme gotham
 " colorscheme rakr
 " colorscheme PaperColor
 " }}}
