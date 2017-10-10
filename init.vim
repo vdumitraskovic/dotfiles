@@ -1,9 +1,12 @@
+" ======================= Global variables================================ {{{
+let g:nvim_base = '~/.local/share/nvim/'
+if has('win32')
+  let g:nvim_base = '~/AppData/Local/nvim/'
+endif
+" }}}
 " ========================== Plug Setup ================================== {{{
 " Install vim-plug if we don't already have it
-let g:plugged_dir = '~/.local/share/nvim/plugged'
-
 if has('win32')
-  let g:plugged_dir = '~/AppData/Local/nvim/plugged'
   if empty(glob('$HOME/AppData/Local/nvim/autoload/plug.vim'))
     " Ensure all needed directories exist  (Thanks @kapadiamush)
     execute '!mkdir \%USERPROFILE\%\\AppData\\Local\\nvim\\plugged'
@@ -19,7 +22,7 @@ else
 endif
 " }}}
 " ============================ Plugins =================================== {{{
-call plug#begin(g:plugged_dir)
+call plug#begin(g:nvim_base . 'plugged')
 Plug 'tpope/vim-repeat'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'sheerun/vim-polyglot'
@@ -36,13 +39,17 @@ Plug 'tpope/tpope-vim-abolish'
 call plug#end()
 " }}}
 " ============================ General =================================== {{{
-set path+=src/**,frontend/**
 set ttimeout
 set ttimeoutlen=100
 " }}}
+" ======================= Files and folders=============================== {{{
+set path+=src/**,frontend/**
+set undofile
+exec 'set undodir=' . g:nvim_base . 'undodir'
+" }}}
 " =========================== Shortcuts ================================== {{{
 " Remap leader to '<Space>'
-let g:mapleader='\<Space>'
+let g:mapleader="\<Space>"
 
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
@@ -54,12 +61,13 @@ nmap [b :bprevious<CR>                " Move to the previous buffer
 nmap ]b :bnext<CR>                    " Move to the next buffer
 nmap [B :bfirst<CR>                   " Move to the first buffer
 nmap ]B :blast<CR>                    " Move to the last buffer
-nmap <Leader>bo :w <BAR> %bd <BAR> e#<CR> " Close all but open buffer
+" Close all buffers but open one
+nmap <leader>bo :silent w <BAR> %bd <BAR> e#<CR>
 
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
 nmap <leader>bq :bp <BAR> bd #<CR>
-nmap <leader>bl :ls<CR> " Show all open buffers and their status
+nnoremap <leader>bl :b <C-d>
 
 " Quickfix/loclist mapping
 nmap [q :cprevious<CR>                " Move to the previous quickfix
@@ -89,6 +97,8 @@ noremap <Leader>w :update<CR>
 " Autoformat
 nnoremap <F2> :Neoformat<CR>
 vnoremap <F2> :'<,'>Neoformat<CR>
+
+set pastetoggle=<F3>
 " }}}
 " ======================== Visual settings =============================== {{{
 set cursorline
