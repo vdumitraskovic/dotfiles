@@ -3,6 +3,7 @@ let g:nvim_base = '~/.local/share/nvim/'
 if has('win32')
   let g:nvim_base = '~/AppData/Local/nvim/'
 endif
+let g:goyo_on = 0
 " }}}
 " ========================== Plug Setup ================================== {{{
 " Install vim-plug if we don't already have it
@@ -36,6 +37,8 @@ Plug 'galooshi/vim-import-js'
 Plug 'sbdchd/neoformat'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/tpope-vim-abolish'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 call plug#end()
 " }}}
 " ============================ General =================================== {{{
@@ -99,24 +102,32 @@ nnoremap <F2> :Neoformat<CR>
 vnoremap <F2> :'<,'>Neoformat<CR>
 
 set pastetoggle=<F3>
+
+" Goyo
+nnoremap <F11> :Goyo<CR>
+
 " }}}
 " ======================== Visual settings =============================== {{{
 set cursorline
 set number
-augroup highlight_follows_focus
-  autocmd!
-  autocmd WinEnter * set cursorline
-  autocmd WinLeave * set nocursorline
-  autocmd WinEnter * set relativenumber
-  autocmd WinLeave * set norelativenumber
-augroup END
 
-augroup highligh_follows_vim
-  autocmd!
-  autocmd FocusGained * set cursorline
-  autocmd FocusLost * set nocursorline
-  autocmd FocusGained * set relativenumber
-  autocmd FocusLost * set norelativenumber
+function! s:focus_enter()
+  if g:goyo_on
+    return
+  endif
+  set cursorline
+  set relativenumber
+endfunction
+function! s:focus_leave()
+  set nocursorline
+  set norelativenumber
+endfunction
+
+augroup EditorFocus
+  autocmd! WinEnter * call <SID>focus_enter()
+  autocmd! WinLeave * call <SID>focus_leave()
+  autocmd! FocusGained * call <SID>focus_enter()
+  autocmd! FocusLost * call <SID>focus_leave()
 augroup END
 
 set foldmethod=syntax
@@ -138,9 +149,11 @@ let g:enable_bold_font=1
 let g:enable_italic_font=1
 set background=dark
 " colorscheme angr
-colorscheme gotham
+" colorscheme gotham
 " colorscheme rakr
 " colorscheme PaperColor
+colorscheme hybrid_material
+set fillchars+=vert:\│
 " }}}
 " ============================ Editing =================================== {{{
 set expandtab
@@ -182,5 +195,27 @@ endif
 " }}}
 " ======================== Writing plugins =============================== {{{
 let g:vimwiki_folding = 'syntax'
+
+" Goyo + Limelight
+function! s:goyo_enter()
+  Limelight
+  set nonumber
+  set noshowmode
+  set noshowcmd
+  let g:goyo_on = 1
+  call <SID>focus_leave()
+endfunction
+
+function! s:goyo_leave()
+  Limelight!
+  set number
+  set showmode
+  set showcmd
+  let g:goyo_on = 0
+  call <SID>focus_enter()
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " }}}
 " vim:foldenable:foldmethod=marker
