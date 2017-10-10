@@ -32,6 +32,7 @@ Plug 'tpope/vim-surround'
 Plug 'galooshi/vim-import-js'
 Plug 'sbdchd/neoformat'
 Plug 'mattn/emmet-vim'
+Plug 'tpope/tpope-vim-abolish'
 call plug#end()
 " }}}
 " ============================ General =================================== {{{
@@ -49,13 +50,12 @@ nnoremap <leader><space> :nohlsearch<CR>
 inoremap jk <esc>
 
 " Buffer keys
-" To open a new empty buffer
-" This replaces :tabnew which I used to bind to this mapping
-nmap <leader>T :enew<cr>
+nmap <leader>N :enew<CR>              " To open a new empty buffer
 nmap [b :bprevious<CR>                " Move to the previous buffer
 nmap ]b :bnext<CR>                    " Move to the next buffer
 nmap [B :bfirst<CR>                   " Move to the first buffer
 nmap ]B :blast<CR>                    " Move to the last buffer
+nmap <Leader>bo :w <BAR> %bd <BAR> e#<CR> " Close all but open buffer
 
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
@@ -72,6 +72,14 @@ nmap ]l :lnext<CR>                    " Move to the next loclist
 nmap [L :lfirst<CR>                   " Move to the first loclist
 nmap ]L :llast<CR>                    " Move to the last loclist
 
+" Tabs mapping
+nmap <leader>T :tabnew<CR>            " Open new tab 
+nmap <leader>tq :tabclose<CR>         " Close tab 
+nmap [t :tabprevious<CR>              " Move to the previous quickfix
+nmap ]t :tabnext<CR>                  " Move to the next quickfix
+nmap [T :tabfirst<CR>                 " Move to the first quickfix
+nmap ]T :tablast<CR>                  " Move to the last quickfix
+
 " Quickly insert an empty new line without entering insert mode
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
@@ -81,6 +89,7 @@ noremap <Leader>w :update<CR>
 
 " Autoformat
 nnoremap <F2> :Neoformat<CR>
+vnoremap <F2> :'<,'>Neoformat<CR>
 " }}}
 " ======================== Visual settings =============================== {{{
 set cursorline
