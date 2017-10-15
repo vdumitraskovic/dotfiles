@@ -46,9 +46,17 @@ set ttimeout
 set ttimeoutlen=100
 " }}}
 " ======================= Files and folders=============================== {{{
-set path+=src/**,frontend/**
+set fileformats=unix,dos
+set path+=src,src/**,frontend,frontend/**
 set undofile
 exec 'set undodir=' . g:nvim_base . 'undodir'
+
+" Netrw config
+let g:netrw_banner=0
+let g:netrw_browse_split=4
+" let g:netrw_altv=1
+let g:netrw_liststyle=3
+let g:netrw_winsize = 25
 " }}}
 " =========================== Shortcuts ================================== {{{
 " Remap leader to '<Space>'
@@ -96,6 +104,14 @@ nnoremap <Leader>O O<Esc>
 
 " Quick save
 noremap <Leader>w :update<CR>
+
+" Find file
+noremap <C-p> :find<Space>
+
+" Open netrw
+noremap <C-n> :Lexplore!<CR>
+" Open netrw for opened file
+noremap g<C-n> :Lexplore! %:p:h<CR>
 
 " Autoformat
 nnoremap <F2> :Neoformat<CR>
@@ -165,7 +181,6 @@ set showmatch
 let g:neoformat_enabled_javascript = ['prettier']
 
 " Emmet settings
-let g:user_emmet_leader_key = '<Tab>'
 let g:user_emmet_settings = {
 \  'javascript.jsx' : {
 \      'extends' : 'jsx',
