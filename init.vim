@@ -122,6 +122,11 @@ set pastetoggle=<F3>
 " Goyo
 nnoremap <F11> :Goyo<CR>
 
+" Quick close help
+noremap <S-F1> :helpclose<CR>
+
+" Show javascript methods and functions
+nnoremap <F8> :ilist /^\( *\zs\)\(\w*(\(\w\<BAR> \<BAR>,\)*) {\<BAR>.*const \w*.* => \)<CR>
 " }}}
 " ======================== Visual settings =============================== {{{
 set cursorline
