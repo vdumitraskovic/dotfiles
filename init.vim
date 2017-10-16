@@ -39,6 +39,7 @@ Plug 'mattn/emmet-vim'
 Plug 'tpope/tpope-vim-abolish'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+Plug 'cohama/lexima.vim'
 call plug#end()
 " }}}
 " ============================ General =================================== {{{
