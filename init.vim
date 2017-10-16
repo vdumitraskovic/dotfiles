@@ -40,6 +40,7 @@ Plug 'tpope/tpope-vim-abolish'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'cohama/lexima.vim'
+Plug 'romainl/vim-qlist'
 call plug#end()
 " }}}
 " ============================ General =================================== {{{
@@ -127,7 +128,7 @@ nnoremap <F11> :Goyo<CR>
 noremap <S-F1> :helpclose<CR>
 
 " Show javascript methods and functions
-nnoremap <F8> :ilist /^\( *\zs\)\(\w*(\(\w\<BAR> \<BAR>,\)*) {\<BAR>.*const \w*.* => \)<CR>
+nnoremap <F8> :Ilist ^\( *\zs\)\(\w*(\(\w\\<BAR> \\<BAR>,\)*) {\\<BAR>.*const \w*.* => \)<CR>
 " }}}
 " ======================== Visual settings =============================== {{{
 set cursorline
