@@ -41,6 +41,8 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'cohama/lexima.vim'
 Plug 'romainl/vim-qlist'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 call plug#end()
 " }}}
 " ============================ General =================================== {{{
@@ -175,7 +177,8 @@ set background=dark
 " colorscheme gotham
 " colorscheme rakr
 " colorscheme PaperColor
-colorscheme hybrid_material
+" colorscheme hybrid_material
+colorscheme gruvbox
 set fillchars+=vert:\│
 " }}}
 " ============================ Editing =================================== {{{
@@ -239,5 +242,11 @@ endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
+" }}}
+" =========================== Snippets ================================== {{{
+" Enable es6 snippets for javascript by default
+autocmd FileType javascript UltiSnipsAddFiletypes javascript-es6
+" Enable jsx snippets
+autocmd FileType javascript.jsx UltiSnipsAddFiletypes javascript-react
 " }}}
 " vim:foldenable:foldmethod=marker
