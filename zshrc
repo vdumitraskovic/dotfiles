@@ -96,3 +96,5 @@ fi
 
 # Show funny Chuck Norris quite
 chuck
+
+source ~/.zsh_secret
