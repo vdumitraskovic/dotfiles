@@ -132,6 +132,9 @@ noremap <S-F1> :helpclose<CR>
 
 " Show javascript methods and functions
 nnoremap <F8> :Ilist ^\( *\zs\)\(\w*(\(\w\\<BAR> \\<BAR>,\)*) {\\<BAR>.*const \w*.* => \)<CR>
+
+" Show git status
+nnoremap <F9> :Gstatus<CR>
 " }}}
 " ======================== Visual settings =============================== {{{
 set cursorline
