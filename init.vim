@@ -43,6 +43,7 @@ Plug 'cohama/lexima.vim'
 Plug 'romainl/vim-qlist'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'reedes/vim-pencil'
 call plug#end()
 " }}}
 " ============================ General =================================== {{{
@@ -59,7 +60,7 @@ exec 'set undodir=' . g:nvim_base . 'undodir'
 let g:netrw_banner=0
 let g:netrw_browse_split=4
 " let g:netrw_altv=1
-let g:netrw_liststyle=3
+let g:netrw_liststyle=0
 let g:netrw_winsize = 25
 " }}}
 " =========================== Shortcuts ================================== {{{
@@ -242,6 +243,13 @@ endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd call pencil#init()
+  autocmd FileType text         call pencil#init()
+  autocmd FileType vimwiki      call pencil#init({'autoformat': 0})
+augroup END
 " }}}
 " =========================== Snippets ================================== {{{
 " Enable es6 snippets for javascript by default
