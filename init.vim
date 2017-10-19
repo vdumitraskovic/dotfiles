@@ -40,11 +40,11 @@ Plug 'tpope/tpope-vim-abolish'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'cohama/lexima.vim'
-Plug 'romainl/vim-qlist'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'reedes/vim-pencil'
 Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'ajh17/VimCompletesMe'
 call plug#end()
 " }}}
 " ============================ General =================================== {{{
@@ -56,6 +56,10 @@ set fileformats=unix,dos
 set path+=src,src/**,frontend,frontend/**
 set undofile
 exec 'set undodir=' . g:nvim_base . 'undodir'
+
+" This allows buffers to be hidden if you've modified a buffer.
+" This is almost a must if you wish to use buffers in this way.
+set hidden
 
 " Netrw config
 let g:netrw_banner=0
@@ -132,10 +136,13 @@ nnoremap <F11> :Goyo<CR>
 noremap <S-F1> :helpclose<CR>
 
 " Show javascript methods and functions
-nnoremap <F8> :Ilist ^\( *\zs\)\(\w*(\(\w\\<BAR> \\<BAR>,\)*) {\\<BAR>.*const \w*.* => \)<CR>
+nnoremap <F8> :ilist ^\( *\zs\)\(\w*(\(\w<BAR> <BAR>,\)*) {<BAR>.*const \w*.* => \)<CR>
 
 " Show git status
 nnoremap <F9> :Gstatus<CR>
+
+" Snippets expand
+let g:UltiSnipsExpandTrigger = "<c-j>"
 " }}}
 " ======================== Visual settings =============================== {{{
 set cursorline
@@ -204,6 +211,8 @@ let g:user_emmet_settings = {
 
 " Completion
 set complete=.,w,b,u,t,i,d
+" Use relative path for filename completion
+inoremap <C-X><C-F> <C-O>:lcd %:p:h<CR><C-X><C-F>
 " }}}
 " ======================== Linter settings =============================== {{{
 " Ale config
