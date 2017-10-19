@@ -44,6 +44,7 @@ Plug 'romainl/vim-qlist'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'reedes/vim-pencil'
+Plug 'othree/javascript-libraries-syntax.vim'
 call plug#end()
 " }}}
 " ============================ General =================================== {{{
@@ -200,6 +201,9 @@ let g:user_emmet_settings = {
 \      'extends' : 'jsx',
 \  },
 \}
+
+" Completion
+set complete=.,w,b,u,t,i,d
 " }}}
 " ======================== Linter settings =============================== {{{
 " Ale config
@@ -259,5 +263,9 @@ augroup END
 autocmd FileType javascript UltiSnipsAddFiletypes javascript-es6
 " Enable jsx snippets
 autocmd FileType javascript.jsx UltiSnipsAddFiletypes javascript-react
+"
+" }}}
+" ========================== Javascript ================================= {{{
+let g:used_javascript_libs = 'underscore,react,ramda'
 " }}}
 " vim:foldenable:foldmethod=marker
