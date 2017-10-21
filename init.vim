@@ -26,6 +26,7 @@ endif
 call plug#begin(g:nvim_base . 'plugged')
 Plug 'tpope/vim-repeat'
 Plug 'rafi/awesome-vim-colorschemes'
+Plug 'iCyMind/NeoSolarized'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'w0rp/ale'
@@ -44,7 +45,9 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'reedes/vim-pencil'
 Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'ajh17/VimCompletesMe'
+Plug 'justinmk/vim-sneak'
+Plug 'mtth/scratch.vim'
+Plug 'chaoren/vim-wordmotion'
 call plug#end()
 " }}}
 " ============================ General =================================== {{{
@@ -108,6 +111,13 @@ nmap ]t :tabnext<CR>                  " Move to the next quickfix
 nmap [T :tabfirst<CR>                 " Move to the first quickfix
 nmap ]T :tablast<CR>                  " Move to the last quickfix
 
+" Text object motions
+map [[ ?{<CR>w99[{
+map ][ /}<CR>b99]}
+map ]] j0[[%/{<CR>
+map [] k$][%?}<CR>
+
+
 " Quickly insert an empty new line without entering insert mode
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
@@ -140,11 +150,9 @@ nnoremap <F8> :ilist ^\( *\zs\)\(\w*(\(\w<BAR> <BAR>,\)*) {<BAR>.*const \w*.* =>
 
 " Show git status
 nnoremap <F9> :Gstatus<CR>
-
-" Snippets expand
-let g:UltiSnipsExpandTrigger = "<c-j>"
 " }}}
 " ======================== Visual settings =============================== {{{
+set lazyredraw
 set cursorline
 set number
 
@@ -181,16 +189,30 @@ set splitright
 
 set list
 
+let g:gitgutter_override_sign_column_highlight = 0
+
 set termguicolors
 let g:enable_bold_font=1
 let g:enable_italic_font=1
+let g:neosolarized_bold = 1
+let g:neosolarized_underline = 1
+let g:neosolarized_italic = 1
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+let g:onedark_terminal_italics = 1
+" set background=light
 set background=dark
 " colorscheme angr
+" colorscheme dracula
+" colorscheme flatcolor
 " colorscheme gotham
-" colorscheme rakr
-" colorscheme PaperColor
+" colorscheme gruvbox
 " colorscheme hybrid_material
-colorscheme gruvbox
+" colorscheme PaperColor
+" colorscheme rakr
+" colorscheme NeoSolarized
+colorscheme OceanicNext
+" colorscheme onedark
 set fillchars+=vert:\│
 " }}}
 " ============================ Editing =================================== {{{
@@ -198,6 +220,9 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 set showmatch
+
+" Use system clipboard
+set clipboard+=unnamed
 
 " Use prettier for formating javascript
 let g:neoformat_enabled_javascript = ['prettier']
@@ -209,10 +234,11 @@ let g:user_emmet_settings = {
 \  },
 \}
 
-" Completion
-set complete=.,w,b,u,t,i,d
 " Use relative path for filename completion
 inoremap <C-X><C-F> <C-O>:lcd %:p:h<CR><C-X><C-F>
+
+" Vim-wordmotion config
+let g:wordmotion_prefix = '<Leader>'
 " }}}
 " ======================== Linter settings =============================== {{{
 " Ale config
@@ -234,6 +260,10 @@ elseif executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
 endif
+
+" Sneak setup
+let g:sneak#s_next = 1
+let g:sneak#use_ic_scs = 1
 " }}}
 " ======================== Writing plugins =============================== {{{
 let g:vimwiki_folding = 'syntax'
@@ -267,14 +297,14 @@ augroup pencil
   autocmd FileType vimwiki      call pencil#init({'autoformat': 0})
 augroup END
 " }}}
-" =========================== Snippets ================================== {{{
+" =========================== Snippets =================================== {{{
 " Enable es6 snippets for javascript by default
 autocmd FileType javascript UltiSnipsAddFiletypes javascript-es6
 " Enable jsx snippets
 autocmd FileType javascript.jsx UltiSnipsAddFiletypes javascript-react
 "
 " }}}
-" ========================== Javascript ================================= {{{
+" ========================== Javascript ================================== {{{
 let g:used_javascript_libs = 'underscore,react,ramda'
 " }}}
 " vim:foldenable:foldmethod=marker
