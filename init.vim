@@ -26,7 +26,6 @@ endif
 call plug#begin(g:nvim_base . 'plugged')
 Plug 'tpope/vim-repeat'
 Plug 'rafi/awesome-vim-colorschemes'
-Plug 'iCyMind/NeoSolarized'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'w0rp/ale'
@@ -48,6 +47,7 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'mtth/scratch.vim'
 Plug 'chaoren/vim-wordmotion'
+Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 " }}}
 " ============================ General =================================== {{{
@@ -70,6 +70,11 @@ let g:netrw_browse_split=4
 " let g:netrw_altv=1
 let g:netrw_liststyle=0
 let g:netrw_winsize = 25
+
+" Specify files to ignore on wildmenu
+set wildignore+=.git
+set wildignore+=node_modules,bower_components
+set wildignore+=dist
 " }}}
 " =========================== Shortcuts ================================== {{{
 " Remap leader to '<Space>'
@@ -123,7 +128,7 @@ nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
 
 " Quick save
-noremap <Leader>w :update<CR>
+noremap <Leader>s :update<CR>
 
 " Find file
 noremap <C-p> :find<Space>
@@ -155,6 +160,7 @@ nnoremap <F9> :Gstatus<CR>
 set lazyredraw
 set cursorline
 set number
+set relativenumber
 
 function! s:focus_enter()
   if g:goyo_on
@@ -189,30 +195,25 @@ set splitright
 
 set list
 
-let g:gitgutter_override_sign_column_highlight = 0
+let g:gitgutter_override_sign_column_highlight = 1
 
 set termguicolors
 let g:enable_bold_font=1
 let g:enable_italic_font=1
-let g:neosolarized_bold = 1
-let g:neosolarized_underline = 1
-let g:neosolarized_italic = 1
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
 let g:onedark_terminal_italics = 1
-" set background=light
-set background=dark
-" colorscheme angr
+let g:gruvbox_bold      = 1
+let g:gruvbox_italic    = 1
+let g:gruvbox_underline = 1
+let g:gruvbox_undercurl = 1
+set background=light
+" set background=dark
 " colorscheme dracula
 " colorscheme flatcolor
-" colorscheme gotham
 " colorscheme gruvbox
-" colorscheme hybrid_material
-" colorscheme PaperColor
-" colorscheme rakr
-" colorscheme NeoSolarized
-colorscheme OceanicNext
-" colorscheme onedark
+colorscheme PaperColor
+" colorscheme OceanicNext
 set fillchars+=vert:\│
 " }}}
 " ============================ Editing =================================== {{{
@@ -248,6 +249,7 @@ if !exists('g:ale_fixers')
 endif
 let g:ale_fixers.javascript = ['eslint']
 let g:ale_fix_on_save = 1
+let g:ale_change_sign_column_color = 0
 " }}}
 " =========================== Searching ================================== {{{
 set ignorecase
