@@ -1,5 +1,6 @@
 " ======================= Global variables================================ {{{
 let g:nvim_base = '~/.local/share/nvim/'
+execute 'set runtimepath+=' . expand(g:nvim_base)
 if has('win32')
   let g:nvim_base = '~/AppData/Local/nvim/'
 endif
@@ -300,6 +301,7 @@ augroup pencil
 augroup END
 " }}}
 " =========================== Snippets =================================== {{{
+let g:UltiSnipsSnippetsDir = g:nvim_base . 'UltiSnips'
 " Enable es6 snippets for javascript by default
 autocmd FileType javascript UltiSnipsAddFiletypes javascript-es6
 " Enable jsx snippets
