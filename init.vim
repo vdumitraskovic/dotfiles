@@ -139,6 +139,20 @@ noremap <C-n> :Lexplore!<CR>
 " Open netrw for opened file
 noremap g<C-n> :Lexplore! %:p:h<CR>
 
+" Create new file if doesn't exist
+function! s:create_file(filename)
+  let s:prefix=''
+  let s:ext=''
+  if (&ft == 'scss')
+    let s:prefix = '_'
+    let s:ext = '.scss'
+  endif
+  exec "edit " . expand('%:p:h') . '/' . fnamemodify(a:filename, ':h') .
+  \  '/' . s:prefix . fnamemodify(a:filename, ':t') . s:ext
+endfunction
+
+map <Leader>gf :call <SID>create_file(expand('<cfile>'))<cr>
+
 " Autoformat
 nnoremap <F2> :Neoformat<CR>
 vnoremap <F2> :'<,'>Neoformat<CR>
