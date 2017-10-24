@@ -1,3 +1,8 @@
 snippet clv "Console log verbose"
 console.log('$1: ', ${1});
 endsnippet
+
+snippet clr "Console log and return value"
+console.log('${VISUAL}: ', ${VISUAL});
+return ${VISUAL};
+endsnippet
