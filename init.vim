@@ -50,6 +50,8 @@ Plug 'mtth/scratch.vim'
 Plug 'chaoren/vim-wordmotion'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 call plug#end()
 " }}}
 " ============================ General =================================== {{{
