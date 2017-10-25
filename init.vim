@@ -49,6 +49,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'mtth/scratch.vim'
 Plug 'chaoren/vim-wordmotion'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'majutsushi/tagbar'
 call plug#end()
 " }}}
 " ============================ General =================================== {{{
@@ -165,8 +166,8 @@ nnoremap <F11> :Goyo<CR>
 " Quick close help
 noremap <S-F1> :helpclose<CR>
 
-" Show javascript methods and functions
-nnoremap <F8> :ilist ^\( *\zs\)\(\w*(\(\w<BAR> <BAR>,\)*) {<BAR>.*const \w*.* => \)<CR>
+" Open tagbar
+nmap <F8> :TagbarToggle<CR>
 
 " Show git status
 nnoremap <F9> :Gstatus<CR>
@@ -323,6 +324,22 @@ autocmd FileType javascript.jsx UltiSnipsAddFiletypes javascript-react
 "
 " }}}
 " ========================== Javascript ================================== {{{
+" Javascript lib syntax setup
 let g:used_javascript_libs = 'underscore,react,ramda'
+" Tagbar setup
+
+let g:tagbar_type_javascript = {
+    \ 'ctagsbin': 'ctags',
+    \ 'kinds' : [
+        \ 'v:global variables',
+        \ 'f:functions',
+        \ '?:unknown',
+        \ 'C:constants',
+        \ 'c:classes',
+        \ 'm:methods',
+        \ 'p:properties',
+        \ 'g:generators',
+    \ ],
+\ }
 " }}}
 " vim:foldenable:foldmethod=marker
