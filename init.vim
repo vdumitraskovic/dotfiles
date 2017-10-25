@@ -136,9 +136,9 @@ noremap <Leader>s :update<CR>
 noremap <C-p> :find<Space>
 
 " Open netrw
-noremap <C-n> :Lexplore!<CR>
+noremap <C-n> :Lexplore! <BAR> set hidden<CR>
 " Open netrw for opened file
-noremap g<C-n> :Lexplore! %:p:h<CR>
+noremap g<C-n> :Lexplore! %:p:h <BAR> set hidden<CR>
 
 " Create new file if doesn't exist
 function! s:create_file(filename)
