@@ -97,4 +97,8 @@ fi
 # Show funny Chuck Norris quite
 chuck
 
+# Config FZF
+export FZF_DEFAULT_COMMAND="rg --files"
+
 source ~/.zsh_secret
+
