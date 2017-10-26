@@ -102,7 +102,8 @@ nmap <leader>bo :silent w <BAR> %bd <BAR> e#<CR>
 " This replicates the idea of closing a tab
 nmap <leader>bq :bp <BAR> bd #<CR>
 " nnoremap <leader>bl :b <C-d>
-nnoremap <leader>bl :CtrlPBuffer<CR>
+" nnoremap <leader>bl :CtrlPBuffer<CR>
+nnoremap <leader>bl :Buffers<CR>
 
 " Quickfix/loclist mapping
 nmap [q :cprevious<CR>                " Move to the previous quickfix
@@ -141,6 +142,7 @@ noremap <Leader>s :update<CR>
 
 " Find file
 " noremap <C-p> :find<Space>
+noremap <C-p> :Files<CR>
 
 " CtrlP
 " Open netrw
