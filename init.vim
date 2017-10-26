@@ -50,6 +50,7 @@ Plug 'mtth/scratch.vim'
 Plug 'chaoren/vim-wordmotion'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 call plug#end()
@@ -100,7 +101,8 @@ nmap <leader>bo :silent w <BAR> %bd <BAR> e#<CR>
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
 nmap <leader>bq :bp <BAR> bd #<CR>
-nnoremap <leader>bl :b <C-d>
+" nnoremap <leader>bl :b <C-d>
+nnoremap <leader>bl :CtrlPBuffer<CR>
 
 " Quickfix/loclist mapping
 nmap [q :cprevious<CR>                " Move to the previous quickfix
@@ -120,6 +122,9 @@ nmap ]t :tabnext<CR>                  " Move to the next quickfix
 nmap [T :tabfirst<CR>                 " Move to the first quickfix
 nmap ]T :tablast<CR>                  " Move to the last quickfix
 
+" Tags search
+nnoremap <leader>tl :CtrlPTag<CR>
+
 " Text object motions
 map [[ ?{<CR>w99[{
 map ][ /}<CR>b99]}
@@ -135,8 +140,9 @@ nnoremap <Leader>O O<Esc>
 noremap <Leader>s :update<CR>
 
 " Find file
-noremap <C-p> :find<Space>
+" noremap <C-p> :find<Space>
 
+" CtrlP
 " Open netrw
 noremap <C-n> :Lexplore! <BAR> set hidden<CR>
 " Open netrw for opened file
@@ -276,10 +282,17 @@ set smartcase
 " Setup rg(ripgrep) / ag (the_silver_searcher)
 if executable('rg')
   set grepprg=rg\ -S\ --vimgrep\ --color=never
+  let g:ctrlp_user_command = ['.git', 'rg %s --files --color=never', 'rg %s --files --no-ignore']
+  let g:ctrlp_use_caching = 0
 elseif executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
 endif
+
+" Disable changing of cwd when changing dir
+let g:ctrlp_working_path_mode = '0'
+
+autocmd! FileType fzf setlocal noshowmode
 
 " Sneak setup
 let g:sneak#s_next = 1
