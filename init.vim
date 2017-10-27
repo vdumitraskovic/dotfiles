@@ -115,6 +115,8 @@ nmap ]l :lnext<CR>                    " Move to the next loclist
 nmap [L :lfirst<CR>                   " Move to the first loclist
 nmap ]L :llast<CR>                    " Move to the last loclist
 
+autocmd QuickFixCmdPost [^l]* nested cwindow
+
 " Tabs mapping
 nmap <leader>T :tabnew<CR>            " Open new tab
 nmap <leader>tq :tabclose<CR>         " Close tab
@@ -142,6 +144,7 @@ noremap <Leader>s :update<CR>
 
 " Find file
 " noremap <C-p> :find<Space>
+let g:ctrlp_map = ''
 noremap <C-p> :Files<CR>
 
 " CtrlP
@@ -341,10 +344,12 @@ autocmd FileType javascript.jsx UltiSnipsAddFiletypes javascript-react
 "
 " }}}
 " ========================== Javascript ================================== {{{
+autocmd FileType javascript setlocal include=from[\ ]
+
 " Javascript lib syntax setup
 let g:used_javascript_libs = 'underscore,react,ramda'
+"
 " Tagbar setup
-
 let g:tagbar_type_javascript = {
     \ 'ctagsbin': 'ctags',
     \ 'kinds' : [
