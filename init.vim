@@ -364,4 +364,7 @@ let g:tagbar_type_javascript = {
     \ ],
 \ }
 " }}}
+" ============================= SCSS ===================================== {{{
+autocmd FileType scss setlocal sw=4
+" }}}
 " vim:foldenable:foldmethod=marker
