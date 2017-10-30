@@ -53,6 +53,7 @@ Plug 'majutsushi/tagbar'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'PeterRincker/vim-argumentative'
 call plug#end()
 " }}}
 " ============================ General =================================== {{{

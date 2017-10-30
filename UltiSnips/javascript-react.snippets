@@ -6,3 +6,15 @@ snippet clr "Console log and return value"
 console.log('${VISUAL}: ', ${VISUAL});
 return ${VISUAL};
 endsnippet
+
+snippet rco "React functional component"
+const $1 = ({ $2 }) => (
+  ${0:<div></div>}
+);
+$1.propTypes = {
+};
+$1.defaultProps = {
+};
+
+export default $1;
+endsnippet
