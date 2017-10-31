@@ -185,6 +185,9 @@ nmap <F8> :TagbarToggle<CR>
 
 " Show git status
 nnoremap <F9> :Gstatus<CR>
+
+" Close loclists and quicfix
+nnoremap <F12> :windo lcl\|ccl<CR>
 " }}}
 " ======================== Visual settings =============================== {{{
 set lazyredraw
