@@ -116,8 +116,6 @@ nmap ]l :lnext<CR>                    " Move to the next loclist
 nmap [L :lfirst<CR>                   " Move to the first loclist
 nmap ]L :llast<CR>                    " Move to the last loclist
 
-autocmd QuickFixCmdPost [^l]* nested cwindow
-
 " Tabs mapping
 nmap <leader>T :tabnew<CR>            " Open new tab
 nmap <leader>tq :tabclose<CR>         " Close tab
@@ -188,6 +186,7 @@ nnoremap <F9> :Gstatus<CR>
 
 " Close loclists and quicfix
 nnoremap <F12> :windo lcl\|ccl<CR>
+nnoremap <F7> :silent execute 'grep ' . expand('<cword>')<CR> <BAR> :redraw!<CR>
 " }}}
 " ======================== Visual settings =============================== {{{
 set lazyredraw
@@ -221,6 +220,9 @@ set wildignorecase
 
 " Always use vertical diffs
 set diffopt+=vertical
+
+" Auto open quickfix
+autocmd QuickFixCmdPost [^l]* nested cwindow
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
