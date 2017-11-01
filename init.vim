@@ -247,8 +247,9 @@ set background=light
 " colorscheme dracula
 " colorscheme flatcolor
 " colorscheme gruvbox
-colorscheme PaperColor
+" colorscheme PaperColor
 " colorscheme OceanicNext
+colorscheme solarized8_light
 set fillchars+=vert:\│
 " }}}
 " ============================ Editing =================================== {{{
