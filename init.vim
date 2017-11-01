@@ -54,6 +54,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'PeterRincker/vim-argumentative'
+Plug 'alvan/vim-closetag'
 call plug#end()
 " }}}
 " ============================ General =================================== {{{
@@ -97,7 +98,7 @@ nmap ]b :bnext<CR>                    " Move to the next buffer
 nmap [B :bfirst<CR>                   " Move to the first buffer
 nmap ]B :blast<CR>                    " Move to the last buffer
 " Close all buffers but open one
-nmap <leader>bo :silent w <BAR> %bd <BAR> e#<CR>
+nmap <leader>bo :silent w <BAR> :silent %bd <BAR> e#<CR>
 
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
@@ -186,7 +187,7 @@ nnoremap <F9> :Gstatus<CR>
 
 " Close loclists and quicfix
 nnoremap <F12> :windo lcl\|ccl<CR>
-nnoremap <F7> :silent execute 'grep ' . expand('<cword>')<CR> <BAR> :redraw!<CR>
+nnoremap <F7> :silent execute 'grep -w ' . expand('<cword>')<CR> <BAR> :redraw!<CR>
 " }}}
 " ======================== Visual settings =============================== {{{
 set lazyredraw
@@ -373,5 +374,9 @@ let g:tagbar_type_javascript = {
 " }}}
 " ============================= SCSS ===================================== {{{
 autocmd FileType scss setlocal sw=4
+" }}}
+" ============================= HTML ===================================== {{{
+" Configure closetag plugin
+let g:closetag_filenames = '*.html,*.jsx'
 " }}}
 " vim:foldenable:foldmethod=marker
