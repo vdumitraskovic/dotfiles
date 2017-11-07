@@ -134,6 +134,8 @@ map ][ /}<CR>b99]}
 map ]] j0[[%/{<CR>
 map [] k$][%?}<CR>
 
+" Replace word undercursor in whole line
+nnoremap <Leader>r :.s/\<<C-r><C-W>\>//g<Left><Left>
 
 " Quickly insert an empty new line without entering insert mode
 nnoremap <Leader>o o<Esc>
@@ -147,7 +149,6 @@ noremap <Leader>s :update<CR>
 let g:ctrlp_map = ''
 noremap <C-p> :Files<CR>
 
-" CtrlP
 " Open netrw
 noremap <C-n> :Lexplore! <BAR> set hidden<CR>
 " Open netrw for opened file
@@ -250,7 +251,8 @@ set background=light
 " colorscheme gruvbox
 " colorscheme PaperColor
 " colorscheme OceanicNext
-colorscheme solarized8_light
+" colorscheme solarized8_light
+colorscheme carbonized-light
 set fillchars+=vert:\│
 " }}}
 " ============================ Editing =================================== {{{
