@@ -1,1 +1,2 @@
-Guifont! Iosevka:h9
+Guifont! Iosevka:h10
+GuiLinespace 5
