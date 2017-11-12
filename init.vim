@@ -40,7 +40,8 @@ Plug 'mattn/emmet-vim'
 Plug 'tpope/tpope-vim-abolish'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'cohama/lexima.vim'
+" Plug 'cohama/lexima.vim'
+Plug 'Raimondi/delimitMate'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'reedes/vim-pencil'
@@ -55,6 +56,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'PeterRincker/vim-argumentative'
 Plug 'alvan/vim-closetag'
+Plug 'scrooloose/nerdtree'
 call plug#end()
 " }}}
 " ============================ General =================================== {{{
@@ -71,17 +73,14 @@ exec 'set undodir=' . g:nvim_base . 'undodir'
 " This is almost a must if you wish to use buffers in this way.
 set hidden
 
-" Netrw config
-let g:netrw_banner=0
-let g:netrw_browse_split=4
-" let g:netrw_altv=1
-let g:netrw_liststyle=0
-let g:netrw_winsize = 25
-
 " Specify files to ignore on wildmenu
 set wildignore+=.git
 set wildignore+=node_modules,bower_components
 set wildignore+=dist
+
+" Disable NetRW
+let loaded_netrwPlugin = 1
+let NERDTreeWinPos = 'right'
 " }}}
 " =========================== Shortcuts ================================== {{{
 " Remap leader to '<Space>'
@@ -149,10 +148,8 @@ noremap <Leader>s :update<CR>
 let g:ctrlp_map = ''
 noremap <C-p> :Files<CR>
 
-" Open netrw
-noremap <C-n> :Lexplore! <BAR> set hidden<CR>
-" Open netrw for opened file
-noremap g<C-n> :Lexplore! %:p:h <BAR> set hidden<CR>
+" Open NERDTree for opened file
+noremap g<C-n> :NERDTreeFind<cr>
 
 " Create new file if doesn't exist
 function! s:create_file(filename)
@@ -167,6 +164,9 @@ function! s:create_file(filename)
 endfunction
 
 map <Leader>gf :call <SID>create_file(expand('<cfile>'))<cr>
+
+" NERDTree
+map <C-n> :NERDTreeToggle<CR>
 
 " Autoformat
 nnoremap <F2> :Neoformat<CR>
@@ -279,6 +279,11 @@ inoremap <C-X><C-F> <C-O>:lcd %:p:h<CR><C-X><C-F>
 
 " Vim-wordmotion config
 let g:wordmotion_prefix = '<Leader>'
+
+" Delimate config
+let g:delimitMate_expand_cr = 1
+let g:delimitMate_expand_space = 1
+let g:delimitMate_jump_expansion = 1
 " }}}
 " ======================== Linter settings =============================== {{{
 " Ale config
