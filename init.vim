@@ -251,8 +251,8 @@ set background=light
 " colorscheme gruvbox
 " colorscheme PaperColor
 " colorscheme OceanicNext
-" colorscheme solarized8_light
-colorscheme carbonized-light
+colorscheme solarized8
+" colorscheme carbonized-light
 set fillchars+=vert:\│
 " }}}
 " ============================ Editing =================================== {{{
