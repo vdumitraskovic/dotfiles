@@ -57,6 +57,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'PeterRincker/vim-argumentative'
 Plug 'alvan/vim-closetag'
 Plug 'scrooloose/nerdtree'
+Plug 'metakirby5/codi.vim'
 call plug#end()
 " }}}
 " ============================ General =================================== {{{
