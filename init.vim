@@ -58,6 +58,7 @@ Plug 'PeterRincker/vim-argumentative'
 Plug 'alvan/vim-closetag'
 Plug 'scrooloose/nerdtree'
 Plug 'metakirby5/codi.vim'
+Plug 'amadeus/vim-mjml'
 call plug#end()
 " }}}
 " ============================ General =================================== {{{
