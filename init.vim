@@ -69,6 +69,7 @@ set ttimeoutlen=100
 set fileformats=unix,dos
 set path+=src,src/**,frontend,frontend/**
 set undofile
+set backupcopy=yes
 exec 'set undodir=' . g:nvim_base . 'undodir'
 
 " This allows buffers to be hidden if you've modified a buffer.
