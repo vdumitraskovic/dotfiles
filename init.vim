@@ -387,6 +387,6 @@ autocmd FileType scss setlocal sw=4
 " }}}
 " ============================= HTML ===================================== {{{
 " Configure closetag plugin
-let g:closetag_filenames = '*.html,*.jsx'
+let g:closetag_filenames = '*.html,*.jsx,*.mjml'
 " }}}
 " vim:foldenable:foldmethod=marker
