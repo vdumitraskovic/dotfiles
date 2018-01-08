@@ -59,6 +59,11 @@ Plug 'alvan/vim-closetag'
 Plug 'scrooloose/nerdtree'
 Plug 'metakirby5/codi.vim'
 Plug 'amadeus/vim-mjml'
+Plug 'roxma/nvim-completion-manager'
+Plug 'autozimu/LanguageClient-neovim', { 
+  \ 'branch': 'next',
+  \ 'do': 'make release'
+\}
 call plug#end()
 " }}}
 " ============================ General =================================== {{{
@@ -192,6 +197,10 @@ nnoremap <F9> :Gstatus<CR>
 " Close loclists and quicfix
 nnoremap <F12> :windo lcl\|ccl<CR>
 nnoremap <F7> :silent execute 'grep -w ' . expand('<cword>')<CR> <BAR> :redraw!<CR>
+
+" Language server key config
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 " }}}
 " ======================== Visual settings =============================== {{{
 set lazyredraw
@@ -360,6 +369,15 @@ autocmd FileType javascript UltiSnipsAddFiletypes javascript-es6
 " Enable jsx snippets
 autocmd FileType javascript.jsx UltiSnipsAddFiletypes javascript-react
 "
+" }}}
+" ======================== LanguageServer ================================ {{{
+let g:LanguageClient_serverCommands = {
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['javascript-typescript-stdio'],
+    \ }
+
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
 " }}}
 " ========================== Javascript ================================== {{{
 autocmd FileType javascript setlocal include=from[\ ]
