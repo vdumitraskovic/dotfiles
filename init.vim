@@ -33,6 +33,7 @@ Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'vimwiki/vimwiki'
+Plug 'AndrewRadev/splitjoin.vim'
 Plug 'tpope/vim-surround'
 Plug 'galooshi/vim-import-js'
 Plug 'sbdchd/neoformat'
@@ -193,6 +194,9 @@ nnoremap <F9> :Gstatus<CR>
 " Close loclists and quicfix
 nnoremap <F12> :windo lcl\|ccl<CR>
 nnoremap <F7> :silent execute 'grep -w ' . expand('<cword>')<CR> <BAR> :redraw!<CR>
+
+" Don't load Scratch window mappings
+let g:scratch_no_mappings = 1
 " }}}
 " ======================== Visual settings =============================== {{{
 set lazyredraw
@@ -275,6 +279,15 @@ let g:neoformat_enabled_javascript = ['prettier']
 let g:user_emmet_settings = {
 \  'javascript.jsx' : {
 \      'extends' : 'jsx',
+\      'filters': 'html, bem',
+\      'bem': {
+\          'elementSeparator': '__',
+\          'modifierSeparator': '--',
+\          'shortElementPrefix': '-'
+\      }
+\  },
+\  'html': {
+\      'filters': 'html, bem'
 \  },
 \}
 
