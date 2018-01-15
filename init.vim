@@ -224,7 +224,7 @@ augroup EditorFocus
 augroup END
 
 set foldmethod=syntax
-set foldlevelstart=3
+set foldlevelstart=5
 
 set wildignorecase
 
