@@ -105,6 +105,10 @@ export FZF_DEFAULT_COMMAND="rg --files"
 
 source ~/.zsh_secret
 
+# Configure source-highlight (requires source-highlight package)
+export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
+export LESS='-R '
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 if type rvm > /dev/null; then
   export PATH="$PATH:$HOME/.rvm/bin"
