@@ -318,7 +318,8 @@ set smartcase
 
 " Setup rg(ripgrep) / ag (the_silver_searcher)
 if executable('rg')
-  set grepprg=rg\ -S\ --vimgrep\ --color=never
+  set grepprg=rg\ -S\ --vimgrep
+  set grepformat^=%f:%l:%c:%m
   let g:ctrlp_user_command = ['.git', 'rg %s --files --color=never', 'rg %s --files --no-ignore']
   let g:ctrlp_use_caching = 0
 elseif executable('ag')
