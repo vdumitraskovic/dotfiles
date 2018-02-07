@@ -52,7 +52,6 @@ Plug 'mtth/scratch.vim'
 Plug 'chaoren/vim-wordmotion'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'PeterRincker/vim-argumentative'
@@ -130,7 +129,7 @@ nmap [T :tabfirst<CR>                 " Move to the first quickfix
 nmap ]T :tablast<CR>                  " Move to the last quickfix
 
 " Tags search
-nnoremap <leader>tl :CtrlPTag<CR>
+nnoremap <leader>tl :Tags<CR>
 
 " Text object motions
 map [[ ?{<CR>w99[{
