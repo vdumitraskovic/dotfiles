@@ -56,7 +56,7 @@ plugins=(git ssh-agent chucknorris z sublime tmux)
 
 # User configuration
 
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
