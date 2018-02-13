@@ -251,6 +251,7 @@ let g:gruvbox_bold      = 1
 let g:gruvbox_italic    = 1
 let g:gruvbox_underline = 1
 let g:gruvbox_undercurl = 1
+let g:solarized_extra_hi_groups=1
 " set background=light
 set background=dark
 " colorscheme dracula
@@ -258,9 +259,11 @@ set background=dark
 " colorscheme gruvbox
 " colorscheme PaperColor
 " colorscheme OceanicNext
-colorscheme solarized8
+colorscheme solarized8_high
+" colorscheme flattened_dark
 " colorscheme carbonized-light
 set fillchars+=vert:\│
+hi clear VertSplit " Just show fillchar please
 " }}}
 " ============================ Editing =================================== {{{
 set expandtab
