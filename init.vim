@@ -272,7 +272,7 @@ set softtabstop=2
 set showmatch
 
 " Use system clipboard
-set clipboard+=unnamed
+set clipboard+=unnamedplus
 
 " Use prettier for formating javascript
 let g:neoformat_enabled_javascript = ['prettier']
