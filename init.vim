@@ -1,3 +1,4 @@
+scriptencoding utf-8
 " ======================= Global variables================================ {{{
 let g:nvim_base = '~/.local/share/nvim/'
 execute 'set runtimepath+=' . expand(g:nvim_base)
@@ -5,6 +6,7 @@ if has('win32')
   let g:nvim_base = '~/AppData/Local/nvim/'
 endif
 let g:goyo_on = 0
+let g:background = 'dark'
 " }}}
 " ========================== Plug Setup ================================== {{{
 " Install vim-plug if we don't already have it
@@ -83,8 +85,8 @@ set wildignore+=node_modules,bower_components
 set wildignore+=dist
 
 " Disable NetRW
-let loaded_netrwPlugin = 1
-let NERDTreeWinPos = 'right'
+let g:loaded_netrwPlugin = 1
+let g:NERDTreeWinPos = 'right'
 " }}}
 " =========================== Shortcuts ================================== {{{
 " Remap leader to '<Space>'
@@ -159,11 +161,11 @@ noremap g<C-n> :NERDTreeFind<cr>
 function! s:create_file(filename)
   let s:prefix=''
   let s:ext=''
-  if (&ft == 'scss')
+  if (&filetype ==# 'scss')
     let s:prefix = '_'
     let s:ext = '.scss'
   endif
-  exec "edit " . expand('%:p:h') . '/' . fnamemodify(a:filename, ':h') .
+  exec 'edit ' . expand('%:p:h') . '/' . fnamemodify(a:filename, ':h') .
   \  '/' . s:prefix . fnamemodify(a:filename, ':t') . s:ext
 endfunction
 
@@ -231,7 +233,9 @@ set wildignorecase
 set diffopt+=vertical
 
 " Auto open quickfix
-autocmd QuickFixCmdPost [^l]* nested cwindow
+augroup QuickFix
+  autocmd QuickFixCmdPost [^l]* nested cwindow
+augroup END
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
@@ -253,7 +257,7 @@ let g:gruvbox_underline = 1
 let g:gruvbox_undercurl = 1
 let g:solarized_extra_hi_groups=1
 " set background=light
-set background=dark
+let &background=g:background
 " colorscheme dracula
 " colorscheme flatcolor
 " colorscheme gruvbox
@@ -262,8 +266,11 @@ set background=dark
 colorscheme solarized8_high
 " colorscheme flattened_dark
 " colorscheme carbonized-light
-set fillchars+=vert:\│
-hi clear VertSplit " Just show fillchar please
+function! s:tweak_theme()
+  set fillchars+=vert:\│
+  hi clear VertSplit " Just show fillchar please
+endfunction
+call <SID>tweak_theme()
 " }}}
 " ============================ Editing =================================== {{{
 set expandtab
@@ -332,7 +339,9 @@ endif
 " Disable changing of cwd when changing dir
 let g:ctrlp_working_path_mode = '0'
 
-autocmd! FileType fzf setlocal noshowmode
+augroup FZF
+  autocmd! FileType fzf setlocal noshowmode
+augroup END
 
 " Sneak setup
 let g:sneak#s_next = 1
@@ -357,11 +366,15 @@ function! s:goyo_leave()
   set showmode
   set showcmd
   let g:goyo_on = 0
+  let &background=g:background
+  call <SID>tweak_theme()
   call <SID>focus_enter()
 endfunction
 
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
+augroup Goyo
+  autocmd! User GoyoEnter nested call <SID>goyo_enter()
+  autocmd! User GoyoLeave nested call <SID>goyo_leave()
+augroup END
 
 augroup pencil
   autocmd!
@@ -372,13 +385,17 @@ augroup END
 " }}}
 " =========================== Snippets =================================== {{{
 let g:UltiSnipsSnippetsDir = g:nvim_base . 'UltiSnips'
-" Enable es6 snippets for javascript by default
-autocmd FileType javascript UltiSnipsAddFiletypes javascript-es6
-" Enable jsx snippets
-autocmd FileType javascript.jsx UltiSnipsAddFiletypes javascript-react
+augroup Snippets
+  " Enable es6 snippets for javascript by default
+  autocmd FileType javascript UltiSnipsAddFiletypes javascript-es6
+  " Enable jsx snippets
+  autocmd FileType javascript.jsx UltiSnipsAddFiletypes javascript-react
+augroup END
 " }}}
 " ========================== Javascript ================================== {{{
-autocmd FileType javascript setlocal include=from[\ ]
+augroup JavaScript
+  autocmd FileType javascript setlocal include=from[\ ]
+augroup END
 
 " Javascript lib syntax setup
 let g:used_javascript_libs = 'underscore,react,ramda'
@@ -399,7 +416,9 @@ let g:tagbar_type_javascript = {
 \ }
 " }}}
 " ============================= SCSS ===================================== {{{
-autocmd FileType scss setlocal sw=4
+augroup SCSS
+  autocmd FileType scss setlocal sw=4
+augroup END
 " }}}
 " ============================= HTML ===================================== {{{
 " Configure closetag plugin
