@@ -18,3 +18,21 @@ $1.defaultProps = {
 
 export default $1;
 endsnippet
+
+snippet red "Reducer"
+const initialState = ${1:null};
+
+const $2 = (state = initialState, { type, payload }) => {
+  switch (type) {
+    case $3:
+      return $4;
+
+    default:
+      return state;
+  }
+};
+
+export default $2;
+endsnippet
+
+
