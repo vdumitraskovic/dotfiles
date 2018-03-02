@@ -62,6 +62,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'metakirby5/codi.vim'
 Plug 'amadeus/vim-mjml'
 Plug 'roxma/nvim-completion-manager'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 " }}}
 " ============================ General =================================== {{{
@@ -274,6 +275,10 @@ function! s:tweak_theme()
   hi clear VertSplit " Just show fillchar please
 endfunction
 call <SID>tweak_theme()
+
+" Airline
+let g:airline_powerline_fonts = 1
+set noshowmode
 " }}}
 " ============================ Editing =================================== {{{
 set expandtab
