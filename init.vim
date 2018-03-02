@@ -256,6 +256,8 @@ let g:gruvbox_italic    = 1
 let g:gruvbox_underline = 1
 let g:gruvbox_undercurl = 1
 let g:solarized_extra_hi_groups=1
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
 " set background=light
 let &background=g:background
 " colorscheme dracula
@@ -263,9 +265,10 @@ let &background=g:background
 " colorscheme gruvbox
 " colorscheme PaperColor
 " colorscheme OceanicNext
-colorscheme solarized8_high
+" colorscheme solarized8_high
 " colorscheme flattened_dark
 " colorscheme carbonized-light
+colorscheme nord
 function! s:tweak_theme()
   set fillchars+=vert:\│
   hi clear VertSplit " Just show fillchar please
