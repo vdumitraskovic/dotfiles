@@ -246,6 +246,9 @@ set list
 
 let g:gitgutter_override_sign_column_highlight = 1
 
+" Colorize vimwiki headers
+let g:vimwiki_hl_headers = 1
+
 set termguicolors
 let g:enable_bold_font=1
 let g:enable_italic_font=1
