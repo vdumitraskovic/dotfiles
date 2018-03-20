@@ -63,11 +63,14 @@ Plug 'metakirby5/codi.vim'
 Plug 'amadeus/vim-mjml'
 Plug 'roxma/nvim-completion-manager'
 Plug 'vim-airline/vim-airline'
+Plug 'janko-m/vim-test'
+Plug 'tpope/vim-projectionist'
 call plug#end()
 " }}}
 " ============================ General =================================== {{{
 set ttimeout
 set ttimeoutlen=100
+let test#strategy = 'make'
 " }}}
 " ======================= Files and folders=============================== {{{
 set fileformats=unix,dos
@@ -406,6 +409,8 @@ augroup END
 " ========================== Javascript ================================== {{{
 augroup JavaScript
   autocmd FileType javascript setlocal include=from[\ ]
+  " Setup errorformat for Jest
+  autocmd FileType javascript setlocal errorformat=%.%#\ at\ %f:%l:%c,%.%#\ at\ %.%#(%f:%l:%c)
 augroup END
 
 " Javascript lib syntax setup
