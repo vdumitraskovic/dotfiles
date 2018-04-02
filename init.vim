@@ -28,7 +28,8 @@ endif
 " ============================ Plugins =================================== {{{
 call plug#begin(g:nvim_base . 'plugged')
 Plug 'tpope/vim-repeat'
-Plug 'rafi/awesome-vim-colorschemes'
+Plug 'arcticicestudio/nord-vim'
+" Plug 'rafi/awesome-vim-colorschemes'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'w0rp/ale'
