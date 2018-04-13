@@ -71,7 +71,8 @@ call plug#end()
 " ============================ General =================================== {{{
 set ttimeout
 set ttimeoutlen=100
-let test#strategy = 'make'
+set updatetime=100
+let g:test#strategy = 'make'
 " }}}
 " ======================= Files and folders=============================== {{{
 set fileformats=unix,dos
