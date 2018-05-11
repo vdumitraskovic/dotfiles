@@ -73,8 +73,6 @@ set ttimeout
 set ttimeoutlen=100
 set updatetime=100
 let g:test#strategy = 'make'
-" fix graphql error
-let g:graphql_javascript_tags = []
 " }}}
 " ======================= Files and folders=============================== {{{
 set fileformats=unix,dos
