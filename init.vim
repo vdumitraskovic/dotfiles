@@ -277,7 +277,13 @@ let &background=g:background
 " colorscheme solarized8_high
 " colorscheme flattened_dark
 " colorscheme carbonized-light
+
+augroup nord-overrides
+  autocmd!
+  autocmd ColorScheme nord highlight Folded cterm=none gui=none ctermbg=0 ctermfg=8 guibg=#2E3440 guifg=#66738E
+augroup END
 colorscheme nord
+
 function! s:tweak_theme()
   set fillchars+=vert:\│
   hi clear VertSplit " Just show fillchar please
