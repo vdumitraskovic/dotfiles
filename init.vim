@@ -333,6 +333,11 @@ let g:wordmotion_prefix = '<Leader>'
 " Delimate config
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_expand_space = 1
+
+" Gitgutter tweak https://github.com/airblade/vim-gitgutter/issues/502
+augroup GitGutter
+  autocmd BufWritePost * GitGutter
+augroup END
 " }}}
 " ======================== Linter settings =============================== {{{
 " Ale config
