@@ -66,6 +66,7 @@ Plug 'roxma/nvim-completion-manager'
 Plug 'vim-airline/vim-airline'
 Plug 'janko-m/vim-test'
 Plug 'tpope/vim-projectionist'
+Plug 'junegunn/vim-slash'
 call plug#end()
 " }}}
 " ============================ General =================================== {{{
@@ -332,7 +333,6 @@ let g:wordmotion_prefix = '<Leader>'
 " Delimate config
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_expand_space = 1
-let g:delimitMate_jump_expansion = 1
 " }}}
 " ======================== Linter settings =============================== {{{
 " Ale config
@@ -369,6 +369,9 @@ augroup END
 " Sneak setup
 let g:sneak#s_next = 1
 let g:sneak#use_ic_scs = 1
+
+" Vim slash
+noremap <plug>(slash-after) zz
 " }}}
 " ======================== Writing plugins =============================== {{{
 let g:vimwiki_folding = 'syntax'
