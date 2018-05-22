@@ -62,7 +62,7 @@ Plug 'alvan/vim-closetag'
 Plug 'scrooloose/nerdtree'
 Plug 'metakirby5/codi.vim'
 Plug 'amadeus/vim-mjml'
-Plug 'roxma/nvim-completion-manager'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-airline/vim-airline'
 Plug 'janko-m/vim-test'
 Plug 'tpope/vim-projectionist'
@@ -338,6 +338,9 @@ let g:delimitMate_expand_space = 1
 augroup GitGutter
   autocmd BufWritePost * GitGutter
 augroup END
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
 " }}}
 " ======================== Linter settings =============================== {{{
 " Ale config
