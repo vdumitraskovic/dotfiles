@@ -29,7 +29,6 @@ endif
 call plug#begin(g:nvim_base . 'plugged')
 Plug 'tpope/vim-repeat'
 Plug 'arcticicestudio/nord-vim'
-" Plug 'rafi/awesome-vim-colorschemes'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'w0rp/ale'
@@ -44,7 +43,6 @@ Plug 'mattn/emmet-vim'
 Plug 'tpope/tpope-vim-abolish'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-" Plug 'cohama/lexima.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -62,6 +60,10 @@ Plug 'alvan/vim-closetag'
 Plug 'scrooloose/nerdtree'
 Plug 'metakirby5/codi.vim'
 Plug 'amadeus/vim-mjml'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-airline/vim-airline'
 Plug 'janko-m/vim-test'
@@ -339,8 +341,15 @@ augroup GitGutter
   autocmd BufWritePost * GitGutter
 augroup END
 
-" Use deoplete.
+" Deoplete options
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+
+" LanguageClient settings
+let g:LanguageClient_serverCommands = {
+  \ 'javascript': ['javascript-typescript-stdio'],
+  \ 'javascript.jsx': ['javascript-typescript-stdio']
+\ }
 " }}}
 " ======================== Linter settings =============================== {{{
 " Ale config
