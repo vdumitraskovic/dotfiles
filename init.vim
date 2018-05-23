@@ -95,7 +95,11 @@ set wildignore+=dist
 
 " Disable NetRW
 let g:loaded_netrwPlugin = 1
+
+" Configure NERDTree
 let g:NERDTreeWinPos = 'right'
+let g:NERDTreeDirArrowExpandable = '+'
+let g:NERDTreeDirArrowCollapsible = '-'
 " }}}
 " =========================== Shortcuts ================================== {{{
 " Remap leader to '<Space>'
