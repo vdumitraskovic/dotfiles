@@ -211,6 +211,9 @@ nnoremap <F7> :silent execute 'grep -w ' . expand('<cword>')<CR> <BAR> :redraw!<
 
 " Don't load Scratch window mappings
 let g:scratch_no_mappings = 1
+
+" LanguageClient-neovim
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 " }}}
 " ======================== Visual settings =============================== {{{
 set lazyredraw
