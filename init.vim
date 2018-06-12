@@ -69,6 +69,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'janko-m/vim-test'
 Plug 'tpope/vim-projectionist'
 Plug 'junegunn/vim-slash'
+Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 " }}}
 " ============================ General =================================== {{{
