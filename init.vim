@@ -223,6 +223,14 @@ set cursorline
 set number
 set relativenumber
 
+" FZF tweaking
+au TermOpen * setlocal nonumber norelativenumber
+let g:fzf_colors = {
+  \ 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'bg+':     ['bg', 'Normal']
+  \}
+
 function! s:focus_enter()
   if g:goyo_on
     return
@@ -298,7 +306,7 @@ colorscheme nord
 
 function! s:tweak_theme()
   set fillchars+=vert:\│
-  hi clear VertSplit " Just show fillchar please
+  hi VertSplit guibg=NONE ctermbg=NONE " Just show fillchar please
 endfunction
 call <SID>tweak_theme()
 
