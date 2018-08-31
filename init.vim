@@ -68,7 +68,6 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-airline/vim-airline'
 Plug 'janko-m/vim-test'
 Plug 'tpope/vim-projectionist'
-Plug 'junegunn/vim-slash'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'kmszk/CCSpellCheck.vim'
 call plug#end()
@@ -216,6 +215,8 @@ let g:scratch_no_mappings = 1
 
 " LanguageClient-neovim
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 " }}}
 " ======================== Visual settings =============================== {{{
 set lazyredraw
