@@ -40,8 +40,6 @@ alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 
-alias dircolors='gdircolors'
-
 alias cmus='TMUX= tmux new-session -A -D -s cmus "$(whence -p cmus)" \; set-option -t cmus status off'
 
 # FZF goodies
