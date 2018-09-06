@@ -70,6 +70,7 @@ Plug 'janko-m/vim-test'
 Plug 'tpope/vim-projectionist'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'kmszk/CCSpellCheck.vim'
+Plug 'liuchengxu/vim-which-key'
 call plug#end()
 " }}}
 " ============================ General =================================== {{{
@@ -217,6 +218,9 @@ let g:scratch_no_mappings = 1
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+
+" Vim which key
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 " }}}
 " ======================== Visual settings =============================== {{{
 set lazyredraw
