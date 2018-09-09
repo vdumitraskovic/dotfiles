@@ -1,5 +1,5 @@
 ## Colorize the ls output ##
-alias ls='ls -G'
+alias ls='ls -G --color=auto'
 
 ## Use a long listing format ##
 alias ll='ls -la'
