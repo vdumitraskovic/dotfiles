@@ -320,6 +320,11 @@ let g:airline_powerline_fonts = 0
 let g:airline_symbols_ascii = 1
 let g:airline_highlighting_cache = 1
 set noshowmode
+
+" WhickKey tweak
+augroup which-key-overrides
+  autocmd FileType which_key highlight WhichKeySeperator guibg=NONE ctermbg=NONE
+augroup END
 " }}}
 " ============================ Editing =================================== {{{
 set expandtab
