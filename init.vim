@@ -331,6 +331,7 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 set showmatch
+set inccommand=split
 
 " Use system clipboard
 set clipboard=unnamed,unnamedplus
