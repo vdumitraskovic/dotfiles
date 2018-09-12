@@ -221,6 +221,10 @@ nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 
 " Vim which key
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+
+" Sudo write
+cnoremap w!! execute 'silent! write !sudo tee % > /dev/null' <bar> edit!
+
 " }}}
 " ======================== Visual settings =============================== {{{
 set lazyredraw
