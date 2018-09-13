@@ -296,6 +296,9 @@ let g:gruvbox_undercurl = 1
 let g:solarized_extra_hi_groups=1
 let g:nord_italic = 1
 let g:nord_italic_comments = 1
+let g:nord_underline = 1
+let g:nord_comment_brightness = 5
+let g:nord_cursor_line_number_background = 1
 " set background=light
 let &background=g:background
 " colorscheme dracula
