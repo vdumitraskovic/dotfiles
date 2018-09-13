@@ -69,7 +69,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'janko-m/vim-test'
 Plug 'tpope/vim-projectionist'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'kmszk/CCSpellCheck.vim'
+Plug 'kamykn/CCSpellCheck.vim'
 Plug 'liuchengxu/vim-which-key'
 call plug#end()
 " }}}
@@ -319,6 +319,7 @@ colorscheme nord
 function! s:tweak_theme()
   set fillchars+=vert:\│
   hi VertSplit guibg=NONE ctermbg=NONE " Just show fillchar please
+  highlight CCSpellBad cterm=underline ctermfg=11 gui=underline guifg=#BF616A
 endfunction
 call <SID>tweak_theme()
 
@@ -430,6 +431,8 @@ noremap <plug>(slash-after) zz
 " }}}
 " ======================== Writing plugins =============================== {{{
 let g:vimwiki_folding = 'syntax'
+
+let g:CCSpellCheckEnable = 1
 
 " Goyo + Limelight
 function! s:goyo_enter()
