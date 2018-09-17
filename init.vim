@@ -71,6 +71,7 @@ Plug 'tpope/vim-projectionist'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'kamykn/CCSpellCheck.vim'
 Plug 'liuchengxu/vim-which-key'
+Plug 'andymass/vim-matchup'
 call plug#end()
 " }}}
 " ============================ General =================================== {{{
