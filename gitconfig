@@ -1,5 +1,7 @@
 [include]
         path = .gitconfig.secret
+[push]
+	default = current
 [pager]
 	branch =
 	diff = diff-so-fancy | less --tabs=1,5 -RFX
