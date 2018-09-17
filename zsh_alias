@@ -43,4 +43,4 @@ alias chgrp='chgrp --preserve-root'
 alias cmus='TMUX= tmux new-session -A -D -s cmus "$(whence -p cmus)" \; set-option -t cmus status off'
 
 # FZF goodies
-alias preview="fzf --preview 'bat --color \"always\" {}'"
+alias preview="fzf --preview 'if file -i {}|grep -q binary; then file -b {}; else bat --color \"always\" --line-range :40 {}; fi'"
