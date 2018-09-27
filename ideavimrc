@@ -1,0 +1,6 @@
+set ignorecase
+set incsearch
+set relativenumber
+set hlsearch
+set smartcase
+set surround
