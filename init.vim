@@ -7,6 +7,7 @@ if has('win32')
 endif
 let g:goyo_on = 0
 let g:background = 'dark'
+let g:hardmode = 1
 " }}}
 " ========================== Plug Setup ================================== {{{
 " Install vim-plug if we don't already have it
@@ -28,11 +29,16 @@ endif
 " ============================ Plugins =================================== {{{
 call plug#begin(g:nvim_base . 'plugged')
 Plug 'tpope/vim-repeat'
-Plug 'arcticicestudio/nord-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
-Plug 'w0rp/ale'
-Plug 'airblade/vim-gitgutter'
+if g:hardmode
+  Plug 'robertmeta/nofrils'
+else
+  Plug 'w0rp/ale'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'vim-airline/vim-airline'
+  Plug 'arcticicestudio/nord-vim'
+endif
 Plug 'tpope/vim-fugitive'
 Plug 'vimwiki/vimwiki'
 Plug 'AndrewRadev/splitjoin.vim'
@@ -65,7 +71,6 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'vim-airline/vim-airline'
 Plug 'janko-m/vim-test'
 Plug 'tpope/vim-projectionist'
 Plug 'editorconfig/editorconfig-vim'
@@ -79,6 +84,13 @@ set ttimeout
 set ttimeoutlen=100
 set updatetime=100
 let g:test#strategy = 'make'
+
+" HARDMODE
+if g:hardmode
+  let g:deoplete#disable_auto_complete = 1
+  inoremap <silent><expr> <C-N>
+  \ pumvisible() ? '\<C-n>' : deoplete#mappings#manual_complete()
+endif
 " }}}
 " ======================= Files and folders=============================== {{{
 set fileformats=unix,dos
@@ -315,7 +327,11 @@ augroup nord-overrides
   autocmd!
   autocmd ColorScheme nord highlight Folded cterm=none gui=none ctermbg=0 ctermfg=8 guibg=#2E3440 guifg=#66738E
 augroup END
-colorscheme nord
+if g:hardmode
+  colorscheme nofrils-dark
+else
+  colorscheme nord
+endif
 
 function! s:tweak_theme()
   set fillchars+=vert:\│
@@ -375,9 +391,11 @@ let g:delimitMate_expand_cr = 1
 let g:delimitMate_expand_space = 1
 
 " Gitgutter tweak https://github.com/airblade/vim-gitgutter/issues/502
-augroup GitGutter
-  autocmd BufWritePost * GitGutter
-augroup END
+if !g:hardmode
+  augroup GitGutter
+    autocmd BufWritePost * GitGutter
+  augroup END
+endif
 
 " Deoplete options
 let g:deoplete#enable_at_startup = 1
