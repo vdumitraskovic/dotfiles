@@ -6,8 +6,12 @@ if has('win32')
   let g:nvim_base = '~/AppData/Local/nvim/'
 endif
 let g:goyo_on = 0
-let g:background = 'dark'
 let g:hardmode = 1
+if g:hardmode
+  let g:background = 'light'
+else
+  let g:background = 'dark'
+endif
 " }}}
 " ========================== Plug Setup ================================== {{{
 " Install vim-plug if we don't already have it
@@ -32,7 +36,7 @@ Plug 'tpope/vim-repeat'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 if g:hardmode
-  Plug 'robertmeta/nofrils'
+  Plug 'pbrisbin/vim-colors-off'
 else
   Plug 'w0rp/ale'
   Plug 'airblade/vim-gitgutter'
@@ -248,11 +252,22 @@ set relativenumber
 
 " FZF tweaking
 au TermOpen * setlocal nonumber norelativenumber
-let g:fzf_colors = {
-  \ 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'bg+':     ['bg', 'Normal']
-  \}
+if g:hardmode
+  let g:fzf_colors = {
+    \ 'fg':      ['fg', 'Normal'],
+    \ 'bg':      ['bg', 'Normal'],
+    \ 'hl':      ['fg', 'ErrorMsg'],
+    \ 'fg+':     ['fg', 'Normal'],
+    \ 'bg+':     ['bg', 'Normal'],
+    \ 'hl+':     ['fg', 'ErrorMsg'],
+    \}
+else
+  let g:fzf_colors = {
+    \ 'fg':      ['fg', 'Normal'],
+    \ 'bg':      ['bg', 'Normal'],
+    \ 'bg+':     ['bg', 'Normal']
+    \}
+endif
 
 function! s:focus_enter()
   if g:goyo_on
@@ -329,7 +344,7 @@ augroup nord-overrides
   autocmd ColorScheme nord highlight Folded cterm=none gui=none ctermbg=0 ctermfg=8 guibg=#2E3440 guifg=#66738E
 augroup END
 if g:hardmode
-  colorscheme nofrils-dark
+  colorscheme off
 else
   colorscheme nord
 endif
@@ -337,7 +352,11 @@ endif
 function! s:tweak_theme()
   set fillchars+=vert:\│
   hi VertSplit guibg=NONE ctermbg=NONE " Just show fillchar please
-  highlight CCSpellBad cterm=underline ctermfg=11 gui=underline guifg=#BF616A
+  if g:hardmode
+    highlight CCSpellBad cterm=underline ctermfg=1 gui=underline guifg=#000000
+  else
+    highlight CCSpellBad cterm=underline ctermfg=11 gui=underline guifg=#BF616A
+  endif
 endfunction
 call <SID>tweak_theme()
 
