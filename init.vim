@@ -40,6 +40,7 @@ else
   Plug 'arcticicestudio/nord-vim'
 endif
 Plug 'tpope/vim-fugitive'
+Plug 'dyng/ctrlsf.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'tpope/vim-surround'
