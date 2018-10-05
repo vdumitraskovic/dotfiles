@@ -36,7 +36,7 @@ Plug 'tpope/vim-repeat'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 if g:hardmode
-  Plug 'pbrisbin/vim-colors-off'
+  Plug 'alexanderjeurissen/lumiere.vim'
 else
   Plug 'w0rp/ale'
   Plug 'airblade/vim-gitgutter'
@@ -345,7 +345,7 @@ augroup nord-overrides
   autocmd ColorScheme nord highlight Folded cterm=none gui=none ctermbg=0 ctermfg=8 guibg=#2E3440 guifg=#66738E
 augroup END
 if g:hardmode
-  colorscheme off
+  colorscheme lumiere
 else
   colorscheme nord
 endif
@@ -355,6 +355,7 @@ function! s:tweak_theme()
   hi VertSplit guibg=NONE ctermbg=NONE " Just show fillchar please
   if g:hardmode
     highlight CCSpellBad cterm=underline ctermfg=1 gui=underline guifg=#000000
+    highlight Comment ctermbg=0 guibg=NONE ctermfg=1 guifg=#999999
   else
     highlight CCSpellBad cterm=underline ctermfg=11 gui=underline guifg=#BF616A
   endif
