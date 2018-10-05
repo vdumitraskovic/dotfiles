@@ -428,6 +428,9 @@ let g:LanguageClient_serverCommands = {
   \ 'javascript.jsx': ['javascript-typescript-stdio']
 \ }
 let g:LanguageClient_diagnosticsList = 'Location'
+
+" Split join config
+let g:splitjoin_html_attributes_bracket_on_new_line = 1
 " }}}
 " ======================== Linter settings =============================== {{{
 " Ale config
