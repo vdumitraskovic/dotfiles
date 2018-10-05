@@ -88,6 +88,7 @@ call plug#end()
 set ttimeout
 set ttimeoutlen=100
 set updatetime=100
+set synmaxcol=200
 let g:test#strategy = 'make'
 
 " HARDMODE
@@ -245,7 +246,7 @@ cnoremap w!! execute 'silent! write !sudo tee % > /dev/null' <bar> edit!
 
 " }}}
 " ======================== Visual settings =============================== {{{
-set lazyredraw
+set nolazyredraw
 set cursorline
 set number
 set relativenumber
