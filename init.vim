@@ -38,11 +38,12 @@ Plug 'tpope/vim-commentary'
 if g:hardmode
   Plug 'alexanderjeurissen/lumiere.vim'
 else
-  Plug 'w0rp/ale'
   Plug 'airblade/vim-gitgutter'
   Plug 'vim-airline/vim-airline'
   Plug 'arcticicestudio/nord-vim'
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 endif
+Plug 'w0rp/ale'
 Plug 'tpope/vim-fugitive'
 Plug 'dyng/ctrlsf.vim'
 Plug 'vimwiki/vimwiki'
@@ -75,7 +76,6 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'janko-m/vim-test'
 Plug 'tpope/vim-projectionist'
 Plug 'editorconfig/editorconfig-vim'
@@ -90,13 +90,6 @@ set ttimeoutlen=100
 set updatetime=100
 set synmaxcol=200
 let g:test#strategy = 'make'
-
-" HARDMODE
-if g:hardmode
-  let g:deoplete#disable_auto_complete = 1
-  inoremap <silent><expr> <C-N>
-  \ pumvisible() ? '\<C-n>' : deoplete#mappings#manual_complete()
-endif
 " }}}
 " ======================= Files and folders=============================== {{{
 set fileformats=unix,dos
@@ -428,7 +421,7 @@ let g:LanguageClient_serverCommands = {
   \ 'javascript': ['javascript-typescript-stdio'],
   \ 'javascript.jsx': ['javascript-typescript-stdio']
 \ }
-let g:LanguageClient_diagnosticsList = 'Location'
+let g:LanguageClient_diagnosticsEnable = 0
 
 " Split join config
 let g:splitjoin_html_attributes_bracket_on_new_line = 1
@@ -441,8 +434,15 @@ if !exists('g:ale_fixers')
 endif
 let g:ale_fixers['*'] = ['remove_trailing_lines', 'trim_whitespace']
 let g:ale_fixers.javascript = ['eslint']
-let g:ale_fix_on_save = 1
-let g:ale_change_sign_column_color = 0
+if g:hardmode
+  let g:ale_lint_on_enter = 0
+  let g:ale_lint_on_filetype_changed = 0
+  let g:ale_lint_on_text_changed = 0
+  let g:ale_lint_on_save = 0
+else
+  let g:ale_fix_on_save = 1
+  let g:ale_change_sign_column_color = 0
+endif
 " }}}
 " =========================== Searching ================================== {{{
 set ignorecase
