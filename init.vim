@@ -35,6 +35,7 @@ call plug#begin(g:nvim_base . 'plugged')
 Plug 'tpope/vim-repeat'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
+Plug 'https://gitlab.com/protesilaos/tempus-themes-vim.git'
 if g:hardmode
   Plug 'alexanderjeurissen/lumiere.vim'
 else
@@ -114,6 +115,7 @@ let g:loaded_netrwPlugin = 1
 let g:NERDTreeWinPos = 'right'
 let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '-'
+let g:NERDTreeMinimalUI = 1
 " }}}
 " =========================== Shortcuts ================================== {{{
 " Remap leader to '<Space>'
@@ -247,14 +249,14 @@ set relativenumber
 " FZF tweaking
 au TermOpen * setlocal nonumber norelativenumber
 if g:hardmode
-  let g:fzf_colors = {
-    \ 'fg':      ['fg', 'Normal'],
-    \ 'bg':      ['bg', 'Normal'],
-    \ 'hl':      ['fg', 'ErrorMsg'],
-    \ 'fg+':     ['fg', 'Normal'],
-    \ 'bg+':     ['bg', 'Normal'],
-    \ 'hl+':     ['fg', 'ErrorMsg'],
-    \}
+  " let g:fzf_colors = {
+  "   \ 'fg':      ['fg', 'Normal'],
+  "   \ 'bg':      ['bg', 'Normal'],
+  "   \ 'hl':      ['fg', 'ErrorMsg'],
+  "   \ 'fg+':     ['fg', 'Normal'],
+  "   \ 'bg+':     ['bg', 'Normal'],
+  "   \ 'hl+':     ['fg', 'ErrorMsg'],
+  "   \}
 else
   let g:fzf_colors = {
     \ 'fg':      ['fg', 'Normal'],
@@ -338,7 +340,8 @@ augroup nord-overrides
   autocmd ColorScheme nord highlight Folded cterm=none gui=none ctermbg=0 ctermfg=8 guibg=#2E3440 guifg=#66738E
 augroup END
 if g:hardmode
-  colorscheme lumiere
+  " colorscheme lumiere
+  colorscheme tempus_totus
 else
   colorscheme nord
 endif
@@ -347,8 +350,8 @@ function! s:tweak_theme()
   set fillchars+=vert:\│
   hi VertSplit guibg=NONE ctermbg=NONE " Just show fillchar please
   if g:hardmode
-    highlight CCSpellBad cterm=underline ctermfg=1 gui=underline guifg=#000000
-    highlight Comment ctermbg=0 guibg=NONE ctermfg=1 guifg=#999999
+    " highlight CCSpellBad cterm=underline ctermfg=1 gui=underline guifg=#000000
+    " highlight Comment ctermbg=0 guibg=NONE ctermfg=1 guifg=#999999
   else
     highlight CCSpellBad cterm=underline ctermfg=11 gui=underline guifg=#BF616A
   endif
