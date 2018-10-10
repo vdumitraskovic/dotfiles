@@ -36,6 +36,7 @@ Plug 'tpope/vim-repeat'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'https://gitlab.com/protesilaos/tempus-themes-vim.git'
+Plug 'romainl/flattened'
 if g:hardmode
   Plug 'alexanderjeurissen/lumiere.vim'
 else
@@ -341,7 +342,7 @@ augroup nord-overrides
 augroup END
 if g:hardmode
   " colorscheme lumiere
-  colorscheme tempus_totus
+  colorscheme flattened_light
 else
   colorscheme nord
 endif
@@ -350,7 +351,7 @@ function! s:tweak_theme()
   set fillchars+=vert:\│
   hi VertSplit guibg=NONE ctermbg=NONE " Just show fillchar please
   if g:hardmode
-    " highlight CCSpellBad cterm=underline ctermfg=1 gui=underline guifg=#000000
+    highlight CCSpellBad cterm=underline gui=underline
     " highlight Comment ctermbg=0 guibg=NONE ctermfg=1 guifg=#999999
   else
     highlight CCSpellBad cterm=underline ctermfg=11 gui=underline guifg=#BF616A
@@ -364,9 +365,9 @@ let g:airline_symbols_ascii = 1
 let g:airline_highlighting_cache = 1
 set noshowmode
 
-" WhickKey tweak
+" WhichKey tweak
 augroup which-key-overrides
-  autocmd FileType which_key highlight WhichKeySeperator guibg=NONE ctermbg=NONE
+  " autocmd FileType which_key highlight WhichKeySeperator guibg=NONE ctermbg=NONE
 augroup END
 " }}}
 " ============================ Editing =================================== {{{
