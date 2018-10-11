@@ -6,12 +6,7 @@ if has('win32')
   let g:nvim_base = '~/AppData/Local/nvim/'
 endif
 let g:goyo_on = 0
-let g:hardmode = 1
-if g:hardmode
-  let g:background = 'light'
-else
-  let g:background = 'dark'
-endif
+let g:background = 'light'
 " }}}
 " ========================== Plug Setup ================================== {{{
 " Install vim-plug if we don't already have it
@@ -37,14 +32,11 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'https://gitlab.com/protesilaos/tempus-themes-vim.git'
 Plug 'romainl/flattened'
-if g:hardmode
-  Plug 'alexanderjeurissen/lumiere.vim'
-else
-  Plug 'airblade/vim-gitgutter'
-  Plug 'vim-airline/vim-airline'
-  Plug 'arcticicestudio/nord-vim'
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-endif
+Plug 'airblade/vim-gitgutter'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'arcticicestudio/nord-vim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'w0rp/ale'
 Plug 'tpope/vim-fugitive'
 Plug 'dyng/ctrlsf.vim'
@@ -249,22 +241,14 @@ set relativenumber
 
 " FZF tweaking
 au TermOpen * setlocal nonumber norelativenumber
-if g:hardmode
-  " let g:fzf_colors = {
-  "   \ 'fg':      ['fg', 'Normal'],
-  "   \ 'bg':      ['bg', 'Normal'],
-  "   \ 'hl':      ['fg', 'ErrorMsg'],
-  "   \ 'fg+':     ['fg', 'Normal'],
-  "   \ 'bg+':     ['bg', 'Normal'],
-  "   \ 'hl+':     ['fg', 'ErrorMsg'],
-  "   \}
-else
-  let g:fzf_colors = {
-    \ 'fg':      ['fg', 'Normal'],
-    \ 'bg':      ['bg', 'Normal'],
-    \ 'bg+':     ['bg', 'Normal']
-    \}
-endif
+let g:fzf_colors = {
+  \ 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'ErrorMsg'],
+  \ 'fg+':     ['fg', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine'],
+  \ 'hl+':     ['fg', 'ErrorMsg'],
+  \}
 
 function! s:focus_enter()
   if g:goyo_on
@@ -336,26 +320,19 @@ let &background=g:background
 " colorscheme flattened_dark
 " colorscheme carbonized-light
 
-augroup nord-overrides
-  autocmd!
-  autocmd ColorScheme nord highlight Folded cterm=none gui=none ctermbg=0 ctermfg=8 guibg=#2E3440 guifg=#66738E
-augroup END
-if g:hardmode
-  " colorscheme lumiere
-  colorscheme flattened_light
-else
-  colorscheme nord
-endif
+" augroup nord-overrides
+"   autocmd!
+"   " autocmd ColorScheme nord highlight Folded cterm=none gui=none ctermbg=0 ctermfg=8 guibg=#2E3440 guifg=#66738E
+" augroup END
+
+colorscheme flattened_light
 
 function! s:tweak_theme()
   set fillchars+=vert:\│
   hi VertSplit guibg=NONE ctermbg=NONE " Just show fillchar please
-  if g:hardmode
-    highlight CCSpellBad cterm=underline gui=underline
-    " highlight Comment ctermbg=0 guibg=NONE ctermfg=1 guifg=#999999
-  else
-    highlight CCSpellBad cterm=underline ctermfg=11 gui=underline guifg=#BF616A
-  endif
+  highlight CCSpellBad cterm=underline gui=underline
+  " highlight Comment ctermbg=0 guibg=NONE ctermfg=1 guifg=#999999
+  " highlight CCSpellBad cterm=underline ctermfg=11 gui=underline guifg=#BF616A
 endfunction
 call <SID>tweak_theme()
 
@@ -410,11 +387,9 @@ let g:delimitMate_expand_cr = 1
 let g:delimitMate_expand_space = 1
 
 " Gitgutter tweak https://github.com/airblade/vim-gitgutter/issues/502
-if !g:hardmode
-  augroup GitGutter
-    autocmd BufWritePost * GitGutter
-  augroup END
-endif
+augroup GitGutter
+  autocmd BufWritePost * GitGutter
+augroup END
 
 " Deoplete options
 let g:deoplete#enable_at_startup = 1
@@ -438,15 +413,12 @@ if !exists('g:ale_fixers')
 endif
 let g:ale_fixers['*'] = ['remove_trailing_lines', 'trim_whitespace']
 let g:ale_fixers.javascript = ['eslint']
-if g:hardmode
-  let g:ale_lint_on_enter = 0
-  let g:ale_lint_on_filetype_changed = 0
-  let g:ale_lint_on_text_changed = 0
-  let g:ale_lint_on_save = 0
-else
-  let g:ale_fix_on_save = 1
-  let g:ale_change_sign_column_color = 0
-endif
+let g:ale_lint_on_enter = 1
+let g:ale_lint_on_filetype_changed = 1
+let g:ale_lint_on_text_changed = 1
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
+let g:ale_change_sign_column_color = 0
 " }}}
 " =========================== Searching ================================== {{{
 set ignorecase
