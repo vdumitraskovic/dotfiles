@@ -331,6 +331,8 @@ function! s:tweak_theme()
   set fillchars+=vert:\│
   hi VertSplit guibg=NONE ctermbg=NONE " Just show fillchar please
   highlight CCSpellBad cterm=underline gui=underline
+  highlight link MatchParen Search
+  highlight link MatchWord Search
   " highlight Comment ctermbg=0 guibg=NONE ctermfg=1 guifg=#999999
   " highlight CCSpellBad cterm=underline ctermfg=11 gui=underline guifg=#BF616A
 endfunction
