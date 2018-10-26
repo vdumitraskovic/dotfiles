@@ -237,6 +237,18 @@ nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 " Sudo write
 cnoremap w!! execute 'silent! write !sudo tee % > /dev/null' <bar> edit!
 
+" Window movement
+nnoremap <M-h> <C-w>h
+nnoremap <M-j> <C-w>j
+nnoremap <M-k> <C-w>k
+nnoremap <M-l> <C-w>l
+
+" Terminal mappings
+tnoremap <M-[> <C-\><C-n>
+tnoremap <M-h> <C-\><C-n><C-w>h
+tnoremap <M-j> <C-\><C-n><C-w>j
+tnoremap <M-k> <C-\><C-n><C-w>k
+tnoremap <M-l> <C-\><C-n><C-w>l
 " }}}
 " ======================== Visual settings =============================== {{{
 set nolazyredraw
@@ -244,8 +256,10 @@ set cursorline
 set number
 set relativenumber
 
-" FZF tweaking
+" Terminal tweaking
 au TermOpen * setlocal nonumber norelativenumber
+
+" FZF tweaking
 let g:fzf_colors = {
   \ 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],
@@ -260,7 +274,9 @@ function! s:focus_enter()
     return
   endif
   set cursorline
-  set relativenumber
+  if &l:number
+    set relativenumber
+  endif
 endfunction
 function! s:focus_leave()
   set nocursorline
