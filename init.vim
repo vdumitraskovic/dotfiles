@@ -1,82 +1,87 @@
 scriptencoding utf-8
 " ======================= Global variables================================ {{{
 let g:nvim_base = '~/.local/share/nvim/'
-execute 'set runtimepath+=' . expand(g:nvim_base)
 if has('win32')
   let g:nvim_base = '~/AppData/Local/nvim/'
 endif
+execute 'set runtimepath+=' . expand(g:nvim_base)
 let g:goyo_on = 0
 let g:background = 'light'
 " }}}
 " ========================== Plug Setup ================================== {{{
-" Install vim-plug if we don't already have it
+" Install vim-packager if we don't already have it
 if has('win32')
-  if empty(glob('$HOME/AppData/Local/nvim/autoload/plug.vim'))
-    " Ensure all needed directories exist  (Thanks @kapadiamush)
-    execute '!mkdir \%USERPROFILE\%\\AppData\\Local\\nvim\\plugged'
-    execute '!mkdir \%USERPROFILE\%\\AppData\\Local\\nvim\\autoload'
-    " Download the actual plugin manager
-    execute '!curl -fkLo \%USERPROFILE\%\\AppData\\Local\\nvim\\autoload\\plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+  if empty(glob('$HOME/AppData/Local/nvim/pack/packager/opt/vim-packager'))
+    execute '!mkdir \%USERPROFILE\%\\AppData\\Local\\nvim\\pack\\packager\\opt'
+    execute '!git clone https://github.com/kristijanhusak/vim-packager \%USERPROFILE\%\\AppData\\Local\\nvim\\pack\\packager\\opt\\vim-packager'
   endif
 else
-  if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  if empty(glob('~/.config/nvim/pack/packager/opt/vim-packager'))
     " Download the actual plugin manager
-    execute '!curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+    execute '!git clone https://github.com/kristijanhusak/vim-packager ~/.config/nvim/pack/packager/opt/vim-packager'
   endif
 endif
 " }}}
 " ============================ Plugins =================================== {{{
-call plug#begin(g:nvim_base . 'plugged')
-Plug 'tpope/vim-repeat'
-Plug 'sheerun/vim-polyglot'
-Plug 'tpope/vim-commentary'
-Plug 'https://gitlab.com/protesilaos/tempus-themes-vim.git'
-Plug 'romainl/flattened'
-Plug 'airblade/vim-gitgutter'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'arcticicestudio/nord-vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'w0rp/ale'
-Plug 'tpope/vim-fugitive'
-Plug 'dyng/ctrlsf.vim'
-Plug 'vimwiki/vimwiki'
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'tpope/vim-surround'
-Plug 'galooshi/vim-import-js'
-Plug 'sbdchd/neoformat'
-Plug 'mattn/emmet-vim'
-Plug 'tpope/tpope-vim-abolish'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'Raimondi/delimitMate'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'reedes/vim-pencil'
-Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'justinmk/vim-sneak'
-Plug 'mtth/scratch.vim'
-Plug 'chaoren/vim-wordmotion'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'majutsushi/tagbar'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'PeterRincker/vim-argumentative'
-Plug 'alvan/vim-closetag'
-Plug 'scrooloose/nerdtree'
-Plug 'metakirby5/codi.vim'
-Plug 'amadeus/vim-mjml'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-Plug 'janko-m/vim-test'
-Plug 'tpope/vim-projectionist'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'kamykn/CCSpellCheck.vim'
-Plug 'liuchengxu/vim-which-key'
-Plug 'andymass/vim-matchup'
-call plug#end()
+function! PackagerInit() abort
+  packadd vim-packager
+  call packager#init()
+  call packager#add('kristijanhusak/vim-packager', { 'type': 'opt' })
+  call packager#add('tpope/vim-repeat')
+  call packager#add('sheerun/vim-polyglot')
+  call packager#add('tpope/vim-commentary')
+  call packager#add('https://gitlab.com/protesilaos/tempus-themes-vim.git')
+  call packager#add('romainl/flattened')
+  call packager#add('airblade/vim-gitgutter')
+  call packager#add('vim-airline/vim-airline')
+  call packager#add('vim-airline/vim-airline-themes')
+  call packager#add('arcticicestudio/nord-vim')
+  call packager#add('Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' })
+  call packager#add('w0rp/ale')
+  call packager#add('tpope/vim-fugitive')
+  call packager#add('dyng/ctrlsf.vim')
+  call packager#add('vimwiki/vimwiki')
+  call packager#add('AndrewRadev/splitjoin.vim')
+  call packager#add('tpope/vim-surround')
+  call packager#add('galooshi/vim-import-js')
+  call packager#add('sbdchd/neoformat')
+  call packager#add('mattn/emmet-vim')
+  call packager#add('tpope/tpope-vim-abolish')
+  call packager#add('junegunn/goyo.vim')
+  call packager#add('junegunn/limelight.vim')
+  call packager#add('Raimondi/delimitMate')
+  call packager#add('SirVer/ultisnips')
+  call packager#add('honza/vim-snippets')
+  call packager#add('reedes/vim-pencil')
+  call packager#add('othree/javascript-libraries-syntax.vim')
+  call packager#add('justinmk/vim-sneak')
+  call packager#add('mtth/scratch.vim')
+  call packager#add('chaoren/vim-wordmotion')
+  call packager#add('ludovicchabant/vim-gutentags')
+  call packager#add('majutsushi/tagbar')
+  call packager#add('junegunn/fzf')
+  call packager#add('junegunn/fzf.vim')
+  call packager#add('PeterRincker/vim-argumentative')
+  call packager#add('alvan/vim-closetag')
+  call packager#add('scrooloose/nerdtree')
+  call packager#add('metakirby5/codi.vim')
+  call packager#add('amadeus/vim-mjml')
+  call packager#add('autozimu/LanguageClient-neovim', {
+        \ 'branch': 'next',
+        \ 'do': 'bash install.sh',
+        \ })
+  call packager#add('janko-m/vim-test')
+  call packager#add('tpope/vim-projectionist')
+  call packager#add('editorconfig/editorconfig-vim')
+  call packager#add('kamykn/CCSpellCheck.vim')
+  call packager#add('liuchengxu/vim-which-key')
+  call packager#add('andymass/vim-matchup')
+endfunction
+
+command! PackagerInstall call PackagerInit() | call packager#install()
+command! PackagerUpdate call PackagerInit() | call packager#update()
+command! PackagerClean call PackagerInit() | call packager#clean()
+command! PackagerStatus call PackagerInit() | call packager#status()
 " }}}
 " ============================ General =================================== {{{
 set ttimeout
@@ -447,9 +452,6 @@ augroup END
 " Sneak setup
 let g:sneak#s_next = 1
 let g:sneak#use_ic_scs = 1
-
-" Vim slash
-noremap <plug>(slash-after) zz
 " }}}
 " ======================== Writing plugins =============================== {{{
 let g:vimwiki_folding = 'syntax'
