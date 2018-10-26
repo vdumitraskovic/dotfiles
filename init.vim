@@ -357,7 +357,9 @@ function! s:tweak_theme()
   " highlight Comment ctermbg=0 guibg=NONE ctermfg=1 guifg=#999999
   " highlight CCSpellBad cterm=underline ctermfg=11 gui=underline guifg=#BF616A
 endfunction
-call <SID>tweak_theme()
+augroup colorscheme
+  autocmd ColorScheme * call <sid>tweak_theme()
+augroup end
 
 " Airline
 let g:airline_powerline_fonts = 0
