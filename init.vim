@@ -238,6 +238,10 @@ nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 " Sudo write
 cnoremap w!! execute 'silent! write !sudo tee % > /dev/null' <bar> edit!
 
+" Zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
+
 " Window movement
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -256,6 +260,11 @@ set nolazyredraw
 set cursorline
 set number
 set relativenumber
+
+" Automatically rebalance windows on vim resize
+augroup balance-windows
+  autocmd VimResized * :wincmd =
+augroup END
 
 " Terminal tweaking
 au TermOpen * setlocal nonumber norelativenumber
