@@ -260,7 +260,7 @@ tnoremap <C-l> <C-\><C-n><C-w>l
 " }}}
 " ======================== Visual settings =============================== {{{
 set nolazyredraw
-set cursorline
+set nocursorline
 set number
 set relativenumber
 
@@ -286,7 +286,7 @@ function! s:focus_enter()
   if g:goyo_on
     return
   endif
-  set cursorline
+  set nocursorline
   if &l:number
     set relativenumber
   endif
