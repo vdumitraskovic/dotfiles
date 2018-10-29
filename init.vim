@@ -90,6 +90,9 @@ set ttimeoutlen=100
 set updatetime=100
 set synmaxcol=200
 let g:test#strategy = 'make'
+
+" Disable tmux navigator when zooming the Vim pane
+let g:tmux_navigator_disable_when_zoomed = 1
 " }}}
 " ======================= Files and folders=============================== {{{
 set fileformats=unix,dos
