@@ -76,6 +76,7 @@ function! PackagerInit() abort
   call packager#add('kamykn/CCSpellCheck.vim')
   call packager#add('liuchengxu/vim-which-key')
   call packager#add('andymass/vim-matchup')
+  call packager#add('christoomey/vim-tmux-navigator')
 endfunction
 
 command! PackagerInstall call PackagerInit() | call packager#install()
@@ -238,17 +239,17 @@ nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 cnoremap w!! execute 'silent! write !sudo tee % > /dev/null' <bar> edit!
 
 " Window movement
-nnoremap <M-h> <C-w>h
-nnoremap <M-j> <C-w>j
-nnoremap <M-k> <C-w>k
-nnoremap <M-l> <C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " Terminal mappings
 tnoremap <M-[> <C-\><C-n>
-tnoremap <M-h> <C-\><C-n><C-w>h
-tnoremap <M-j> <C-\><C-n><C-w>j
-tnoremap <M-k> <C-\><C-n><C-w>k
-tnoremap <M-l> <C-\><C-n><C-w>l
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
 " }}}
 " ======================== Visual settings =============================== {{{
 set nolazyredraw
