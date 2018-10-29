@@ -95,8 +95,13 @@ if type nodenv > /dev/null; then
   eval "$(nodenv init -)"
 fi
 
-# Show funny Chuck Norris quite
+# Show funny Chuck Norris quote
 chuck
+
+# Vim mode bindings tweak
+bindkey '^[OH' beginning-of-line
+bindkey '^[OF' end-of-line
+bindkey '^[[3~' delete-char
 
 # Config FZF
 export FZF_DEFAULT_COMMAND="rg --files"
