@@ -31,6 +31,7 @@ function! PackagerInit() abort
   call packager#add('sheerun/vim-polyglot')
   call packager#add('tpope/vim-commentary')
   call packager#add('romainl/flattened')
+  call packager#add('lifepillar/vim-solarized8')
   call packager#add('airblade/vim-gitgutter')
   call packager#add('vim-airline/vim-airline')
   call packager#add('vim-airline/vim-airline-themes')
@@ -368,12 +369,13 @@ let &background=g:background
 "   " autocmd ColorScheme nord highlight Folded cterm=none gui=none ctermbg=0 ctermfg=8 guibg=#2E3440 guifg=#66738E
 " augroup END
 
-colorscheme flattened_light
+" colorscheme flattened_light
+colorscheme solarized8
 
 function! s:tweak_theme()
   set fillchars+=vert:\│
   hi VertSplit guibg=NONE ctermbg=NONE " Just show fillchar please
-  highlight CCSpellBad cterm=underline gui=underline
+  highlight CCSpellBad cterm=undercurl gui=undercurl
   highlight link MatchParen Search
   highlight link MatchWord Search
   " highlight Comment ctermbg=0 guibg=NONE ctermfg=1 guifg=#999999
