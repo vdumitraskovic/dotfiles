@@ -30,7 +30,6 @@ function! PackagerInit() abort
   call packager#add('tpope/vim-repeat')
   call packager#add('sheerun/vim-polyglot')
   call packager#add('tpope/vim-commentary')
-  call packager#add('https://gitlab.com/protesilaos/tempus-themes-vim.git')
   call packager#add('romainl/flattened')
   call packager#add('airblade/vim-gitgutter')
   call packager#add('vim-airline/vim-airline')
@@ -150,7 +149,8 @@ nmap [Q :cfirst<CR>                   " Move to the first quickfix
 nmap ]Q :clast<CR>                    " Move to the last quickfix
 nmap [l :lprevious<CR>                " Move to the previous loclist
 nmap ]l :lnext<CR>                    " Move to the next loclist
-nmap [L :lfirst<CR>                   " Move to the first loclist
+" Move to the first loclist
+nmap [L :lfirst<CR>
 nmap ]L :llast<CR>                    " Move to the last loclist
 
 " Tabs mapping
@@ -466,6 +466,7 @@ let g:ale_lint_on_text_changed = 1
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
 let g:ale_change_sign_column_color = 0
+let g:ale_virtualtext_cursor = 1
 " }}}
 " =========================== Searching ================================== {{{
 set ignorecase
