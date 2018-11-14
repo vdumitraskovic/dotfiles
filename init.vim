@@ -79,9 +79,6 @@ function! PackagerInit() abort
   call packager#add('christoomey/vim-tmux-navigator')
 endfunction
 
-" Fix LanguageClient not starting server for javascript.jsx
-packadd vim-polyglot
-
 command! PackagerInstall call PackagerInit() | call packager#install()
 command! PackagerUpdate call PackagerInit() | call packager#update()
 command! PackagerClean call PackagerInit() | call packager#clean()
