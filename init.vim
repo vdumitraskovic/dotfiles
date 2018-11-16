@@ -267,6 +267,9 @@ nnoremap <silent> <M-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <M-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <M-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <M-\> :TmuxNavigatePrevious<cr>
+
+" Create folders as needed
+cnoremap mk. !mkdir -p <c-r>=expand("%:h")<cr>
 " }}}
 " ======================== Visual settings =============================== {{{
 set nolazyredraw
