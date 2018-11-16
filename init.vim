@@ -483,6 +483,8 @@ let g:ale_set_signs = 1
 let g:ale_change_sign_column_always = 1
 let g:ale_change_sign_column_color = 0
 let g:ale_virtualtext_cursor = 1
+let g:ale_sign_error = '✕'
+let g:ale_sign_warning = '▲'
 " }}}
 " =========================== Searching ================================== {{{
 set ignorecase
