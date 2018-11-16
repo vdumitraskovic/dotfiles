@@ -370,7 +370,7 @@ let &background=g:background
 " augroup END
 
 " colorscheme flattened_light
-colorscheme solarized8
+colorscheme solarized8_high
 
 function! s:tweak_theme()
   set fillchars+=vert:\│
