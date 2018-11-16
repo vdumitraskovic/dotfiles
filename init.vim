@@ -271,8 +271,9 @@ nnoremap <silent> <M-\> :TmuxNavigatePrevious<cr>
 " ======================== Visual settings =============================== {{{
 set nolazyredraw
 set nocursorline
-set number
-set relativenumber
+set nonumber
+set norelativenumber
+set signcolumn=yes
 
 " Automatically rebalance windows on vim resize
 augroup balance-windows
@@ -376,8 +377,13 @@ function! s:tweak_theme()
   set fillchars+=vert:\│
   hi VertSplit guibg=NONE ctermbg=NONE " Just show fillchar please
   highlight CCSpellBad cterm=undercurl gui=undercurl
-  highlight link MatchParen Search
-  highlight link MatchWord Search
+
+  highlight MatchParen cterm=bold gui=bold
+  highlight MatchWord cterm=bold gui=bold
+
+  highlight ALEErrorSign ctermbg=254 ctermfg=160 guibg=#eee8d5 guifg=#dc322f
+  highlight ALEWarningSign ctermbg=254 ctermfg=32 guibg=#eee8d5 guifg=#268bd2
+
   " highlight Comment ctermbg=0 guibg=NONE ctermfg=1 guifg=#999999
   " highlight CCSpellBad cterm=underline ctermfg=11 gui=underline guifg=#BF616A
 endfunction
@@ -467,8 +473,10 @@ let g:ale_lint_on_filetype_changed = 1
 let g:ale_lint_on_text_changed = 1
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
+let g:ale_set_highlights = 1
+let g:ale_set_signs = 1
+let g:ale_change_sign_column_always = 1
 let g:ale_change_sign_column_color = 0
-let g:ale_virtualtext_cursor = 1
 " }}}
 " =========================== Searching ================================== {{{
 set ignorecase
