@@ -382,7 +382,9 @@ function! s:tweak_theme()
   highlight MatchWord cterm=bold gui=bold
 
   highlight ALEErrorSign ctermbg=254 ctermfg=160 guibg=#eee8d5 guifg=#dc322f
+  highlight ALEVirtualTextError ctermfg=160 guifg=#dc322f
   highlight ALEWarningSign ctermbg=254 ctermfg=32 guibg=#eee8d5 guifg=#268bd2
+  highlight ALEVirtualTextWarning ctermfg=32 guifg=#268bd2
 
   " highlight Comment ctermbg=0 guibg=NONE ctermfg=1 guifg=#999999
   " highlight CCSpellBad cterm=underline ctermfg=11 gui=underline guifg=#BF616A
@@ -477,6 +479,7 @@ let g:ale_set_highlights = 1
 let g:ale_set_signs = 1
 let g:ale_change_sign_column_always = 1
 let g:ale_change_sign_column_color = 0
+let g:ale_virtualtext_cursor = 1
 " }}}
 " =========================== Searching ================================== {{{
 set ignorecase
