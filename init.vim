@@ -224,8 +224,8 @@ nmap <F8> :TagbarToggle<CR>
 " Show git status
 nnoremap <F9> :Gstatus<CR>
 
-" Close loclists and quicfix
-nnoremap <F12> :windo lcl\|ccl<CR>
+" Close loclists and quicfix and git status
+nnoremap <F12> :windo lcl\|ccl\|Gstatus\|q<CR>
 nnoremap <F7> :silent execute 'grep -w ' . expand('<cword>')<CR> <BAR> :redraw!<CR>
 
 " Don't load Scratch window mappings
