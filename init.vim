@@ -27,6 +27,7 @@ function! PackagerInit() abort
   packadd vim-packager
   call packager#init()
   call packager#add('kristijanhusak/vim-packager', { 'type': 'opt' })
+  call packager#add('lambdalisue/vim-backslash')
   call packager#add('tpope/vim-repeat')
   call packager#add('sheerun/vim-polyglot')
   call packager#add('tpope/vim-commentary')
