@@ -93,6 +93,11 @@ let g:test#strategy = 'make'
 
 " Disable tmux navigator when zooming the Vim pane
 let g:tmux_navigator_disable_when_zoomed = 1
+
+" Terminal tweakings
+augroup terminal
+  autocmd TermOpen * startinsert
+augroup end
 " }}}
 " ======================= Files and folders=============================== {{{
 set fileformats=unix,dos
