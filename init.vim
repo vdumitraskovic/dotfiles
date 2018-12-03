@@ -37,7 +37,6 @@ function! PackagerInit() abort
   call packager#add('vim-airline/vim-airline')
   call packager#add('vim-airline/vim-airline-themes')
   call packager#add('arcticicestudio/nord-vim')
-  call packager#add('Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' })
   call packager#add('w0rp/ale')
   call packager#add('tpope/vim-fugitive')
   call packager#add('dyng/ctrlsf.vim')
@@ -457,10 +456,6 @@ let g:delimitMate_expand_space = 1
 augroup GitGutter
   autocmd BufWritePost * GitGutter
 augroup END
-
-" Deoplete options
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
 
 " LanguageClient settings
 let g:LanguageClient_serverCommands = {
