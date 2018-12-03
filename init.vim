@@ -74,7 +74,7 @@ function! PackagerInit() abort
   call packager#add('janko-m/vim-test')
   call packager#add('tpope/vim-projectionist')
   call packager#add('editorconfig/editorconfig-vim')
-  call packager#add('kamykn/CCSpellCheck.vim')
+  call packager#add('kamykn/spelunker.vim')
   call packager#add('liuchengxu/vim-which-key')
   call packager#add('andymass/vim-matchup')
   call packager#add('christoomey/vim-tmux-navigator')
@@ -384,8 +384,9 @@ colorscheme solarized8_high
 
 function! s:tweak_theme()
   set fillchars+=vert:\│
-  hi VertSplit guibg=NONE ctermbg=NONE " Just show fillchar please
-  highlight CCSpellBad cterm=undercurl gui=undercurl
+  hi VertSplit guibg=NONE ctermbg=NONE " Just show fills please
+  hi SpelunkerSpellBad cterm=undercurl gui=undercurl
+  " highlight CCSpellBad cterm=undercurl gui=undercurl
 
   highlight MatchParen cterm=bold gui=bold
   highlight MatchWord cterm=bold gui=bold
@@ -521,7 +522,7 @@ let g:sneak#use_ic_scs = 1
 " ======================== Writing plugins =============================== {{{
 let g:vimwiki_folding = 'syntax'
 
-let g:CCSpellCheckEnable = 1
+" let g:CCSpellCheckEnable = 1
 
 " Goyo + Limelight
 function! s:goyo_enter()
