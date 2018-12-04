@@ -1,7 +1,8 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-source .zsh/antigen.zsh
+[ -f .zsh/antigen.zsh ] && source .zsh/antigen.zsh
+[ -f /usr/share/zsh/share/antigen.zsh ] && source /usr/share/zsh/share/antigen.zsh
 antigen use oh-my-zsh
 
 # Set name of the theme to load.
