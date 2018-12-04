@@ -1,11 +1,13 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+source .zsh/antigen.zsh
+antigen use oh-my-zsh
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -49,14 +51,26 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ssh-agent chucknorris z sublime tmux vi-mode tmuxinator)
+# plugins=(git ssh-agent chucknorris z sublime tmux vi-mode tmuxinator)
 
 # User configuration
 
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
-source $ZSH/oh-my-zsh.sh
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle command-not-found
+antigen bundle git
+antigen bundle ssh-agent
+antigen bundle z
+antigen bundle tmux
+antigen bundle vi-mode
+antigen bundle tmuxinator
+antigen bundle zsh-users/zsh-autosuggestions
+
+antigen theme LasaleFamine/phi-zsh-theme
+
+antigen apply
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -95,9 +109,6 @@ eval `dircolors ~/.dircolors`
 if type nodenv > /dev/null; then
   eval "$(nodenv init -)"
 fi
-
-# Show funny Chuck Norris quote
-chuck
 
 # Vim mode bindings tweak
 bindkey '^[OH' beginning-of-line
