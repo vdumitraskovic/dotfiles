@@ -116,6 +116,9 @@ bindkey '^[OH' beginning-of-line
 bindkey '^[OF' end-of-line
 bindkey '^[[3~' delete-char
 
+# Autosuggestions
+bindkey '^ ' autosuggest-execute
+
 # Config FZF
 export FZF_DEFAULT_COMMAND="rg --files"
 
