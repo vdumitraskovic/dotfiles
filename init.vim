@@ -106,6 +106,13 @@ set undofile
 set backupcopy=yes
 exec 'set undodir=' . g:nvim_base . 'undodir'
 
+" Automatically reload file
+set noswapfile
+set nowritebackup
+set nobackup
+set autoread
+autocmd FocusGained,CursorHold ?* if getcmdwintype() == '' | checktime | endif
+
 " This allows buffers to be hidden if you've modified a buffer.
 " This is almost a must if you wish to use buffers in this way.
 set hidden
