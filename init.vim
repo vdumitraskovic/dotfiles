@@ -191,7 +191,7 @@ nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
 
 " Quick save
-noremap <Leader>s :update<CR>
+noremap <C-S> :update<CR>
 
 " Find file
 " noremap <C-p> :find<Space>
