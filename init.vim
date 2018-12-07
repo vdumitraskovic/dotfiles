@@ -574,6 +574,7 @@ augroup JavaScript
   autocmd FileType javascript setlocal include=from[\ ]
   " Setup errorformat for Jest
   autocmd FileType javascript setlocal errorformat=%.%#\ at\ %f:%l:%c,%.%#\ at\ %.%#(%f:%l:%c)
+  autocmd FileType javascript call importjs#Init()
 augroup END
 
 " Javascript lib syntax setup
