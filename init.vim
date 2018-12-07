@@ -539,7 +539,7 @@ endfunction
 
 function! s:goyo_leave()
   Limelight!
-  set number
+  set nonumber
   set showmode
   set showcmd
   let g:goyo_on = 0
