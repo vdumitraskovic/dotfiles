@@ -111,7 +111,9 @@ set noswapfile
 set nowritebackup
 set nobackup
 set autoread
-autocmd FocusGained,CursorHold ?* if getcmdwintype() == '' | checktime | endif
+augroup autoreload
+  autocmd FocusGained,CursorHold ?* if getcmdwintype() == '' | checktime | endif
+augroup END
 
 " This allows buffers to be hidden if you've modified a buffer.
 " This is almost a must if you wish to use buffers in this way.
@@ -282,6 +284,9 @@ nnoremap <silent> <M-\> :TmuxNavigatePrevious<cr>
 
 " Create folders as needed
 cnoremap mk. !mkdir -p <c-r>=expand("%:h")<cr>
+
+" Alternate "nonumber | number | relativenumber"
+:nnoremap <leader>n :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<cr>
 " }}}
 " ======================== Visual settings =============================== {{{
 set nolazyredraw
