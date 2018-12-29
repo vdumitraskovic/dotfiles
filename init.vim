@@ -569,17 +569,17 @@ augroup END
 let g:UltiSnipsSnippetsDir = g:nvim_base . 'UltiSnips'
 augroup Snippets
   " Enable es6 snippets for javascript by default
-  autocmd FileType javascript UltiSnipsAddFiletypes javascript-es6
+  autocmd FileType javascript,javascript.jsx UltiSnipsAddFiletypes javascript-es6
   " Enable jsx snippets
   autocmd FileType javascript.jsx UltiSnipsAddFiletypes javascript-react
 augroup END
 " }}}
 " ========================== Javascript ================================== {{{
 augroup JavaScript
-  autocmd FileType javascript setlocal include=from[\ ]
+  autocmd FileType javascript,javascript.jsx setlocal include=from[\ ]
   " Setup errorformat for Jest
-  autocmd FileType javascript setlocal errorformat=%.%#\ at\ %f:%l:%c,%.%#\ at\ %.%#(%f:%l:%c)
-  autocmd FileType javascript call importjs#Init()
+  autocmd FileType javascript,javascript.jsx setlocal errorformat=%.%#\ at\ %f:%l:%c,%.%#\ at\ %.%#(%f:%l:%c)
+  autocmd FileType javascript,javascript.jsx call importjs#Init()
 augroup END
 
 " Javascript lib syntax setup
