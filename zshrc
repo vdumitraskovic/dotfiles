@@ -116,6 +116,22 @@ bindkey '^[OH' beginning-of-line
 bindkey '^[OF' end-of-line
 bindkey '^[[3~' delete-char
 
+# Vim mode indicator
+bindkey -v
+KEYTIMEOUT=1
+
+function zle-line-init zle-keymap-select {
+    case ${KEYMAP} in
+        (vicmd)      echo -ne '\e[1 q' ;;
+        (main|viins) echo -ne '\e[5 q' ;;
+        (*)          echo -ne '\e[1 q' ;;
+    esac
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+
 # Autosuggestions
 bindkey '^ ' autosuggest-execute
 
