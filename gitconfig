@@ -16,3 +16,8 @@
 	prompt = false
 [commit]
 	verbose = true
+[alias]
+        fixup = !COMMIT=`git log --oneline|fzf|cut -d' ' -f1` && git commit --fixup=${COMMIT}
+        squash = !COMMIT=`git log --oneline|fzf|cut -d' ' -f1` && git commit --squash=${COMMIT}
+[rebase]
+	autosquash = true
