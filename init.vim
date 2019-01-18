@@ -89,6 +89,8 @@ set ttimeout
 set ttimeoutlen=100
 set updatetime=100
 set synmaxcol=200
+set mouse=a
+
 let g:test#strategy = 'make'
 
 " Disable tmux navigator when zooming the Vim pane
