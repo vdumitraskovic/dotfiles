@@ -144,11 +144,16 @@ nnoremap <leader><space> :nohlsearch<CR>
 inoremap jk <esc>
 
 " Buffer keys
-nmap <leader>N :enew<CR>              " To open a new empty buffer
-nmap [b :bprevious<CR>                " Move to the previous buffer
-nmap ]b :bnext<CR>                    " Move to the next buffer
-nmap [B :bfirst<CR>                   " Move to the first buffer
-nmap ]B :blast<CR>                    " Move to the last buffer
+" To open a new empty buffer
+nmap <leader>N :enew<CR>
+" Move to the previous buffer
+nmap [b :bprevious<CR>
+" Move to the next buffer
+nmap ]b :bnext<CR>
+" Move to the first buffer
+nmap [B :bfirst<CR>
+" Move to the last buffer
+nmap ]B :blast<CR>
 " Close all buffers but open one
 nmap <leader>bo :silent w <BAR> :silent %bd <BAR> e#<CR>
 
@@ -160,23 +165,36 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 nnoremap <leader>bl :Buffers<CR>
 
 " Quickfix/loclist mapping
-nmap [q :cprevious<CR>                " Move to the previous quickfix
-nmap ]q :cnext<CR>                    " Move to the next quickfix
-nmap [Q :cfirst<CR>                   " Move to the first quickfix
-nmap ]Q :clast<CR>                    " Move to the last quickfix
-nmap [l :lprevious<CR>                " Move to the previous loclist
-nmap ]l :lnext<CR>                    " Move to the next loclist
+" Move to the previous quickfix
+nmap [q :cprevious<CR>
+" Move to the next quickfix
+nmap ]q :cnext<CR>
+" Move to the first quickfix
+nmap [Q :cfirst<CR>
+" Move to the last quickfix
+nmap ]Q :clast<CR>
+" Move to the previous loclist
+nmap [l :lprevious<CR>
+" Move to the next loclist
+nmap ]l :lnext<CR>
 " Move to the first loclist
 nmap [L :lfirst<CR>
-nmap ]L :llast<CR>                    " Move to the last loclist
+" Move to the last loclist
+nmap ]L :llast<CR>
 
 " Tabs mapping
-nmap <leader>T :tabnew<CR>            " Open new tab
-nmap <leader>tq :tabclose<CR>         " Close tab
-nmap [t :tabprevious<CR>              " Move to the previous quickfix
-nmap ]t :tabnext<CR>                  " Move to the next quickfix
-nmap [T :tabfirst<CR>                 " Move to the first quickfix
-nmap ]T :tablast<CR>                  " Move to the last quickfix
+" Open new tab
+nmap <leader>T :tabnew<CR>
+" Close tab
+nmap <leader>tq :tabclose<CR>
+" Move to the previous quickfix
+nmap [t :tabprevious<CR>
+" Move to the next quickfix
+nmap ]t :tabnext<CR>
+" Move to the first quickfix
+nmap [T :tabfirst<CR>
+" Move to the last quickfix
+nmap ]T :tablast<CR>
 
 " Tags search
 nnoremap <leader>tl :Tags<CR>
