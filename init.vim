@@ -396,7 +396,7 @@ let &background=g:background
 " colorscheme flattened_light
 colorscheme solarized8_high
 
-function! s:tweak_theme()
+function! s:tweak_theme() abort
   set fillchars+=vert:\│
   hi VertSplit guibg=NONE ctermbg=NONE " Just show fills please
   hi SpelunkerSpellBad cterm=undercurl gui=undercurl
@@ -416,6 +416,7 @@ endfunction
 augroup colorscheme
   autocmd ColorScheme * call <sid>tweak_theme()
 augroup end
+autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
 
 " Airline
 let g:airline_powerline_fonts = 0
