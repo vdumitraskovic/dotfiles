@@ -233,6 +233,7 @@ nnoremap <F11> :Goyo<CR>
 
 " Quick close help
 noremap <S-F1> :helpclose<CR>
+noremap <F13> :helpclose<CR>
 
 " Open tagbar
 nmap <F8> :TagbarToggle<CR>
