@@ -307,7 +307,10 @@ nnoremap <silent> <M-\> :TmuxNavigatePrevious<cr>
 cnoremap mk. !mkdir -p <c-r>=expand("%:h")<cr>
 
 " Alternate "nonumber | number | relativenumber"
-:nnoremap <leader>n :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<cr>
+nnoremap <leader>n :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<cr>
+
+" CtrlSF shortcut
+nmap <S-F7> <Plug>CtrlSFCwordExec
 " }}}
 " ======================== Visual settings =============================== {{{
 set nolazyredraw
