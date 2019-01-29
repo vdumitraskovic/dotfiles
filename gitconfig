@@ -1,5 +1,7 @@
 [include]
         path = .gitconfig.secret
+[core]
+	excludesfile = ~/.gitignore_global
 [push]
 	default = current
 [pager]
