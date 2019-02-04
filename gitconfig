@@ -25,3 +25,5 @@
 	unwip = reset HEAD~1
 [rebase]
 	autosquash = true
+[pull]
+	rebase = true
