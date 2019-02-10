@@ -311,6 +311,7 @@ nnoremap <leader>n :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<cr>
 
 " CtrlSF shortcut
 nmap <S-F7> <Plug>CtrlSFCwordExec
+nmap <F19> <Plug>CtrlSFCwordExec
 " }}}
 " ======================== Visual settings =============================== {{{
 set nolazyredraw
