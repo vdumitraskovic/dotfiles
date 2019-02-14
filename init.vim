@@ -77,6 +77,7 @@ function! PackagerInit() abort
   call packager#add('liuchengxu/vim-which-key')
   call packager#add('andymass/vim-matchup')
   call packager#add('christoomey/vim-tmux-navigator')
+  call packager#add('machakann/vim-highlightedyank')
 endfunction
 
 command! PackagerInstall call PackagerInit() | call packager#install()
@@ -432,6 +433,8 @@ function! s:tweak_theme() abort
   highlight ALEVirtualTextError ctermfg=160 guifg=#dc322f
   highlight ALEWarningSign ctermbg=254 ctermfg=32 guibg=#eee8d5 guifg=#268bd2
   highlight ALEVirtualTextWarning ctermfg=32 guifg=#268bd2
+
+  highlight HighlightedyankRegion ctermbg=254 guibg=#eee8d5
 
   " highlight Comment ctermbg=0 guibg=NONE ctermfg=1 guifg=#999999
   " highlight CCSpellBad cterm=underline ctermfg=11 gui=underline guifg=#BF616A
