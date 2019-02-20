@@ -568,6 +568,7 @@ function! s:goyo_enter()
   set noshowmode
   set noshowcmd
   let g:goyo_on = 1
+  ALEDisable
   call <SID>focus_leave()
 endfunction
 
@@ -578,6 +579,7 @@ function! s:goyo_leave()
   set showcmd
   let g:goyo_on = 0
   let &background=g:background
+  ALEEnable
   call <SID>tweak_theme()
   call <SID>focus_enter()
 endfunction
