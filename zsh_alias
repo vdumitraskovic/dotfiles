@@ -45,8 +45,17 @@ alias cmus='TMUX= tmux new-session -A -D -s cmus "$(whence -p cmus)" \; set-opti
 # FZF goodies
 alias preview="fzf --preview 'if file -i {}|grep -q binary; then file -b {}; else bat --color \"always\" --line-range :40 {}; fi'"
 
+function open() {
+  set +x
+  if [[ "$(uname)" = "Darwin" ]] then
+    /usr/bin/open $* > /dev/null 2>&1 &!
+  else
+    /usr/bin/xdg-open $* > /dev/null 2>&1 &!
+  fi
+}
+
 function PR() {
   branch=$(git rev-parse --abbrev-ref HEAD)
   repo=${$(git config --get remote.origin.url|cut -d: -f2)%.git}
-  xdg-open "https://bitbucket.org/${repo}/pull-requests/new?source=${branch}"
+  open "https://bitbucket.org/${repo}/pull-requests/new?source=${branch}"
 }
