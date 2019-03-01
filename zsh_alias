@@ -59,3 +59,5 @@ function PR() {
   repo=${$(git config --get remote.origin.url|cut -d: -f2)%.git}
   open "https://bitbucket.org/${repo}/pull-requests/new?source=${branch}"
 }
+
+alias \]='open'
