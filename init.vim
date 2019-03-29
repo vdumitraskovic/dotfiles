@@ -396,6 +396,7 @@ let g:gruvbox_underline = 1
 let g:gruvbox_undercurl = 1
 let g:solarized_extra_hi_groups = 1
 let g:solarized_statusline = 'low'
+let g:solarized_term_italics = 1
 let g:nord_italic = 1
 let g:nord_italic_comments = 1
 let g:nord_underline = 1
@@ -418,7 +419,7 @@ let &background=g:background
 " augroup END
 
 " colorscheme flattened_light
-colorscheme solarized8_high
+colorscheme solarized8
 
 function! s:tweak_theme() abort
   set fillchars+=vert:\│
