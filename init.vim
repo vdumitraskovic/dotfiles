@@ -66,10 +66,7 @@ function! PackagerInit() abort
   call packager#add('scrooloose/nerdtree')
   call packager#add('metakirby5/codi.vim')
   call packager#add('amadeus/vim-mjml')
-  call packager#add('autozimu/LanguageClient-neovim', {
-        \ 'branch': 'next',
-        \ 'do': 'bash install.sh',
-        \ })
+  call packager#add('neoclide/coc.nvim', { 'do': function('InstallCoc') })
   call packager#add('janko-m/vim-test')
   call packager#add('tpope/vim-projectionist')
   call packager#add('editorconfig/editorconfig-vim')
@@ -78,6 +75,13 @@ function! PackagerInit() abort
   call packager#add('andymass/vim-matchup')
   call packager#add('christoomey/vim-tmux-navigator')
   call packager#add('machakann/vim-highlightedyank')
+endfunction
+
+function! InstallCoc(plugin) abort
+  exe '!cd '.a:plugin.dir.' && yarn install'
+  call coc#add_extension('coc-tsserver', 'coc-html', 'coc-css', 'coc-json')
+  call coc#config('codeLens.enable', 'true')
+  call coc#config('coc.preferences.formatOnType', 'true')
 endfunction
 
 command! PackagerInstall call PackagerInit() | call packager#install()
@@ -267,10 +271,21 @@ nnoremap <F7> :silent execute 'grep -w ' . expand('<cword>')<CR> <BAR> :redraw!<
 " Don't load Scratch window mappings
 let g:scratch_no_mappings = 1
 
-" LanguageClient-neovim
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+" COC
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> K :call CocAction('doHover')<CR>
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+vmap <leader>a <Plug>(coc-codeaction-selected)
+nmap <leader>a <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Vim which key
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
@@ -439,6 +454,7 @@ function! s:tweak_theme() abort
 
   " highlight Comment ctermbg=0 guibg=NONE ctermfg=1 guifg=#999999
   " highlight CCSpellBad cterm=underline ctermfg=11 gui=underline guifg=#BF616A
+  highlight CocHighlightText ctermbg=254 guibg=#eee8d5
 endfunction
 augroup colorscheme
   autocmd ColorScheme * call <sid>tweak_theme()
@@ -455,6 +471,11 @@ set noshowmode
 augroup which-key-overrides
   " autocmd FileType which_key highlight WhichKeySeperator guibg=NONE ctermbg=NONE
 augroup END
+
+" COC
+augroup COC
+  autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup END
 " }}}
 " ============================ Editing =================================== {{{
 set expandtab
@@ -462,6 +483,7 @@ set shiftwidth=2
 set softtabstop=2
 set showmatch
 set inccommand=split
+set shortmess+=c
 
 " Use system clipboard
 set clipboard=unnamed,unnamedplus
@@ -500,15 +522,12 @@ augroup GitGutter
   autocmd BufWritePost * GitGutter
 augroup END
 
-" LanguageClient settings
-let g:LanguageClient_serverCommands = {
-  \ 'javascript': ['javascript-typescript-stdio'],
-  \ 'javascript.jsx': ['javascript-typescript-stdio']
-\ }
-let g:LanguageClient_diagnosticsEnable = 0
-
 " Split join config
 let g:splitjoin_html_attributes_bracket_on_new_line = 1
+
+augroup COC
+  autocmd FileType javascript,typescript,json setl formatexpr=CocAction('formatSelected')
+augroup end
 " }}}
 " ======================== Linter settings =============================== {{{
 " Ale config
