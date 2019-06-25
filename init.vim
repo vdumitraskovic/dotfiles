@@ -75,6 +75,7 @@ function! PackagerInit() abort
   call packager#add('andymass/vim-matchup')
   call packager#add('christoomey/vim-tmux-navigator')
   call packager#add('machakann/vim-highlightedyank')
+  call packager#add('AndrewRadev/tagalong.vim')
 endfunction
 
 function! InstallCoc(plugin) abort
@@ -631,6 +632,25 @@ augroup JavaScript
   " Setup errorformat for Jest
   autocmd FileType javascript,javascript.jsx setlocal errorformat=%.%#\ at\ %f:%l:%c,%.%#\ at\ %.%#(%f:%l:%c)
   autocmd FileType javascript,javascript.jsx call importjs#Init()
+  autocmd FileType javascript let b:splitjoin_split_callbacks = [
+      \ 'sj#html#SplitTags',
+      \ 'sj#html#SplitAttributes',
+      \ 'sj#js#SplitArray',
+      \ 'sj#js#SplitObjectLiteral',
+      \ 'sj#js#SplitFunction',
+      \ 'sj#js#SplitOneLineIf',
+      \ 'sj#js#SplitArgs'
+      \ ]
+
+  autocmd FileType javascript let b:splitjoin_join_callbacks = [
+      \ 'sj#html#JoinAttributes',
+      \ 'sj#html#JoinTags',
+      \ 'sj#js#JoinArray',
+      \ 'sj#js#JoinArgs',
+      \ 'sj#js#JoinFunction',
+      \ 'sj#js#JoinOneLineIf',
+      \ 'sj#js#JoinObjectLiteral',
+      \ ]
 augroup END
 
 " Javascript lib syntax setup
@@ -650,6 +670,8 @@ let g:tagbar_type_javascript = {
         \ 'g:generators',
     \ ],
 \ }
+let g:vim_jsx_pretty_colorful_config = 1
+let g:tagalong_additional_filetypes = ['javascript']
 " }}}
 " ============================= SCSS ===================================== {{{
 augroup SCSS
