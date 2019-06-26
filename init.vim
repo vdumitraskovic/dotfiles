@@ -651,6 +651,7 @@ augroup JavaScript
       \ 'sj#js#JoinOneLineIf',
       \ 'sj#js#JoinObjectLiteral',
       \ ]
+  autocmd FileType javascript let b:delimitMate_matchpairs = "(:),[:],{:}"
 augroup END
 
 " Javascript lib syntax setup
