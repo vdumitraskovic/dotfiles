@@ -137,6 +137,7 @@ bindkey '^ ' autosuggest-execute
 
 # Config FZF
 export FZF_DEFAULT_COMMAND="rg --files"
+export FZF_TMUX=1
 
 source ~/.zsh_secret
 
