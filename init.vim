@@ -86,7 +86,7 @@ function! InstallCoc(plugin) abort
 endfunction
 
 command! PackagerInstall call PackagerInit() | call packager#install()
-command! PackagerUpdate call PackagerInit() | call packager#update()
+command! -bang PackagerUpdate call PackagerInit() | call packager#update({ 'force_hooks': '<bang>' })
 command! PackagerClean call PackagerInit() | call packager#clean()
 command! PackagerStatus call PackagerInit() | call packager#status()
 " }}}
@@ -329,6 +329,18 @@ nnoremap <leader>n :let [&nu, &rnu] = [!&rnu, &nu+&rnu==1]<cr>
 " CtrlSF shortcut
 nmap <S-F7> <Plug>CtrlSFCwordExec
 nmap <F19> <Plug>CtrlSFCwordExec
+
+" Toggle syntax
+function! ToggleSyntax()
+  if exists('b:old_syntax')
+    let &l:syntax=b:old_syntax
+    unlet b:old_syntax
+  else
+    let b:old_syntax=&l:syntax
+    set syntax=
+  endif
+endfunction
+nnoremap <leader>S :call ToggleSyntax()<cr>
 " }}}
 " ======================== Visual settings =============================== {{{
 set nolazyredraw
@@ -377,7 +389,7 @@ augroup EditorFocus
 augroup END
 
 set foldmethod=syntax
-set foldlevelstart=6
+set foldlevelstart=7
 
 set wildignorecase
 
@@ -460,7 +472,9 @@ endfunction
 augroup colorscheme
   autocmd ColorScheme * call <sid>tweak_theme()
 augroup end
-autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
+augroup vimreload
+  autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
+augroup end
 
 " Airline
 let g:airline_powerline_fonts = 0
@@ -520,7 +534,7 @@ let g:delimitMate_expand_space = 1
 
 " Gitgutter tweak https://github.com/airblade/vim-gitgutter/issues/502
 augroup GitGutter
-  autocmd BufWritePost * GitGutter
+  autocmd BufWritePost,WinEnter * GitGutter
 augroup END
 
 " Split join config
@@ -623,7 +637,8 @@ augroup Snippets
   " Enable es6 snippets for javascript by default
   autocmd FileType javascript,javascript.jsx UltiSnipsAddFiletypes javascript-es6
   " Enable jsx snippets
-  autocmd FileType javascript.jsx UltiSnipsAddFiletypes javascript-react
+  autocmd FileType javascript,javascript.jsx UltiSnipsAddFiletypes javascript-es6-react
+  autocmd FileType javascript,javascript.jsx UltiSnipsAddFiletypes javascript-react
 augroup END
 " }}}
 " ========================== Javascript ================================== {{{
