@@ -593,7 +593,7 @@ let g:sneak#use_ic_scs = 1
 " }}}
 " ======================== Writing plugins =============================== {{{
 let g:vimwiki_folding = 'syntax'
-
+let g:vimwiki_list = [{'path': '~/vimwiki/'}, {'path': '~/localwiki/'}]
 " let g:CCSpellCheckEnable = 1
 
 " Goyo + Limelight
