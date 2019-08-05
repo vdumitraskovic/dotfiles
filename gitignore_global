@@ -16,3 +16,5 @@ launch.json
 .idea
 .projections.json
 .vscode
+.bloop
+.metals
