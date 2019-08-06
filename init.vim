@@ -532,9 +532,14 @@ let g:wordmotion_prefix = '<Leader>'
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_expand_space = 1
 
-" Gitgutter tweak https://github.com/airblade/vim-gitgutter/issues/502
+" Gitgutter
 augroup GitGutter
+  " tweak https://github.com/airblade/vim-gitgutter/issues/502
   autocmd BufWritePost,WinEnter * GitGutter
+  " disable realtime update
+  autocmd VimEnter * exe "autocmd! gitgutter CursorHold,CursorHoldI"
+  " enable gitgutter on update
+  autocmd BufWritePost * GitGutter
 augroup END
 
 " Split join config
