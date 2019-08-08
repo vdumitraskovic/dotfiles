@@ -393,6 +393,9 @@ set foldlevelstart=7
 
 set wildignorecase
 
+" Tweak diff
+set diffopt+=algorithm:histogram,indent-heuristic
+
 " Always use vertical diffs
 set diffopt+=vertical
 
