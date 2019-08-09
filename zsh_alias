@@ -45,7 +45,14 @@ alias cmus='TMUX= tmux new-session -A -D -s cmus "$(whence -p cmus)" \; set-opti
 # FZF goodies
 alias preview="fzf --preview 'if file -i {}|grep -q binary; then file -b {}; else bat --color \"always\" --line-range :40 {}; fi'"
 alias p=preview
-alias v='nvim $(preview)'
+
+function openNeovimFile() {
+  set +x
+  if [[ $1 ]] then
+    nvim $1
+  fi
+}
+alias v='openNeovimFile $(preview)'
 
 function open() {
   set +x
