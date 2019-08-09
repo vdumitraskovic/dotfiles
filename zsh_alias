@@ -70,3 +70,4 @@ function PR() {
 }
 
 alias \]='open'
+alias n=nvim
