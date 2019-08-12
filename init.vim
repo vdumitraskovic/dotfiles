@@ -106,6 +106,18 @@ let g:tmux_navigator_disable_when_zoomed = 1
 augroup terminal
   autocmd TermOpen * startinsert
 augroup end
+
+function! Jump(motion) range
+  let cnt = v:count1
+  let save = getreg('/')
+  mark '
+  while cnt > 0
+    silent! execute a:motion
+    let cnt = cnt - 1
+  endwhile
+  call histdel('/', -1)
+  call setreg('/', save)
+endfunction
 " }}}
 " ======================= Files and folders=============================== {{{
 set fileformats=unix,dos
@@ -671,10 +683,10 @@ augroup END
 " }}}
 " ========================== Javascript ================================== {{{
 augroup JavaScript
-  autocmd FileType javascript,javascript.jsx setlocal include=from[\ ]
+  autocmd FileType javascript setlocal include=from[\ ]
   " Setup errorformat for Jest
-  autocmd FileType javascript,javascript.jsx setlocal errorformat=%.%#\ at\ %f:%l:%c,%.%#\ at\ %.%#(%f:%l:%c)
-  autocmd FileType javascript,javascript.jsx call importjs#Init()
+  autocmd FileType javascript setlocal errorformat=%.%#\ at\ %f:%l:%c,%.%#\ at\ %.%#(%f:%l:%c)
+  autocmd FileType javascript call importjs#Init()
   autocmd FileType javascript let b:splitjoin_split_callbacks = [
       \ 'sj#html#SplitTags',
       \ 'sj#html#SplitAttributes',
@@ -695,6 +707,8 @@ augroup JavaScript
       \ 'sj#js#JoinObjectLiteral',
       \ ]
   autocmd FileType javascript let b:delimitMate_matchpairs = "(:),[:],{:}"
+  autocmd FileType javascript nnoremap <silent> <buffer> ]] :call Jump('/function\\|.*=>\\|<\a')<cr>
+  autocmd Filetype javascript nnoremap <silent> <buffer> [[ :call Jump('?function\\|.*=>\\|<\a')<cr>
 augroup END
 
 " Javascript lib syntax setup
