@@ -341,6 +341,8 @@ function! ToggleSyntax()
   endif
 endfunction
 nnoremap <leader>S :call ToggleSyntax()<cr>
+
+nnoremap <s-tab> za
 " }}}
 " ======================== Visual settings =============================== {{{
 set nolazyredraw
