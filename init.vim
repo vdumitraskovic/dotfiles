@@ -239,7 +239,10 @@ let g:ctrlp_map = ''
 noremap <C-p> :Files<CR>
 
 " Open NERDTree for opened file
-noremap g<C-n> :NERDTreeFind<cr>
+noremap <F22> :NERDTreeFind<cr>
+
+" NERDTree like vim-vinegar.
+nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : expand('%:p:h')<CR><CR>
 
 " Create new file if doesn't exist
 function! s:create_file(filename)
@@ -256,7 +259,7 @@ endfunction
 map <Leader>gf :call <SID>create_file(expand('<cfile>'))<cr>
 
 " NERDTree
-map <C-n> :NERDTreeToggle<CR>
+map <F10> :NERDTreeToggle<CR>
 
 " Autoformat
 nnoremap <F2> :Neoformat<CR>
