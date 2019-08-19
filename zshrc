@@ -136,7 +136,7 @@ zle -N zle-keymap-select
 bindkey '^ ' autosuggest-execute
 
 # Config FZF
-export FZF_DEFAULT_COMMAND="rg --files"
+export FZF_DEFAULT_COMMAND="rg --files --hidden"
 export FZF_TMUX=1
 
 source ~/.zsh_secret
