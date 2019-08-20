@@ -58,7 +58,6 @@ function! PackagerInit() abort
   call packager#add('mtth/scratch.vim')
   call packager#add('chaoren/vim-wordmotion')
   call packager#add('ludovicchabant/vim-gutentags')
-  call packager#add('majutsushi/tagbar')
   call packager#add('junegunn/fzf')
   call packager#add('junegunn/fzf.vim')
   call packager#add('PeterRincker/vim-argumentative')
@@ -76,6 +75,7 @@ function! PackagerInit() abort
   call packager#add('christoomey/vim-tmux-navigator')
   call packager#add('machakann/vim-highlightedyank')
   call packager#add('AndrewRadev/tagalong.vim')
+  call packager#add('liuchengxu/vista.vim')
 endfunction
 
 function! InstallCoc(plugin) abort
@@ -118,6 +118,13 @@ function! Jump(motion) range
   call histdel('/', -1)
   call setreg('/', save)
 endfunction
+
+" Vista settings
+let g:vista_executive_for = {
+  \ 'javascript': 'coc',
+  \ 'scala': 'coc',
+  \ }
+let g:vista#renderer#enable_icon = 0
 " }}}
 " ======================= Files and folders=============================== {{{
 set fileformats=unix,dos
@@ -274,8 +281,8 @@ nnoremap <F11> :Goyo<CR>
 noremap <S-F1> :helpclose<CR>
 noremap <F13> :helpclose<CR>
 
-" Open tagbar
-nmap <F8> :TagbarToggle<CR>
+" Open vista.vim
+nmap <F8> :Vista!!<CR>
 
 " Show git status
 nnoremap <F9> :Gstatus<CR>
