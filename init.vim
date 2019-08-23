@@ -81,7 +81,7 @@ function! InstallCoc(plugin) abort
   exe '!cd '.a:plugin.dir.' && yarn install'
   call coc#add_extension('coc-tsserver', 'coc-html', 'coc-css', 'coc-json')
   call coc#config('codeLens.enable', 'true')
-  call coc#config('coc.preferences.formatOnType', 'true')
+  call coc#config('coc.preferences.formatOnType', 'false')
 endfunction
 
 command! PackagerInstall call PackagerInit() | call packager#install()
@@ -672,7 +672,7 @@ augroup END
 " }}}
 " ========================== Javascript ================================== {{{
 augroup JavaScript
-  autocmd FileType javascript setlocal include=from[\ ]
+  autocmd FileType javascript setlocal include=^\\s*[^\/]\\+\\(from\\\|require(['\"]\\)
   " Setup errorformat for Jest
   autocmd FileType javascript setlocal errorformat=%.%#\ at\ %f:%l:%c,%.%#\ at\ %.%#(%f:%l:%c)
   autocmd FileType javascript call importjs#Init()
@@ -722,11 +722,11 @@ let g:tagalong_additional_filetypes = ['javascript']
 " }}}
 " ============================= SCSS ===================================== {{{
 augroup SCSS
-  autocmd FileType scss setlocal sw=4
+  autocmd FileType scss setlocal sw=2
 augroup END
 " }}}
 " ============================= HTML ===================================== {{{
 " Configure closetag plugin
-let g:closetag_filenames = '*.html,*.jsx,*.mjml'
+let g:closetag_filenames = '*.html,*.jsx,*.js,*.mjml'
 " }}}
 " vim:foldenable:foldmethod=marker
