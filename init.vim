@@ -32,7 +32,6 @@ function! PackagerInit() abort
   call packager#add('sheerun/vim-polyglot')
   call packager#add('tpope/vim-commentary')
   call packager#add('romainl/flattened')
-  call packager#add('lifepillar/vim-solarized8')
   call packager#add('airblade/vim-gitgutter')
   call packager#add('vim-airline/vim-airline')
   call packager#add('vim-airline/vim-airline-themes')
@@ -442,39 +441,19 @@ let g:vimwiki_hl_headers = 1
 set termguicolors
 let g:enable_bold_font=1
 let g:enable_italic_font=1
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
-let g:onedark_terminal_italics = 1
-let g:gruvbox_bold      = 1
-let g:gruvbox_italic    = 1
-let g:gruvbox_underline = 1
-let g:gruvbox_undercurl = 1
-let g:solarized_extra_hi_groups = 1
-let g:solarized_statusline = 'low'
-let g:solarized_term_italics = 1
 let g:nord_italic = 1
 let g:nord_italic_comments = 1
 let g:nord_underline = 1
 let g:nord_comment_brightness = 5
 let g:nord_cursor_line_number_background = 1
-" set background=light
 let &background=g:background
-" colorscheme dracula
-" colorscheme flatcolor
-" colorscheme gruvbox
-" colorscheme PaperColor
-" colorscheme OceanicNext
-" colorscheme solarized8_high
-" colorscheme flattened_dark
-" colorscheme carbonized-light
 
 " augroup nord-overrides
 "   autocmd!
 "   " autocmd ColorScheme nord highlight Folded cterm=none gui=none ctermbg=0 ctermfg=8 guibg=#2E3440 guifg=#66738E
 " augroup END
 
-" colorscheme flattened_light
-colorscheme solarized8
+colorscheme flattened_light
 
 function! s:tweak_theme() abort
   set fillchars+=vert:\│
@@ -637,7 +616,7 @@ function! VimwikiLinkHandler(link)
     return 0
   endif
   let link_infos = vimwiki#base#resolve_link(link)
-  if link_infos.filename == ''
+  if link_infos.filename ==# ''
     echomsg 'Vimwiki Error: Unable to resolve link!'
     return 0
   else
