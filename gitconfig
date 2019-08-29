@@ -27,3 +27,5 @@
 	autosquash = true
 [pull]
 	rebase = true
+[rerere]
+	enabled = true
