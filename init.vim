@@ -398,10 +398,22 @@ function! s:focus_enter()
   if &l:number
     set relativenumber
   endif
+  let w:airline_section_a = g:airline_section_a
+  let w:airline_section_b = g:airline_section_b
+  let w:airline_section_c = g:airline_section_c
+  let w:airline_section_x = g:airline_section_x
+  let w:airline_section_y = g:airline_section_y
+  let w:airline_section_z = g:airline_section_z
 endfunction
 function! s:focus_leave()
   set nocursorline
   set norelativenumber
+  let w:airline_section_a = '%f'
+  let w:airline_section_b = ''
+  let w:airline_section_c = ''
+  let w:airline_section_x = ''
+  let w:airline_section_y = ''
+  let w:airline_section_z = ''
 endfunction
 
 augroup EditorFocus
@@ -486,6 +498,8 @@ augroup end
 let g:airline_powerline_fonts = 0
 let g:airline_symbols_ascii = 1
 let g:airline_highlighting_cache = 1
+let g:airline_exclude_preview = 1
+let g:airline_focuslost_inactive = 1
 set noshowmode
 
 " WhichKey tweak
