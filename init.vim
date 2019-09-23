@@ -31,11 +31,9 @@ function! PackagerInit() abort
   call packager#add('tpope/vim-repeat')
   call packager#add('sheerun/vim-polyglot')
   call packager#add('tpope/vim-commentary')
-  call packager#add('romainl/flattened')
   call packager#add('airblade/vim-gitgutter')
   call packager#add('vim-airline/vim-airline')
   call packager#add('vim-airline/vim-airline-themes')
-  call packager#add('arcticicestudio/nord-vim')
   call packager#add('w0rp/ale')
   call packager#add('tpope/vim-fugitive')
   call packager#add('dyng/ctrlsf.vim')
@@ -75,6 +73,7 @@ function! PackagerInit() abort
   call packager#add('machakann/vim-highlightedyank')
   call packager#add('AndrewRadev/tagalong.vim')
   call packager#add('liuchengxu/vista.vim')
+  call packager#add('reedes/vim-colors-pencil')
 endfunction
 
 function! InstallCoc(plugin) abort
@@ -457,19 +456,12 @@ let g:vimwiki_hl_headers = 1
 set termguicolors
 let g:enable_bold_font=1
 let g:enable_italic_font=1
-let g:nord_italic = 1
-let g:nord_italic_comments = 1
-let g:nord_underline = 1
-let g:nord_comment_brightness = 5
-let g:nord_cursor_line_number_background = 1
 let &background=g:background
 
-" augroup nord-overrides
-"   autocmd!
-"   " autocmd ColorScheme nord highlight Folded cterm=none gui=none ctermbg=0 ctermfg=8 guibg=#2E3440 guifg=#66738E
-" augroup END
-
-colorscheme flattened_light
+let g:pencil_higher_contrast_ui=0
+let g:pencil_terminal_italics=1
+colorscheme pencil
+let g:airline_theme='pencil'
 
 function! s:tweak_theme() abort
   set fillchars+=vert:\│
@@ -480,16 +472,12 @@ function! s:tweak_theme() abort
   highlight MatchParen cterm=bold gui=bold
   highlight MatchWord cterm=bold gui=bold
 
-  highlight ALEErrorSign ctermbg=254 ctermfg=160 guibg=#eee8d5 guifg=#dc322f
+  highlight ALEErrorSign ctermbg=NONE ctermfg=160 guibg=NONE guifg=#dc322f
   highlight ALEVirtualTextError ctermfg=160 guifg=#dc322f
-  highlight ALEWarningSign ctermbg=254 ctermfg=32 guibg=#eee8d5 guifg=#268bd2
+  highlight ALEWarningSign ctermbg=NONE ctermfg=32 guibg=NONE guifg=#268bd2
   highlight ALEVirtualTextWarning ctermfg=32 guifg=#268bd2
 
-  highlight HighlightedyankRegion ctermbg=254 guibg=#eee8d5
-
-  " highlight Comment ctermbg=0 guibg=NONE ctermfg=1 guifg=#999999
-  " highlight CCSpellBad cterm=underline ctermfg=11 gui=underline guifg=#BF616A
-  highlight CocHighlightText ctermbg=254 guibg=#eee8d5
+  highlight HighlightedyankRegion ctermbg=254 guibg=#dddddd
 endfunction
 augroup colorscheme
   autocmd ColorScheme * call <sid>tweak_theme()
