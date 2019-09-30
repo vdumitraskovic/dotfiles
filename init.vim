@@ -569,6 +569,7 @@ if !exists('g:ale_fixers')
 endif
 let g:ale_fixers['*'] = ['remove_trailing_lines', 'trim_whitespace']
 let g:ale_fixers.javascript = ['eslint']
+let g:ale_fixers.css = ['stylelint', 'prettier']
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_filetype_changed = 1
 let g:ale_lint_on_text_changed = 1
