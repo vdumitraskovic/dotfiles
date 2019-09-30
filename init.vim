@@ -205,6 +205,16 @@ nmap [L :lfirst<CR>
 " Move to the last loclist
 nmap ]L :llast<CR>
 
+nnoremap <Down> :cnext<cr>
+nnoremap <Up> :cprevious<cr>
+nnoremap <Right> :cnfile<cr>
+nnoremap <Left> :cpfile<cr>
+
+nnoremap <S-Down> :lnext<cr>
+nnoremap <S-Up> :lprevious<cr>
+nnoremap <S-Right> :lnfile<cr>
+nnoremap <S-Left> :lpfile<cr>
+
 " Tabs mapping
 " Open new tab
 nmap <leader>T :tabnew<CR>
