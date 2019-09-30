@@ -678,11 +678,11 @@ augroup END
 " }}}
 " ========================== Javascript ================================== {{{
 augroup JavaScript
-  autocmd FileType javascript setlocal include=^\\s*[^\/]\\+\\(from\\\|require(['\"]\\)
+  autocmd FileType javascript,javascriptreact setlocal include=^\\s*[^\/]\\+\\(from\\\|require(['\"]\\)
   " Setup errorformat for Jest
-  autocmd FileType javascript setlocal errorformat=%.%#\ at\ %f:%l:%c,%.%#\ at\ %.%#(%f:%l:%c)
-  autocmd FileType javascript call importjs#Init()
-  autocmd FileType javascript let b:splitjoin_split_callbacks = [
+  autocmd FileType javascript,javascriptreact setlocal errorformat=%.%#\ at\ %f:%l:%c,%.%#\ at\ %.%#(%f:%l:%c)
+  autocmd FileType javascript,javascriptreact call importjs#Init()
+  autocmd FileType javascript,javascriptreact let b:splitjoin_split_callbacks = [
       \ 'sj#html#SplitTags',
       \ 'sj#html#SplitAttributes',
       \ 'sj#js#SplitArray',
@@ -692,7 +692,7 @@ augroup JavaScript
       \ 'sj#js#SplitArgs'
       \ ]
 
-  autocmd FileType javascript let b:splitjoin_join_callbacks = [
+  autocmd FileType javascript,javascriptreact let b:splitjoin_join_callbacks = [
       \ 'sj#html#JoinAttributes',
       \ 'sj#html#JoinTags',
       \ 'sj#js#JoinArray',
@@ -701,9 +701,9 @@ augroup JavaScript
       \ 'sj#js#JoinOneLineIf',
       \ 'sj#js#JoinObjectLiteral',
       \ ]
-  autocmd FileType javascript let b:delimitMate_matchpairs = "(:),[:],{:}"
-  autocmd FileType javascript nnoremap <silent> <buffer> ]] :call Jump('/function\\|.*=>\\|<\a')<cr>
-  autocmd Filetype javascript nnoremap <silent> <buffer> [[ :call Jump('?function\\|.*=>\\|<\a')<cr>
+  autocmd FileType javascript,javascriptreact let b:delimitMate_matchpairs = "(:),[:],{:}"
+  autocmd FileType javascript,javascriptreact nnoremap <silent> <buffer> ]] :call Jump('/function\\|.*=>\\|<\a')<cr>
+  autocmd Filetype javascript,javascriptreact nnoremap <silent> <buffer> [[ :call Jump('?function\\|.*=>\\|<\a')<cr>
 augroup END
 
 " Javascript lib syntax setup
