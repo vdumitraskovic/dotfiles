@@ -179,6 +179,7 @@ nmap [B :bfirst<CR>
 nmap ]B :blast<CR>
 " Close all buffers but open one
 nmap <leader>bo :silent w <BAR> :silent %bd <BAR> e#<CR>
+nnoremap <BS> <C-^>
 
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
