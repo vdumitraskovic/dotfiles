@@ -575,6 +575,14 @@ let g:splitjoin_html_attributes_bracket_on_new_line = 1
 augroup COC
   autocmd FileType javascript,typescript,json setl formatexpr=CocAction('formatSelected')
 augroup end
+
+" Codi settings
+let g:codi#interpreters = {
+      \ 'scala': {
+        \ 'bin': 'scala',
+        \ 'prompt': 'scala> '
+        \ }
+      \ }
 " }}}
 " ======================== Linter settings =============================== {{{
 " Ale config
