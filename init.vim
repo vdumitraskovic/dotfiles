@@ -377,7 +377,11 @@ function! ToggleSyntax()
 endfunction
 nnoremap <leader>S :call ToggleSyntax()<cr>
 
+" Easy toggle fold
 nnoremap <s-tab> za
+
+" Easy repeat macro
+nnoremap <CR> @@<CR>
 " }}}
 " ======================== Visual settings =============================== {{{
 set nolazyredraw
