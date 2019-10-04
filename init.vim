@@ -636,6 +636,7 @@ augroup END
 " Sneak setup
 let g:sneak#s_next = 1
 let g:sneak#use_ic_scs = 1
+let g:sneak#label = 1
 " }}}
 " ======================== Writing plugins =============================== {{{
 let g:vimwiki_folding = 'syntax'
