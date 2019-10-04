@@ -103,6 +103,9 @@ alias mux="tmuxinator"
 
 source ~/.zsh_alias
 
+# Prefer color in commands
+export CLICOLOR=1
+
 # Configure ls colors
 eval `dircolors ~/.dircolors`
 

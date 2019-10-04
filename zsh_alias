@@ -1,6 +1,3 @@
-## Colorize the ls output ##
-alias ls='ls -G --color=auto'
-
 ## Show hidden files ##
 alias l.='ls -d .*'
 
