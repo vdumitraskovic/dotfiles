@@ -532,6 +532,7 @@ set clipboard=unnamed,unnamedplus
 
 " Use prettier for formating javascript
 let g:neoformat_enabled_javascript = ['prettier']
+let g:neoformat_enabled_javascriptreact = ['prettier']
 
 " Emmet settings
 let g:user_emmet_settings = {
@@ -586,12 +587,16 @@ let g:codi#interpreters = {
 " }}}
 " ======================== Linter settings =============================== {{{
 " Ale config
-let g:ale_linters = {'javascript': ['eslint']}
+let g:ale_linters = {
+      \ 'javascript': ['eslint'],
+      \ 'scss': ['stylelint']
+      \ }
 if !exists('g:ale_fixers')
   let g:ale_fixers = {}
 endif
 let g:ale_fixers['*'] = ['remove_trailing_lines', 'trim_whitespace']
 let g:ale_fixers.javascript = ['eslint']
+let g:ale_fixers.javascriptreact = ['eslint']
 let g:ale_fixers.css = ['stylelint', 'prettier']
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_filetype_changed = 1
@@ -694,10 +699,10 @@ augroup END
 let g:UltiSnipsSnippetsDir = g:nvim_base . 'UltiSnips'
 augroup Snippets
   " Enable es6 snippets for javascript by default
-  autocmd FileType javascript,javascript.jsx UltiSnipsAddFiletypes javascript-es6
+  autocmd FileType javascript,javascript.jsx,javascriptreact UltiSnipsAddFiletypes javascript-es6
   " Enable jsx snippets
-  autocmd FileType javascript,javascript.jsx UltiSnipsAddFiletypes javascript-es6-react
-  autocmd FileType javascript,javascript.jsx UltiSnipsAddFiletypes javascript-react
+  autocmd FileType javascript,javascript.jsx,javascriptreact UltiSnipsAddFiletypes javascript-es6-react
+  autocmd FileType javascript,javascript.jsx,javascriptreact UltiSnipsAddFiletypes javascript-react
 augroup END
 " }}}
 " ========================== Javascript ================================== {{{
