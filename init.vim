@@ -710,6 +710,7 @@ augroup Snippets
   " Enable jsx snippets
   autocmd FileType javascript,javascript.jsx,javascriptreact UltiSnipsAddFiletypes javascript-es6-react
   autocmd FileType javascript,javascript.jsx,javascriptreact UltiSnipsAddFiletypes javascript-react
+  autocmd FileType javascriptreact UltiSnipsAddFiletypes javascript
 augroup END
 " }}}
 " ========================== Javascript ================================== {{{
