@@ -387,7 +387,7 @@ nnoremap <leader>S :call ToggleSyntax()<cr>
 nnoremap <s-tab> za
 
 " Easy repeat macro
-nnoremap <CR> @@<CR>
+nnoremap <expr> <CR> empty(&buftype) ? '@@' : '<CR>'
 " }}}
 " ======================== Visual settings =============================== {{{
 set nolazyredraw
