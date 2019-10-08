@@ -159,6 +159,12 @@ let g:NERDTreeDirArrowCollapsible = '-'
 let g:NERDTreeMinimalUI = 1
 " }}}
 " =========================== Shortcuts ================================== {{{
+" Command mode mappings
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <expr> <Tab> getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<C-g>' : '<Tab>'
+cnoremap <expr> <S-Tab> getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<C-t>' : '<S-Tab>'
+
 " Remap leader to '<Space>'
 let g:mapleader="\<Space>"
 
