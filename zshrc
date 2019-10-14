@@ -67,6 +67,7 @@ antigen bundle z
 antigen bundle tmux
 antigen bundle vi-mode
 antigen bundle tmuxinator
+antigen bundle fancy-ctrl-z
 antigen bundle zsh-users/zsh-autosuggestions
 
 antigen theme LasaleFamine/phi-zsh-theme
