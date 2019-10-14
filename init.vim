@@ -162,7 +162,8 @@ let g:NERDTreeMinimalUI = 1
 " Command mode mappings
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
-cnoremap <expr> <Tab> getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<C-g>' : '<Tab>'
+set wildcharm=<C-z>
+cnoremap <expr> <Tab> getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<C-g>' : '<C-z>'
 cnoremap <expr> <S-Tab> getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<C-t>' : '<S-Tab>'
 
 " Remap leader to '<Space>'
