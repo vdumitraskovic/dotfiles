@@ -94,6 +94,7 @@ set ttimeoutlen=100
 set updatetime=100
 set synmaxcol=200
 set mouse=a
+set switchbuf=usetab
 
 let g:test#strategy = 'make'
 
@@ -397,7 +398,7 @@ nnoremap <s-tab> za
 nnoremap <expr> <CR> empty(&buftype) ? '@@' : '<CR>'
 " }}}
 " ======================== Visual settings =============================== {{{
-set nolazyredraw
+set lazyredraw
 set nocursorline
 set nonumber
 set norelativenumber
@@ -537,8 +538,13 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 set showmatch
+set nojoinspaces
+set shiftround
 set inccommand=split
+set shortmess+=a
 set shortmess+=c
+set shortmess+=I
+set shortmess+=s
 
 " Use system clipboard
 set clipboard=unnamed,unnamedplus
