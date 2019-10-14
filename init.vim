@@ -353,6 +353,12 @@ tnoremap <M-j> <C-\><C-n><C-w>j
 tnoremap <M-k> <C-\><C-n><C-w>k
 tnoremap <M-l> <C-\><C-n><C-w>l
 
+" Insert mode movement
+inoremap <M-l> <C-o>l
+inoremap <M-h> <C-o>h
+inoremap <M-j> <C-o>j
+inoremap <M-k> <C-o>k
+
 " Vim-tmux-navigator
 let g:tmux_navigator_no_mappings = 1
 
