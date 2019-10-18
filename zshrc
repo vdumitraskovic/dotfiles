@@ -141,6 +141,7 @@ bindkey '^ ' autosuggest-execute
 
 # Config FZF
 export FZF_DEFAULT_COMMAND="rg --files --hidden"
+export FZF_DEFAULT_OPTS="--color=light"
 export FZF_TMUX=1
 
 source ~/.zsh_secret
