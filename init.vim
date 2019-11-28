@@ -31,10 +31,10 @@ function! PackagerInit() abort
   call packager#add('tpope/vim-repeat')
   call packager#add('sheerun/vim-polyglot')
   call packager#add('tpope/vim-commentary')
-  call packager#add('airblade/vim-gitgutter')
-  call packager#add('vim-airline/vim-airline')
+  call packager#add('airblade/vim-gitgutter', { 'do': function('SetGitGutter'), 'type': 'opt' })
+  call packager#add('vim-airline/vim-airline', { 'type': 'opt' })
   call packager#add('vim-airline/vim-airline-themes')
-  call packager#add('w0rp/ale')
+  call packager#add('w0rp/ale', { 'type': 'opt' })
   call packager#add('tpope/vim-fugitive')
   call packager#add('dyng/ctrlsf.vim')
   call packager#add('vimwiki/vimwiki')
@@ -59,16 +59,16 @@ function! PackagerInit() abort
   call packager#add('junegunn/fzf.vim')
   call packager#add('PeterRincker/vim-argumentative')
   call packager#add('alvan/vim-closetag')
-  call packager#add('scrooloose/nerdtree')
+  call packager#add('scrooloose/nerdtree', { 'type': 'opt' })
   call packager#add('metakirby5/codi.vim')
   call packager#add('amadeus/vim-mjml')
-  call packager#add('neoclide/coc.nvim', { 'do': function('InstallCoc') })
+  call packager#add('neoclide/coc.nvim', { 'do': function('InstallCoc'), 'type': 'opt' })
   call packager#add('janko-m/vim-test')
   call packager#add('tpope/vim-projectionist')
   call packager#add('editorconfig/editorconfig-vim')
-  call packager#add('kamykn/spelunker.vim')
+  call packager#add('kamykn/spelunker.vim', { 'type': 'opt' })
   call packager#add('liuchengxu/vim-which-key')
-  call packager#add('andymass/vim-matchup')
+  call packager#add('andymass/vim-matchup', { 'type': 'opt' })
   call packager#add('christoomey/vim-tmux-navigator')
   call packager#add('machakann/vim-highlightedyank')
   call packager#add('AndrewRadev/tagalong.vim')
@@ -87,6 +87,25 @@ command! PackagerInstall call PackagerInit() | call packager#install()
 command! -bang PackagerUpdate call PackagerInit() | call packager#update({ 'force_hooks': '<bang>' })
 command! PackagerClean call PackagerInit() | call packager#clean()
 command! PackagerStatus call PackagerInit() | call packager#status()
+
+" Deferred plugins
+augroup deferred_plugins
+  autocmd!
+  " packadd! spelunker.vim | packadd! vim-matchup | packadd! vim-gitgutter | packadd! vim-airline | packadd! ale | autocmd! deferred_plugins
+  autocmd CursorHold,CursorHoldI * packadd coc.nvim | packadd nerdtree | packadd spelunker.vim | packadd vim-matchup | packadd vim-gitgutter | packadd vim-airline | packadd ale | doautoall BufRead | autocmd! deferred_plugins
+augroup END
+
+function! SetGitGutter() abort
+  " Gitgutter
+  augroup GitGutter
+    " tweak https://github.com/airblade/vim-gitgutter/issues/502
+    autocmd BufWritePost,WinEnter * GitGutter
+    " disable realtime update
+    autocmd VimEnter * exe "autocmd! gitgutter CursorHold,CursorHoldI"
+    " enable gitgutter on update
+    autocmd BufWritePost * GitGutter
+  augroup END
+endfunction
 " }}}
 " ============================ General =================================== {{{
 set ttimeout
@@ -430,12 +449,14 @@ function! s:focus_enter()
   if &l:number
     set relativenumber
   endif
-  let w:airline_section_a = g:airline_section_a
-  let w:airline_section_b = g:airline_section_b
-  let w:airline_section_c = g:airline_section_c
-  let w:airline_section_x = g:airline_section_x
-  let w:airline_section_y = g:airline_section_y
-  let w:airline_section_z = g:airline_section_z
+  if exists('g:airline_section_a')
+    let w:airline_section_a = g:airline_section_a
+    let w:airline_section_b = g:airline_section_b
+    let w:airline_section_c = g:airline_section_c
+    let w:airline_section_x = g:airline_section_x
+    let w:airline_section_y = g:airline_section_y
+    let w:airline_section_z = g:airline_section_z
+  endif
 endfunction
 function! s:focus_leave()
   set nocursorline
@@ -587,16 +608,6 @@ let g:wordmotion_mappings = {
 " Delimate config
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_expand_space = 1
-
-" Gitgutter
-augroup GitGutter
-  " tweak https://github.com/airblade/vim-gitgutter/issues/502
-  autocmd BufWritePost,WinEnter * GitGutter
-  " disable realtime update
-  autocmd VimEnter * exe "autocmd! gitgutter CursorHold,CursorHoldI"
-  " enable gitgutter on update
-  autocmd BufWritePost * GitGutter
-augroup END
 
 " Split join config
 let g:splitjoin_html_attributes_bracket_on_new_line = 1
