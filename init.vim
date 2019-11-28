@@ -602,7 +602,7 @@ augroup END
 let g:splitjoin_html_attributes_bracket_on_new_line = 1
 
 augroup COC
-  autocmd FileType javascript,typescript,json setl formatexpr=CocAction('formatSelected')
+  autocmd FileType javascript,javascriptreact,typescript,json setl formatexpr=CocAction('formatSelected')
 augroup end
 
 " Codi settings
@@ -728,11 +728,6 @@ augroup END
 " =========================== Snippets =================================== {{{
 let g:UltiSnipsSnippetsDir = g:nvim_base . 'UltiSnips'
 augroup Snippets
-  " Enable es6 snippets for javascript by default
-  autocmd FileType javascript,javascript.jsx,javascriptreact UltiSnipsAddFiletypes javascript-es6
-  " Enable jsx snippets
-  autocmd FileType javascript,javascript.jsx,javascriptreact UltiSnipsAddFiletypes javascript-es6-react
-  autocmd FileType javascript,javascript.jsx,javascriptreact UltiSnipsAddFiletypes javascript-react
   autocmd FileType javascriptreact UltiSnipsAddFiletypes javascript
 augroup END
 " }}}
