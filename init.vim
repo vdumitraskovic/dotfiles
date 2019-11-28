@@ -723,6 +723,16 @@ augroup pencil
   autocmd FileType text         call pencil#init()
   autocmd FileType vimwiki      call pencil#init({'autoformat': 0})
 augroup END
+
+" 2: Highlight only SpellBad.
+let g:spelunker_higlight_type=2
+" Disable default autogroup. (default: 0)
+let g:spelunker_disable_auto_group = 1
+let g:spelunker_check_type = 2
+augroup spelunker
+  autocmd!
+  autocmd CursorHold *.vim,*.js,*.jsx,*.json,*.md if expand('<afile>') != "package-lock.json" | call spelunker#check_displayed_words() | endif
+augroup END
 " }}}
 " =========================== Snippets =================================== {{{
 let g:UltiSnipsSnippetsDir = g:nvim_base . 'UltiSnips'
