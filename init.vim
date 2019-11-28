@@ -574,6 +574,15 @@ inoremap <C-X><C-F> <C-O>:lcd %:p:h<CR><C-X><C-F>
 
 " Vim-wordmotion config
 let g:wordmotion_prefix = '<Leader>'
+let g:wordmotion_mappings = {
+      \ 'w': '<M-w>',
+      \ 'b': '<M-b>',
+      \ 'e': '<M-e>',
+      \ 'ge': '<M-ge>',
+      \ 'aw': '<M-aw>',
+      \ 'iw': '<M-iw>',
+      \ '<C-R><C-W>': '<C-R><M-w>',
+      \ }
 
 " Delimate config
 let g:delimitMate_expand_cr = 1
