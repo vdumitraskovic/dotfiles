@@ -91,7 +91,6 @@ command! PackagerStatus call PackagerInit() | call packager#status()
 " Deferred plugins
 augroup deferred_plugins
   autocmd!
-  " packadd! spelunker.vim | packadd! vim-matchup | packadd! vim-gitgutter | packadd! vim-airline | packadd! ale | autocmd! deferred_plugins
   autocmd CursorHold,CursorHoldI * packadd coc.nvim | packadd nerdtree | packadd spelunker.vim | packadd vim-matchup | packadd vim-gitgutter | packadd vim-airline | packadd ale | doautoall BufRead | autocmd! deferred_plugins
 augroup END
 
