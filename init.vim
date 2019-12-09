@@ -735,7 +735,7 @@ augroup pencil
 augroup END
 
 " 2: Highlight only SpellBad.
-let g:spelunker_higlight_type=2
+let g:spelunker_highlight_type = 2
 " Disable default autogroup. (default: 0)
 let g:spelunker_disable_auto_group = 1
 let g:spelunker_check_type = 2
