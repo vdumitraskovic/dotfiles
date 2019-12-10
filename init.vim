@@ -38,7 +38,7 @@ function! PackagerInit() abort
   call packager#add('tpope/vim-fugitive', { 'type': 'opt' })
   call packager#add('dyng/ctrlsf.vim', { 'type': 'opt' })
   call packager#add('vimwiki/vimwiki', { 'type': 'opt' })
-  call packager#add('AndrewRadev/splitjoin.vim')
+  call packager#add('AndrewRadev/splitjoin.vim', { 'type': 'opt' })
   call packager#add('tpope/vim-surround', { 'type': 'opt' })
   call packager#add('galooshi/vim-import-js')
   call packager#add('sbdchd/neoformat')
@@ -57,7 +57,7 @@ function! PackagerInit() abort
   call packager#add('junegunn/fzf', { 'type': 'opt' })
   call packager#add('junegunn/fzf.vim', { 'type': 'opt' })
   call packager#add('PeterRincker/vim-argumentative', { 'type': 'opt' })
-  call packager#add('alvan/vim-closetag')
+  call packager#add('alvan/vim-closetag', { 'type': 'opt' })
   call packager#add('scrooloose/nerdtree', { 'type': 'opt' })
   call packager#add('metakirby5/codi.vim')
   call packager#add('amadeus/vim-mjml')
@@ -71,7 +71,7 @@ function! PackagerInit() abort
   call packager#add('christoomey/vim-tmux-navigator')
   call packager#add('machakann/vim-highlightedyank')
   call packager#add('AndrewRadev/tagalong.vim')
-  call packager#add('liuchengxu/vista.vim')
+  call packager#add('liuchengxu/vista.vim', { 'type': 'opt' })
   call packager#add('reedes/vim-colors-pencil')
 endfunction
 
@@ -92,6 +92,7 @@ augroup deferred_plugins
   autocmd!
   autocmd CursorHold,CursorHoldI *
         \ packadd ale |
+        \ packadd vim-closetag |
         \ packadd coc.nvim |
         \ packadd ctrlsf.vim |
         \ packadd delimitMate |
@@ -102,6 +103,7 @@ augroup deferred_plugins
         \ packadd goyo.vim |
         \ packadd nerdtree |
         \ packadd spelunker.vim |
+        \ packadd splitjoin.vim |
         \ packadd tpope-vim-abolish |
         \ packadd ultisnips |
         \ packadd vim-airline |
@@ -118,6 +120,9 @@ augroup deferred_plugins
         \ packadd vim-test |
         \ packadd vim-viwiki |
         \ packadd vim-wordmotion |
+        \ packadd vista.vim |
+        \ set updatetime=100 |
+        \ syntax on |
         \ doautoall BufRead |
         \ autocmd! deferred_plugins
 augroup END
@@ -137,10 +142,11 @@ endfunction
 " ============================ General =================================== {{{
 set ttimeout
 set ttimeoutlen=100
-set updatetime=100
+set updatetime=500
 set synmaxcol=200
 set mouse=a
 set switchbuf=usetab
+syntax off
 
 let g:test#strategy = 'make'
 
