@@ -25,7 +25,7 @@ endif
 " ============================ Plugins =================================== {{{
 function! PackagerInit() abort
   packadd vim-packager
-  call packager#init()
+  call packager#init({ 'depth': 1, 'jobs': 8  })
   call packager#add('kristijanhusak/vim-packager', { 'type': 'opt' })
   call packager#add('lambdalisue/vim-backslash')
   call packager#add('tpope/vim-repeat')
