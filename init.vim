@@ -780,6 +780,9 @@ augroup JavaScript
   autocmd Filetype javascript,javascriptreact nnoremap <silent> <buffer> [[ :call Jump('?function\\|.*=>\\|<\a')<cr>
 augroup END
 
+" Enable JSDoc syntax
+let g:javascript_plugin_jsdoc = 1
+
 " Javascript lib syntax setup
 let g:used_javascript_libs = 'underscore,react,ramda'
 "
