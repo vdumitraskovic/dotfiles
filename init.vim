@@ -29,43 +29,42 @@ function! PackagerInit() abort
   call packager#add('kristijanhusak/vim-packager', { 'type': 'opt' })
   call packager#add('lambdalisue/vim-backslash')
   call packager#add('tpope/vim-repeat')
-  call packager#add('sheerun/vim-polyglot')
+  call packager#add('sheerun/vim-polyglot', { 'type': 'opt' })
   call packager#add('tpope/vim-commentary')
   call packager#add('airblade/vim-gitgutter', { 'do': function('SetGitGutter'), 'type': 'opt' })
   call packager#add('vim-airline/vim-airline', { 'type': 'opt' })
-  call packager#add('vim-airline/vim-airline-themes')
+  call packager#add('vim-airline/vim-airline-themes', { 'type': 'opt' })
   call packager#add('w0rp/ale', { 'type': 'opt' })
-  call packager#add('tpope/vim-fugitive')
-  call packager#add('dyng/ctrlsf.vim')
-  call packager#add('vimwiki/vimwiki')
+  call packager#add('tpope/vim-fugitive', { 'type': 'opt' })
+  call packager#add('dyng/ctrlsf.vim', { 'type': 'opt' })
+  call packager#add('vimwiki/vimwiki', { 'type': 'opt' })
   call packager#add('AndrewRadev/splitjoin.vim')
-  call packager#add('tpope/vim-surround')
+  call packager#add('tpope/vim-surround', { 'type': 'opt' })
   call packager#add('galooshi/vim-import-js')
   call packager#add('sbdchd/neoformat')
-  call packager#add('mattn/emmet-vim')
-  call packager#add('tpope/tpope-vim-abolish')
-  call packager#add('junegunn/goyo.vim')
+  call packager#add('mattn/emmet-vim', { 'type': 'opt' })
+  call packager#add('tpope/tpope-vim-abolish', { 'type': 'opt' })
+  call packager#add('junegunn/goyo.vim', { 'type': 'opt' })
   call packager#add('junegunn/limelight.vim')
-  call packager#add('Raimondi/delimitMate')
-  call packager#add('SirVer/ultisnips')
+  call packager#add('Raimondi/delimitMate', { 'type': 'opt' })
+  call packager#add('SirVer/ultisnips', { 'type': 'opt' })
   call packager#add('honza/vim-snippets')
-  call packager#add('reedes/vim-pencil')
-  call packager#add('othree/javascript-libraries-syntax.vim')
-  call packager#add('justinmk/vim-sneak')
+  call packager#add('reedes/vim-pencil', { 'type': 'opt' })
+  call packager#add('justinmk/vim-sneak', { 'type': 'opt' })
   call packager#add('mtth/scratch.vim')
-  call packager#add('chaoren/vim-wordmotion')
-  call packager#add('ludovicchabant/vim-gutentags')
-  call packager#add('junegunn/fzf')
-  call packager#add('junegunn/fzf.vim')
-  call packager#add('PeterRincker/vim-argumentative')
+  call packager#add('chaoren/vim-wordmotion', { 'type': 'opt' })
+  call packager#add('ludovicchabant/vim-gutentags', { 'type': 'opt' })
+  call packager#add('junegunn/fzf', { 'type': 'opt' })
+  call packager#add('junegunn/fzf.vim', { 'type': 'opt' })
+  call packager#add('PeterRincker/vim-argumentative', { 'type': 'opt' })
   call packager#add('alvan/vim-closetag')
   call packager#add('scrooloose/nerdtree', { 'type': 'opt' })
   call packager#add('metakirby5/codi.vim')
   call packager#add('amadeus/vim-mjml')
   call packager#add('neoclide/coc.nvim', { 'do': function('InstallCoc'), 'type': 'opt' })
-  call packager#add('janko-m/vim-test')
+  call packager#add('janko-m/vim-test', { 'type': 'opt' })
   call packager#add('tpope/vim-projectionist')
-  call packager#add('editorconfig/editorconfig-vim')
+  call packager#add('editorconfig/editorconfig-vim', { 'type': 'opt' })
   call packager#add('kamykn/spelunker.vim', { 'type': 'opt' })
   call packager#add('liuchengxu/vim-which-key')
   call packager#add('andymass/vim-matchup', { 'type': 'opt' })
@@ -91,7 +90,36 @@ command! PackagerStatus call PackagerInit() | call packager#status()
 " Deferred plugins
 augroup deferred_plugins
   autocmd!
-  autocmd CursorHold,CursorHoldI * packadd coc.nvim | packadd nerdtree | packadd spelunker.vim | packadd vim-matchup | packadd vim-gitgutter | packadd vim-airline | packadd ale | doautoall BufRead | autocmd! deferred_plugins
+  autocmd CursorHold,CursorHoldI *
+        \ packadd ale |
+        \ packadd coc.nvim |
+        \ packadd ctrlsf.vim |
+        \ packadd delimitMate |
+        \ packadd editorconfig-vim |
+        \ packadd emmet-vim |
+        \ packadd fzf |
+        \ packadd fzf.vim |
+        \ packadd goyo.vim |
+        \ packadd nerdtree |
+        \ packadd spelunker.vim |
+        \ packadd tpope-vim-abolish |
+        \ packadd ultisnips |
+        \ packadd vim-airline |
+        \ packadd vim-airline-themes |
+        \ packadd vim-argumentative |
+        \ packadd vim-fugitive |
+        \ packadd vim-gitgutter |
+        \ packadd vim-gutentags |
+        \ packadd vim-matchup |
+        \ packadd vim-pencil |
+        \ packadd vim-polyglot |
+        \ packadd vim-sneak |
+        \ packadd vim-surround |
+        \ packadd vim-test |
+        \ packadd vim-viwiki |
+        \ packadd vim-wordmotion |
+        \ doautoall BufRead |
+        \ autocmd! deferred_plugins
 augroup END
 
 function! SetGitGutter() abort
