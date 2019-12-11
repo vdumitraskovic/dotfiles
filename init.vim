@@ -39,6 +39,7 @@ function! PackagerInit() abort
   call packager#add('dyng/ctrlsf.vim', { 'type': 'opt' })
   call packager#add('vimwiki/vimwiki', { 'type': 'opt' })
   call packager#add('AndrewRadev/splitjoin.vim', { 'type': 'opt' })
+  call packager#add('tpope/vim-eunuch', { 'type': 'opt' })
   call packager#add('tpope/vim-surround', { 'type': 'opt' })
   call packager#add('galooshi/vim-import-js')
   call packager#add('sbdchd/neoformat')
@@ -110,6 +111,7 @@ augroup deferred_plugins
         \ packadd vim-airline-themes |
         \ packadd vim-argumentative |
         \ packadd vim-fugitive |
+        \ packadd vim-eunuch |
         \ packadd vim-gitgutter |
         \ packadd vim-gutentags |
         \ packadd vim-matchup |
