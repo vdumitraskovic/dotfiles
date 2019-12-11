@@ -125,6 +125,7 @@ augroup deferred_plugins
         \ packadd vista.vim |
         \ set updatetime=100 |
         \ syntax on |
+        \ call <sid>tweak_theme() |
         \ doautoall BufRead |
         \ autocmd! deferred_plugins
 augroup END
