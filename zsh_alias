@@ -55,7 +55,12 @@ function PR() {
 alias \]='open'
 alias n=nvim
 
-# Go to root parent
+# Go to git root parent
 function cdg() {
   cd $(git rev-parse --show-toplevel)
+}
+
+# Go to git worktree dir
+function cdwt() {
+  cd $(git worktree list |fzf|cut -d' ' -f1)
 }
