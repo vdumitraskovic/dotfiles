@@ -120,7 +120,7 @@ augroup deferred_plugins
         \ packadd vim-sneak |
         \ packadd vim-surround |
         \ packadd vim-test |
-        \ packadd vim-viwiki |
+        \ packadd vim-vimwiki |
         \ packadd vim-wordmotion |
         \ packadd vista.vim |
         \ set updatetime=100 |
