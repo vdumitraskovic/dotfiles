@@ -37,7 +37,7 @@ function! PackagerInit() abort
   call packager#add('w0rp/ale', { 'type': 'opt' })
   call packager#add('tpope/vim-fugitive', { 'type': 'opt' })
   call packager#add('dyng/ctrlsf.vim', { 'type': 'opt' })
-  call packager#add('vimwiki/vimwiki', { 'type': 'opt' })
+  call packager#add('vimwiki/vimwiki')
   call packager#add('AndrewRadev/splitjoin.vim', { 'type': 'opt' })
   call packager#add('tpope/vim-eunuch', { 'type': 'opt' })
   call packager#add('tpope/vim-surround', { 'type': 'opt' })
@@ -120,7 +120,6 @@ augroup deferred_plugins
         \ packadd vim-sneak |
         \ packadd vim-surround |
         \ packadd vim-test |
-        \ packadd vim-vimwiki |
         \ packadd vim-wordmotion |
         \ packadd vista.vim |
         \ set updatetime=100 |
