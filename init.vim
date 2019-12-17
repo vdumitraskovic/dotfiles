@@ -50,7 +50,7 @@ function! PackagerInit() abort
   call packager#add('Raimondi/delimitMate', { 'type': 'opt' })
   call packager#add('SirVer/ultisnips', { 'type': 'opt' })
   call packager#add('honza/vim-snippets')
-  call packager#add('reedes/vim-pencil', { 'type': 'opt' })
+  call packager#add('reedes/vim-pencil')
   call packager#add('justinmk/vim-sneak', { 'type': 'opt' })
   call packager#add('mtth/scratch.vim')
   call packager#add('chaoren/vim-wordmotion', { 'type': 'opt' })
@@ -115,7 +115,6 @@ augroup deferred_plugins
         \ packadd vim-gitgutter |
         \ packadd vim-gutentags |
         \ packadd vim-matchup |
-        \ packadd vim-pencil |
         \ packadd vim-polyglot |
         \ packadd vim-sneak |
         \ packadd vim-surround |
