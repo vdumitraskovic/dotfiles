@@ -778,7 +778,7 @@ let g:spelunker_disable_auto_group = 1
 let g:spelunker_check_type = 2
 augroup spelunker
   autocmd!
-  autocmd CursorHold *.vim,*.js,*.jsx,*.json,*.md if expand('<afile>') != "package-lock.json" | call spelunker#check_displayed_words() | endif
+  autocmd CursorHold *.vim,*.js,*.jsx,*.json,*.md,*.wiki,COMMIT_EDITMSG if expand('<afile>') != "package-lock.json" | call spelunker#check_displayed_words() | endif
 augroup END
 " }}}
 " =========================== Snippets =================================== {{{
