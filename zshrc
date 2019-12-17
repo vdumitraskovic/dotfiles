@@ -144,8 +144,6 @@ export FZF_DEFAULT_COMMAND="rg --files --hidden"
 export FZF_DEFAULT_OPTS="--color=light"
 export FZF_TMUX=1
 
-source ~/.zsh_secret
-
 # Configure source-highlight (requires source-highlight package)
 LESSPIPE=`which src-hilite-lesspipe.sh`
 export LESSOPEN="| ${LESSPIPE} %s"
@@ -166,3 +164,5 @@ export NVM_DIR="$HOME/.nvm"
 
 # Increase file limits
 ulimit -n 512
+
+source ~/.zsh_secret
