@@ -31,7 +31,7 @@ function! PackagerInit() abort
   call packager#add('tpope/vim-repeat')
   call packager#add('sheerun/vim-polyglot', { 'type': 'opt' })
   call packager#add('tpope/vim-commentary')
-  call packager#add('airblade/vim-gitgutter', { 'do': function('SetGitGutter'), 'type': 'opt' })
+  call packager#add('airblade/vim-gitgutter', { 'type': 'opt' })
   call packager#add('vim-airline/vim-airline', { 'type': 'opt' })
   call packager#add('vim-airline/vim-airline-themes', { 'type': 'opt' })
   call packager#add('w0rp/ale', { 'type': 'opt' })
@@ -41,14 +41,13 @@ function! PackagerInit() abort
   call packager#add('AndrewRadev/splitjoin.vim', { 'type': 'opt' })
   call packager#add('tpope/vim-eunuch', { 'type': 'opt' })
   call packager#add('tpope/vim-surround', { 'type': 'opt' })
-  call packager#add('galooshi/vim-import-js')
   call packager#add('sbdchd/neoformat')
   call packager#add('mattn/emmet-vim', { 'type': 'opt' })
   call packager#add('tpope/tpope-vim-abolish', { 'type': 'opt' })
   call packager#add('junegunn/goyo.vim', { 'type': 'opt' })
   call packager#add('junegunn/limelight.vim')
   call packager#add('Raimondi/delimitMate', { 'type': 'opt' })
-  call packager#add('SirVer/ultisnips', { 'type': 'opt' })
+  call packager#add('SirVer/ultisnips')
   call packager#add('honza/vim-snippets')
   call packager#add('reedes/vim-pencil')
   call packager#add('justinmk/vim-sneak', { 'type': 'opt' })
@@ -106,7 +105,6 @@ augroup deferred_plugins
         \ packadd spelunker.vim |
         \ packadd splitjoin.vim |
         \ packadd tpope-vim-abolish |
-        \ packadd ultisnips |
         \ packadd vim-airline |
         \ packadd vim-airline-themes |
         \ packadd vim-argumentative |
@@ -122,8 +120,9 @@ augroup deferred_plugins
         \ packadd vim-wordmotion |
         \ packadd vista.vim |
         \ set updatetime=100 |
-        \ syntax on |
+        \ syntax enable |
         \ call <sid>tweak_theme() |
+        \ call SetGitGutter() |
         \ doautoall BufRead |
         \ autocmd! deferred_plugins
 augroup END
@@ -134,9 +133,9 @@ function! SetGitGutter() abort
     " tweak https://github.com/airblade/vim-gitgutter/issues/502
     autocmd BufWritePost,WinEnter * GitGutter
     " disable realtime update
-    autocmd VimEnter * exe "autocmd! gitgutter CursorHold,CursorHoldI"
-    " enable gitgutter on update
-    autocmd BufWritePost * GitGutter
+    autocmd! gitgutter CursorHold,CursorHoldI
+    GitGutterAll
+    call gitgutter#setup_maps()
   augroup END
 endfunction
 " }}}
