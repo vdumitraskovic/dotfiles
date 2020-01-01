@@ -607,6 +607,11 @@ set clipboard=unnamed,unnamedplus
 
 " Use prettier for formating javascript
 let g:neoformat_enabled_javascript = ['prettier']
+let g:neoformat_javascriptreact_prettier = {
+      \ 'exe': 'prettier',
+      \ 'args': ['--stdin', '--stdin-filepath', '"%:p"'],
+      \ 'stdin': 1
+      \ }
 let g:neoformat_enabled_javascriptreact = ['prettier']
 
 " Emmet settings
@@ -785,16 +790,15 @@ augroup END
 " =========================== Snippets =================================== {{{
 let g:UltiSnipsSnippetsDir = g:nvim_base . 'UltiSnips'
 augroup Snippets
-  autocmd FileType javascriptreact UltiSnipsAddFiletypes javascript
+  autocmd FileType javascriptreact,typescript,typescriptreact UltiSnipsAddFiletypes javascript
 augroup END
 " }}}
 " ========================== Javascript ================================== {{{
 augroup JavaScript
-  autocmd FileType javascript,javascriptreact setlocal include=^\\s*[^\/]\\+\\(from\\\|require(['\"]\\)
+  autocmd FileType javascript,javascriptreact,typescript,typescriptreact setlocal include=^\\s*[^\/]\\+\\(from\\\|require(['\"]\\)
   " Setup errorformat for Jest
-  autocmd FileType javascript,javascriptreact setlocal errorformat=%.%#\ at\ %f:%l:%c,%.%#\ at\ %.%#(%f:%l:%c)
-  autocmd FileType javascript,javascriptreact call importjs#Init()
-  autocmd FileType javascript,javascriptreact let b:splitjoin_split_callbacks = [
+  autocmd FileType javascript,javascriptreact,typescript,typescriptreact setlocal errorformat=%.%#\ at\ %f:%l:%c,%.%#\ at\ %.%#(%f:%l:%c)
+  autocmd FileType javascript,javascriptreact,typescript,typescriptreact let b:splitjoin_split_callbacks = [
       \ 'sj#html#SplitTags',
       \ 'sj#html#SplitAttributes',
       \ 'sj#js#SplitArray',
@@ -804,7 +808,7 @@ augroup JavaScript
       \ 'sj#js#SplitArgs'
       \ ]
 
-  autocmd FileType javascript,javascriptreact let b:splitjoin_join_callbacks = [
+  autocmd FileType javascript,javascriptreact,typescript,typescriptreact let b:splitjoin_join_callbacks = [
       \ 'sj#html#JoinAttributes',
       \ 'sj#html#JoinTags',
       \ 'sj#js#JoinArray',
@@ -813,9 +817,9 @@ augroup JavaScript
       \ 'sj#js#JoinOneLineIf',
       \ 'sj#js#JoinObjectLiteral',
       \ ]
-  autocmd FileType javascript,javascriptreact let b:delimitMate_matchpairs = "(:),[:],{:}"
-  autocmd FileType javascript,javascriptreact nnoremap <silent> <buffer> ]] :call Jump('/function\\|.*=>\\|<\a')<cr>
-  autocmd Filetype javascript,javascriptreact nnoremap <silent> <buffer> [[ :call Jump('?function\\|.*=>\\|<\a')<cr>
+  autocmd FileType javascript,javascriptreact,typescript,typescriptreact let b:delimitMate_matchpairs = "(:),[:],{:}"
+  autocmd FileType javascript,javascriptreact,typescript,typescriptreact nnoremap <silent> <buffer> ]] :call Jump('/function\\|.*=>\\|<\a')<cr>
+  autocmd Filetype javascript,javascriptreact,typescript,typescriptreact nnoremap <silent> <buffer> [[ :call Jump('?function\\|.*=>\\|<\a')<cr>
 augroup END
 
 " Enable JSDoc syntax
