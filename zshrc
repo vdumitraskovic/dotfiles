@@ -56,7 +56,8 @@ DISABLE_AUTO_UPDATE="true"
 
 # User configuration
 
-export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+export GOPATH=$HOME/go
+export PATH="$GOPATH/bin:$HOME/bin:$HOME/.local/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 antigen bundle zsh-users/zsh-syntax-highlighting
