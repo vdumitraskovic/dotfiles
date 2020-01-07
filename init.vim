@@ -457,6 +457,8 @@ set nocursorline
 set nonumber
 set norelativenumber
 set signcolumn=yes
+set pumblend=10
+set winblend=10
 
 " Automatically rebalance windows on vim resize
 augroup balance-windows
