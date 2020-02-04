@@ -73,6 +73,7 @@ function! PackagerInit() abort
   call packager#add('AndrewRadev/tagalong.vim')
   call packager#add('liuchengxu/vista.vim', { 'type': 'opt' })
   call packager#add('reedes/vim-colors-pencil')
+  call packager#add('tmux-plugins/vim-tmux-focus-events')
 endfunction
 
 function! InstallCoc(plugin) abort
