@@ -117,9 +117,11 @@ if type nodenv > /dev/null; then
 fi
 
 # Vim mode bindings tweak
+autoload -z edit-command-line
 bindkey '^[OH' beginning-of-line
 bindkey '^[OF' end-of-line
 bindkey '^[[3~' delete-char
+bindkey '^x^x' edit-command-line
 
 # Vim mode indicator
 bindkey -v
