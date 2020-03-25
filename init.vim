@@ -175,6 +175,9 @@ endfunction
 " Vista settings
 let g:vista_executive_for = {
   \ 'javascript': 'coc',
+  \ 'javascriptreact': 'coc',
+  \ 'typescript': 'coc',
+  \ 'typescriptreact': 'coc',
   \ 'scala': 'coc',
   \ }
 let g:vista#renderer#enable_icon = 0
@@ -623,7 +626,9 @@ let g:neoformat_javascriptreact_prettier = {
       \ 'args': ['--stdin', '--stdin-filepath', '"%:p"'],
       \ 'stdin': 1
       \ }
+let g:neoformat_typescriptreact_prettier = g:neoformat_javascriptreact_prettier
 let g:neoformat_enabled_javascriptreact = ['prettier']
+let g:neoformat_enabled_typescriptreact = ['prettier']
 
 " Emmet settings
 let g:user_emmet_settings = {
