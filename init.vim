@@ -571,7 +571,7 @@ colorscheme pencil
 let g:airline_theme='pencil'
 
 function! s:tweak_theme() abort
-  set fillchars+=vert:\│
+  set fillchars+=vert:│
   hi VertSplit guibg=NONE ctermbg=NONE " Just show fills please
   hi SpelunkerSpellBad cterm=undercurl gui=undercurl
   " highlight CCSpellBad cterm=undercurl gui=undercurl
@@ -847,7 +847,6 @@ augroup spelunker
 augroup END
 " }}}
 " =========================== Snippets =================================== {{{
-let g:UltiSnipsSnippetsDir = g:nvim_base . 'UltiSnips'
 augroup Snippets
   autocmd FileType javascriptreact,typescript,typescriptreact UltiSnipsAddFiletypes javascript
 augroup END
