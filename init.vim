@@ -48,7 +48,6 @@ function! PackagerInit() abort
   call packager#add('junegunn/goyo.vim', { 'type': 'opt' })
   call packager#add('junegunn/limelight.vim')
   call packager#add('Raimondi/delimitMate', { 'type': 'opt' })
-  call packager#add('SirVer/ultisnips')
   call packager#add('honza/vim-snippets')
   call packager#add('reedes/vim-pencil')
   call packager#add('justinmk/vim-sneak', { 'type': 'opt' })
@@ -79,7 +78,7 @@ endfunction
 
 function! InstallCoc(plugin) abort
   exe '!cd '.a:plugin.dir.' && yarn install'
-  call coc#add_extension('coc-tsserver', 'coc-html', 'coc-css', 'coc-json')
+  call coc#add_extension('coc-tsserver', 'coc-html', 'coc-css', 'coc-json', 'coc-snippets')
   call coc#config('codeLens.enable', 'true')
   call coc#config('coc.preferences.formatOnType', 'false')
 endfunction
@@ -392,6 +391,21 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 " Use +/- for select selections ranges, needs server support, like: coc-tsserver, coc-python
 vmap <silent> + <Plug>(coc-range-select)
 vmap <silent> - <Plug>(coc-range-select-backword)
+
+" COC Autocomplete/Snippets
+inoremap <silent><expr> <C-n> coc#refresh()
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
 
 " Vim which key
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
