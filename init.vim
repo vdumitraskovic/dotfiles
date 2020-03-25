@@ -363,6 +363,9 @@ nmap <F8> :Vista!!<CR>
 " Show git status
 nnoremap <F9> :Gstatus<CR>
 
+" Fold git gutters
+nnoremap <S-F9> :GitGutterFold<CR>
+
 " Close loclists and quicfix and git status
 nnoremap <F12> :windo lcl\|ccl\|Gstatus\|q<CR>
 nnoremap <F7> :silent execute 'grep -w ' . expand('<cword>')<CR> <BAR> :redraw!<CR>
