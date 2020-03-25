@@ -511,6 +511,7 @@ function! s:focus_enter()
     let w:airline_section_y = g:airline_section_y
     let w:airline_section_z = g:airline_section_z
   endif
+  hi Normal guibg=#f1f1f1
 endfunction
 function! s:focus_leave()
   set nocursorline
@@ -521,6 +522,7 @@ function! s:focus_leave()
   let w:airline_section_x = ''
   let w:airline_section_y = ''
   let w:airline_section_z = ''
+  hi Normal guibg=#e9e9e9
 endfunction
 
 augroup EditorFocus
