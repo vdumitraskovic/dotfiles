@@ -393,9 +393,6 @@ vmap <silent> - <Plug>(coc-range-select-backword)
 " Vim which key
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
-" Sudo write
-cnoremap w!! execute 'silent! write !sudo tee % > /dev/null' <bar> edit!
-
 " Zoom a vim pane, <C-w>= to re-balance
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
