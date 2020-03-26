@@ -27,7 +27,6 @@ function! PackagerInit() abort
   packadd vim-packager
   call packager#init({ 'depth': 1, 'jobs': 8  })
   call packager#add('kristijanhusak/vim-packager', { 'type': 'opt' })
-  call packager#add('blueyed/vim-diminactive')
   call packager#add('lambdalisue/vim-backslash')
   call packager#add('tpope/vim-repeat')
   call packager#add('sheerun/vim-polyglot', { 'type': 'opt' })
@@ -601,9 +600,6 @@ function! s:tweak_theme() abort
   highlight ALEVirtualTextWarning ctermfg=32 guifg=#268bd2
 
   highlight HighlightedyankRegion ctermbg=254 guibg=#dddddd
-
-  " vim-diminactive
-  highlight ColorColumn ctermbg=253 guibg=#e9e9e9
 endfunction
 augroup colorscheme
   autocmd ColorScheme * call <sid>tweak_theme()
@@ -629,10 +625,6 @@ augroup END
 augroup COC
   autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup END
-
-" vim-diminactive
-let g:diminactive_use_colorcolumn = 1
-let g:diminactive_enable_focus = 1
 " }}}
 " ============================ Editing =================================== {{{
 set expandtab
