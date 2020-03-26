@@ -862,11 +862,6 @@ augroup spelunker
   autocmd CursorHold *.vim,*.js,*.jsx,*.json,*.md,*.wiki,COMMIT_EDITMSG if expand('<afile>') != "package-lock.json" | call spelunker#check_displayed_words() | endif
 augroup END
 " }}}
-" =========================== Snippets =================================== {{{
-augroup Snippets
-  autocmd FileType javascriptreact,typescript,typescriptreact UltiSnipsAddFiletypes javascript
-augroup END
-" }}}
 " ========================== Javascript ================================== {{{
 augroup JavaScript
   autocmd FileType javascript,javascriptreact,typescript,typescriptreact setlocal include=^\\s*[^\/]\\+\\(from\\\|require(['\"]\\)
