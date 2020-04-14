@@ -672,6 +672,21 @@ augroup COC
   autocmd CursorHold * silent call CocActionAsync('highlight')
   autocmd CursorHoldI * silent! call CocActionAsync('showSignatureHelp')
 augroup END
+
+" Modified from http://dhruvasagar.com/2013/03/28/vim-better-foldtext
+function! NeatFoldText()
+  let indent_level = indent(v:foldstart)
+  let indent = repeat(' ',indent_level)
+  let line = ' ' . substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
+  let lines_count = v:foldend - v:foldstart + 1
+  let lines_count_text = '-' . printf('%10s', lines_count . ' lines') . ' '
+  let foldchar = matchstr(&fillchars, 'fold:\zs.')
+  let foldtextstart = strpart('+' . repeat(foldchar, v:foldlevel*2) . line, 0, (winwidth(0)*2)/3)
+  let foldtextend = lines_count_text . repeat(foldchar, 8)
+  let foldtextlength = strlen(substitute(foldtextstart . foldtextend, '.', 'x', 'g')) + &foldcolumn
+  return indent . foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
+endfunction
+set foldtext=NeatFoldText()
 " }}}
 " ============================ Editing =================================== {{{
 set expandtab
