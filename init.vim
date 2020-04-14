@@ -293,9 +293,8 @@ nnoremap <BS> <C-^>
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
 nmap <leader>bq :bp <BAR> bd #<CR>
-" nnoremap <leader>bl :b <C-d>
-" nnoremap <leader>bl :CtrlPBuffer<CR>
-nnoremap <leader>bl :Buffers<CR>
+nnoremap <leader><CR> :Buffers<CR>
+nnoremap <leader>l :Lines<CR>
 
 " Quickfix/loclist mapping
 " Move to the previous quickfix
