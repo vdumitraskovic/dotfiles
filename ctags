@@ -16,3 +16,5 @@
 --regex-css=/^([A-Za-z0-9_-]+) = /\1/v,variable,variables/
 --regex-css=/^[ \t]*(@mixin |= ?)([A-Za-z0-9_-]+)/\2/m,mixin,mixins/
 
+--langmap=JavaScript:+.jsx
+--langmap=TypeScript:+.tsx
