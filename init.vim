@@ -220,6 +220,9 @@ let g:vista_executive_for = {
   \ 'scala': 'coc',
   \ }
 let g:vista#renderer#enable_icon = 0
+
+" Fixes bug with NEOVIM with pty for fugitive
+let g:fugitive_pty=0
 " }}}
 " ======================= Files and folders=============================== {{{
 set fileformats=unix,dos
