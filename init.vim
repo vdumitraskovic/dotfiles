@@ -950,6 +950,9 @@ let g:tagbar_type_javascript = {
 \ }
 let g:vim_jsx_pretty_colorful_config = 1
 let g:tagalong_additional_filetypes = ['javascript']
+
+" Gutentags JS sub project
+let g:gutentags_project_root = ['node_modules']
 " }}}
 " ============================= SCSS ===================================== {{{
 augroup SCSS
