@@ -582,7 +582,9 @@ function! s:focus_leave()
   let w:airline_section_x = ''
   let w:airline_section_y = ''
   let w:airline_section_z = ''
-  hi Normal guibg=#e9e9e9
+  if !g:goyo_on
+    hi Normal guibg=#e9e9e9
+  endif
 endfunction
 
 augroup EditorFocus
