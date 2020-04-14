@@ -60,7 +60,7 @@ function! PackagerInit() abort
   call packager#add('scrooloose/nerdtree', { 'type': 'opt' })
   call packager#add('metakirby5/codi.vim')
   call packager#add('amadeus/vim-mjml')
-  call packager#add('neoclide/coc.nvim', { 'do': function('InstallCoc'), 'type': 'opt' })
+  call packager#add('neoclide/coc.nvim', { 'do': 'yarn install --frozen-lockfile', 'type': 'opt' })
   call packager#add('janko-m/vim-test', { 'type': 'opt' })
   call packager#add('tpope/vim-projectionist')
   call packager#add('editorconfig/editorconfig-vim', { 'type': 'opt' })
@@ -75,12 +75,50 @@ function! PackagerInit() abort
   call packager#add('tmux-plugins/vim-tmux-focus-events')
 endfunction
 
-function! InstallCoc(plugin) abort
-  exe '!cd '.a:plugin.dir.' && yarn install'
-  call coc#add_extension('coc-tsserver', 'coc-html', 'coc-css', 'coc-json', 'coc-snippets')
-  call coc#config('codeLens.enable', 'true')
-  call coc#config('coc.preferences.formatOnType', 'false')
-endfunction
+" COC config
+let g:coc_user_config = {
+  \ 'codeLens.enable': v:false,
+  \ 'coc.preferences.formatOnType': v:false,
+  \ 'javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets': v:true,
+  \ 'list.source.location.defaultOptions': ['--number-select'],
+  \ 'suggest.noselect': v:false,
+  \ 'suggest.enablePreview': v:true,
+  \ 'suggest.timeout': 10000,
+  \ 'suggest.acceptSuggestionOnCommitCharacter': v:true,
+  \ 'suggest.autoTrigger': 'none',
+  \ 'suggest.minTriggerInputLength': 3,
+  \ 'diagnostic.displayByAle': v:true,
+  \ 'suggest.triggerCompletionWait': 60,
+  \ 'signature.hideOnTextChange': v:true,
+  \ 'languageserver': {
+      \ 'metals': {
+          \ 'command': 'metals-vim',
+          \ 'rootPatterns': ['build.sbt'],
+          \ 'filetypes': ['scala', 'sbt']
+      \ }
+  \ },
+  \ 'snippets.extends': {
+      \ 'javascriptreact': ['javascript'],
+      \ 'typescript': ['javascript'],
+      \ 'typescriptreact': ['javascript']
+  \ },
+  \ 'emmet.includeLanguages': {
+      \ 'javascriptreact': 'javascript'
+  \ }
+\ }
+
+let g:coc_global_extensions = [
+    \ 'coc-snippets',
+    \ 'coc-json',
+    \ 'coc-css',
+    \ 'coc-html',
+    \ 'coc-tag',
+    \ 'coc-tsserver',
+    \ 'coc-prettier',
+    \ 'coc-vimlsp',
+    \ 'coc-pairs',
+    \ 'coc-yaml',
+\ ]
 
 command! PackagerInstall call PackagerInit() | call packager#install()
 command! -bang PackagerUpdate call PackagerInit() | call packager#update({ 'force_hooks': '<bang>' })
@@ -394,10 +432,13 @@ vmap <silent> - <Plug>(coc-range-select-backword)
 " COC Autocomplete/Snippets
 inoremap <silent><expr> <C-n> coc#refresh()
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
+      \ pumvisible() ? "\<C-n>" :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
+
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -624,6 +665,7 @@ augroup END
 " COC
 augroup COC
   autocmd CursorHold * silent call CocActionAsync('highlight')
+  autocmd CursorHoldI * silent! call CocActionAsync('showSignatureHelp')
 augroup END
 " }}}
 " ============================ Editing =================================== {{{
@@ -692,7 +734,7 @@ let g:delimitMate_expand_space = 1
 let g:splitjoin_html_attributes_bracket_on_new_line = 1
 
 augroup COC
-  autocmd FileType javascript,javascriptreact,typescript,json setl formatexpr=CocAction('formatSelected')
+  autocmd FileType javascript,javascriptreact,typescript,typescriptreact,json setl formatexpr=CocAction('formatSelected')
 augroup end
 
 " Codi settings
