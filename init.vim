@@ -187,7 +187,9 @@ set mouse=a
 set switchbuf=usetab
 syntax off
 
+" Vim-test
 let g:test#strategy = 'make'
+let g:test#javascript#reactscripts#options = '--reporters='.$HOME.'/dotfiles/jest-quickfix-reporter.js --watchAll=false'
 
 " Disable tmux navigator when zooming the Vim pane
 let g:tmux_navigator_disable_when_zoomed = 1
@@ -901,7 +903,7 @@ augroup END
 augroup JavaScript
   autocmd FileType javascript,javascriptreact,typescript,typescriptreact setlocal include=^\\s*[^\/]\\+\\(from\\\|require(['\"]\\)
   " Setup errorformat for Jest
-  autocmd FileType javascript,javascriptreact,typescript,typescriptreact setlocal errorformat=%.%#\ at\ %f:%l:%c,%.%#\ at\ %.%#(%f:%l:%c)
+  autocmd FileType javascript,javascriptreact,typescript,typescriptreact setlocal errorformat=%f:%l:%c:\ %m
   autocmd FileType javascript,javascriptreact,typescript,typescriptreact let b:splitjoin_split_callbacks = [
       \ 'sj#html#SplitTags',
       \ 'sj#html#SplitAttributes',
