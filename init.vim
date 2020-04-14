@@ -73,6 +73,7 @@ function! PackagerInit() abort
   call packager#add('liuchengxu/vista.vim', { 'type': 'opt' })
   call packager#add('reedes/vim-colors-pencil')
   call packager#add('tmux-plugins/vim-tmux-focus-events')
+  call packager#add('wellle/tmux-complete.vim')
 endfunction
 
 " COC config
