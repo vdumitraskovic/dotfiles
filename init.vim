@@ -561,7 +561,6 @@ function! s:focus_enter()
   if g:goyo_on
     return
   endif
-  set nocursorline
   if &l:number
     set relativenumber
   endif
@@ -576,7 +575,6 @@ function! s:focus_enter()
   hi Normal guibg=#f1f1f1
 endfunction
 function! s:focus_leave()
-  set nocursorline
   set norelativenumber
   let w:airline_section_a = '%f'
   let w:airline_section_b = ''
