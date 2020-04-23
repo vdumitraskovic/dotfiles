@@ -391,6 +391,9 @@ vnoremap <F2> :'<,'>Neoformat<CR>
 
 set pastetoggle=<F3>
 
+" Ale toggle
+nnoremap <F5> :ALEToggleBuffer<CR>
+
 " Goyo
 nnoremap <F11> :Goyo<CR>
 
