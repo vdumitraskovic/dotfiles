@@ -116,7 +116,6 @@ let g:coc_global_extensions = [
     \ 'coc-tsserver',
     \ 'coc-prettier',
     \ 'coc-vimlsp',
-    \ 'coc-pairs',
     \ 'coc-yaml',
 \ ]
 
@@ -755,7 +754,7 @@ let g:wordmotion_mappings = {
       \ }
 
 " Delimate config
-let g:delimitMate_expand_cr = 1
+let g:delimitMate_expand_cr = 2
 let g:delimitMate_expand_space = 1
 
 " Split join config
