@@ -68,7 +68,6 @@ function! PackagerInit() abort
   call packager#add('liuchengxu/vim-which-key')
   call packager#add('andymass/vim-matchup', { 'type': 'opt' })
   call packager#add('christoomey/vim-tmux-navigator')
-  call packager#add('machakann/vim-highlightedyank')
   call packager#add('AndrewRadev/tagalong.vim')
   call packager#add('liuchengxu/vista.vim', { 'type': 'opt' })
   call packager#add('reedes/vim-colors-pencil')
@@ -690,6 +689,12 @@ function! NeatFoldText()
   return indent . foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
 endfunction
 set foldtext=NeatFoldText()
+
+augroup HighlightYankedText
+  if exists('##TextYankPost')
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank('Substitute', 300)
+  endif
+augroup END
 " }}}
 " ============================ Editing =================================== {{{
 set expandtab
