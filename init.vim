@@ -160,6 +160,7 @@ augroup deferred_plugins
         \ syntax enable |
         \ call <sid>tweak_theme() |
         \ call SetGitGutter() |
+        \ AirlineRefresh |
         \ doautoall BufRead |
         \ autocmd! deferred_plugins
 augroup END
