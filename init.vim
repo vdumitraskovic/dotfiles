@@ -255,6 +255,12 @@ let g:NERDTreeWinPos = 'right'
 let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '-'
 let g:NERDTreeMinimalUI = 1
+let g:NERDTreeAutoDeleteBuffer = 1
+let g:NERDTreeCreatePrefix='silent keepalt keepjumps'
+let g:NERDTreeQuitOnOpen = 1
+augroup nerdtree
+  autocmd FileType nerdtree setlocal bufhidden=wipe
+augroup END
 " }}}
 " =========================== Shortcuts ================================== {{{
 " Command mode mappings
