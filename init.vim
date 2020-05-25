@@ -894,6 +894,7 @@ function! s:goyo_enter()
   set nonumber
   set noshowmode
   set noshowcmd
+  set laststatus=0
   let g:goyo_on = 1
   ALEDisable
   call <SID>focus_leave()
@@ -904,6 +905,7 @@ function! s:goyo_leave()
   set nonumber
   set showmode
   set showcmd
+  set laststatus&
   let g:goyo_on = 0
   let &background=g:background
   ALEEnable
