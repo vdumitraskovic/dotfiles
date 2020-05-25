@@ -60,3 +60,11 @@ it('${1:test description}', () => {
   $0
 });
 endsnippet
+
+snippet story "Storybook story"
+export default { title: '${1:title}', component: ${2:Component} };
+
+export const Default = () => (
+  <$2 />
+);
+endsnippet
