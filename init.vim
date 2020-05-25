@@ -771,6 +771,10 @@ let g:codi#interpreters = {
         \ 'prompt': 'scala> '
         \ }
       \ }
+
+" Matchup settings
+let g:matchup_matchparen_deferred = 1
+let g:matchup_matchparen_nomode = 'ivV\<c-v>'
 " }}}
 " ======================== Linter settings =============================== {{{
 " Ale config
