@@ -4,14 +4,12 @@
 *.swp
 .tern-project
 .importjs.js
-.env
 npm-debug.log
 tags
 tags.lock
 tags.temp
 typings.json
 typings/
-jsconfig.json
 launch.json
 .idea
 .projections.json
