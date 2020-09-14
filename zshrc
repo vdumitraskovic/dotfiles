@@ -168,4 +168,5 @@ export NVM_DIR="$HOME/.nvm"
 # Increase file limits
 ulimit -n 512
 
+source ~/.zsh.theme
 source ~/.zsh_secret
