@@ -53,8 +53,8 @@ function! PackagerInit() abort
   call packager#add('mtth/scratch.vim')
   call packager#add('chaoren/vim-wordmotion', { 'type': 'opt' })
   call packager#add('ludovicchabant/vim-gutentags', { 'type': 'opt' })
-  call packager#add('junegunn/fzf', { 'type': 'opt' })
-  call packager#add('junegunn/fzf.vim', { 'type': 'opt' })
+  call packager#add('junegunn/fzf')
+  call packager#add('junegunn/fzf.vim')
   call packager#add('PeterRincker/vim-argumentative', { 'type': 'opt' })
   call packager#add('alvan/vim-closetag', { 'type': 'opt' })
   call packager#add('scrooloose/nerdtree', { 'type': 'opt' })
@@ -135,8 +135,6 @@ augroup deferred_plugins
         \ packadd delimitMate |
         \ packadd editorconfig-vim |
         \ packadd emmet-vim |
-        \ packadd fzf |
-        \ packadd fzf.vim |
         \ packadd goyo.vim |
         \ packadd nerdtree |
         \ packadd spelunker.vim |
