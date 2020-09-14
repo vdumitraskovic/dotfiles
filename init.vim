@@ -695,9 +695,7 @@ endfunction
 set foldtext=NeatFoldText()
 
 augroup HighlightYankedText
-  if exists('##TextYankPost')
-    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank('Substitute', 300)
-  endif
+  autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="Substitute", timeout=300}
 augroup END
 " }}}
 " ============================ Editing =================================== {{{
