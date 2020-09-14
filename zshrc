@@ -147,6 +147,29 @@ export FZF_DEFAULT_COMMAND="rg --files --hidden"
 export FZF_DEFAULT_OPTS="--color=light"
 export FZF_TMUX=1
 
+is_in_git_repo() {
+  git rev-parse HEAD > /dev/null 2>&1
+}
+
+git-checkout() {
+    is_in_git_repo || return
+    local branches branch
+    branches=$(git branch -vv --all --sort=-committerdate | sed "s/^\*[[:space:]]*//" | sed "s/^[[:space:]]*//" | sed "s/^remotes\/[^/]*\///")
+    branch=$(fzf --multi <<< $branches | awk '{print $1}')
+    if [[ $branch ]]; then
+      git checkout $branch
+    fi
+}
+
+fzf-gb-widget() {
+  git-checkout
+  zle reset-prompt
+}
+
+zle -N fzf-gb-widget
+bindkey -r '^g'
+bindkey '^g^b' fzf-gb-widget
+
 # Configure source-highlight (requires source-highlight package)
 LESSPIPE=`which src-hilite-lesspipe.sh`
 export LESSOPEN="| ${LESSPIPE} %s"
