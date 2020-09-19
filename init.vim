@@ -721,6 +721,7 @@ let g:neoformat_javascriptreact_prettier = {
       \ 'args': ['--stdin', '--stdin-filepath', '"%:p"'],
       \ 'stdin': 1
       \ }
+let g:neoformat_enabled_typescript = ['prettier']
 let g:neoformat_typescriptreact_prettier = g:neoformat_javascriptreact_prettier
 let g:neoformat_enabled_javascriptreact = ['prettier']
 let g:neoformat_enabled_typescriptreact = ['prettier']
