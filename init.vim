@@ -38,7 +38,6 @@ function! PackagerInit() abort
   call packager#add('airblade/vim-gitgutter', { 'type': 'opt' })
   call packager#add('vim-airline/vim-airline', { 'type': 'opt' })
   call packager#add('vim-airline/vim-airline-themes', { 'type': 'opt' })
-  call packager#add('w0rp/ale', { 'type': 'opt' })
   call packager#add('tpope/vim-fugitive', { 'type': 'opt' })
   call packager#add('dyng/ctrlsf.vim', { 'type': 'opt' })
   call packager#add('vimwiki/vimwiki')
@@ -84,6 +83,7 @@ let g:coc_user_config = {
   \ 'coc.preferences.formatOnType': v:false,
   \ 'coc.preferences.listOfWorkspaceEdit': 'location',
   \ 'javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets': v:true,
+  \ 'javascript.suggestionActions.enabled': v:true,
   \ 'list.source.location.defaultOptions': ['--number-select'],
   \ 'suggest.noselect': v:false,
   \ 'suggest.enablePreview': v:true,
@@ -91,16 +91,14 @@ let g:coc_user_config = {
   \ 'suggest.acceptSuggestionOnCommitCharacter': v:true,
   \ 'suggest.autoTrigger': 'none',
   \ 'suggest.minTriggerInputLength': 3,
-  \ 'diagnostic.displayByAle': v:true,
+  \ 'diagnostic.virtualText': v:true,
+  \ 'diagnostic.virtualTextCurrentLineOnly': v:false,
+  \ 'diagnostic.displayByAle': v:false,
+  \ 'diagnostic.errorSign': '✖',
+  \ 'diagnostic.infoSign': '🛈',
+  \ 'diagnostic.hintSign': '🛈',
   \ 'suggest.triggerCompletionWait': 60,
   \ 'signature.hideOnTextChange': v:true,
-  \ 'languageserver': {
-      \ 'metals': {
-          \ 'command': 'metals-vim',
-          \ 'rootPatterns': ['build.sbt'],
-          \ 'filetypes': ['scala', 'sbt']
-      \ }
-  \ },
   \ 'snippets.extends': {
       \ 'javascriptreact': ['javascript'],
       \ 'typescript': ['javascript'],
@@ -118,9 +116,11 @@ let g:coc_global_extensions = [
     \ 'coc-html',
     \ 'coc-tag',
     \ 'coc-tsserver',
+    \ 'coc-prettier',
     \ 'coc-vimlsp',
     \ 'coc-yaml',
     \ 'coc-styled-components',
+    \ 'coc-eslint',
 \ ]
 
 command! PackagerInstall call PackagerInit() | call packager#install()
@@ -132,7 +132,6 @@ command! PackagerStatus call PackagerInit() | call packager#status()
 augroup deferred_plugins
   autocmd!
   autocmd CursorHold,CursorHoldI *
-        \ packadd ale |
         \ packadd vim-closetag |
         \ packadd coc.nvim |
         \ packadd ctrlsf.vim |
@@ -397,10 +396,6 @@ vnoremap <F2> :'<,'>Neoformat<CR>
 
 set pastetoggle=<F3>
 
-" Ale
-nnoremap <F5> :ALEToggleBuffer<CR>
-nnoremap g! :ALEDetail<CR>
-
 " Goyo
 nnoremap <F11> :Goyo<CR>
 
@@ -443,6 +438,11 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 " Use +/- for select selections ranges, needs server support, like: coc-tsserver, coc-python
 vmap <silent> + <Plug>(coc-range-select)
 vmap <silent> - <Plug>(coc-range-select-backword)
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " COC Autocomplete/Snippets
 inoremap <silent><expr> <C-n> coc#refresh()
@@ -659,10 +659,13 @@ function! s:tweak_theme() abort
   highlight MatchParen cterm=bold gui=bold
   highlight MatchWord cterm=bold gui=bold
 
-  highlight ALEErrorSign ctermbg=NONE ctermfg=160 guibg=NONE guifg=#dc322f
-  highlight ALEVirtualTextError ctermfg=160 guifg=#dc322f
-  highlight ALEWarningSign ctermbg=NONE ctermfg=32 guibg=NONE guifg=#268bd2
-  highlight ALEVirtualTextWarning ctermfg=32 guifg=#268bd2
+  highlight CocErrorSign ctermbg=NONE ctermfg=160 guibg=NONE guifg=#dc322f
+  highlight CocErrorHighlight ctermbg=NONE ctermfg=160 cterm=undercurl guibg=NONE guifg=#dc322f
+  highlight CocVirtualTextError ctermfg=160 guifg=#dc322f
+  highlight CocWarningSign ctermbg=NONE ctermfg=32 guibg=NONE guifg=#268bd2
+  highlight CocInfoSign ctermbg=NONE ctermfg=32 guibg=NONE guifg=#268bd2
+  highlight CocHintSign ctermbg=NONE ctermfg=32 guibg=NONE guifg=#268bd2
+  highlight CocVirtualTextWarning ctermfg=32 guifg=#268bd2
 endfunction
 augroup colorscheme
   autocmd ColorScheme * call <sid>tweak_theme()
@@ -798,34 +801,6 @@ let g:codi#interpreters = {
 let g:matchup_matchparen_deferred = 1
 let g:matchup_matchparen_nomode = 'ivV\<c-v>'
 let g:matchup_matchparen_offscreen = {'method': 'popup'}
-" ======================== Linter settings =============================== {{{
-" Ale config
-let g:ale_linters = {
-      \ 'javascript': ['eslint'],
-      \ 'scss': ['stylelint']
-      \ }
-if !exists('g:ale_fixers')
-  let g:ale_fixers = {}
-endif
-let g:ale_fixers['*'] = ['remove_trailing_lines', 'trim_whitespace']
-let g:ale_fixers.javascript = ['eslint']
-let g:ale_fixers.javascriptreact = ['eslint']
-let g:ale_fixers.typescript = ['eslint']
-let g:ale_fixers.typescriptreact = ['eslint']
-let g:ale_fixers.css = ['stylelint', 'prettier']
-let g:ale_fixers.scss = ['stylelint', 'prettier']
-let g:ale_lint_on_enter = 1
-let g:ale_lint_on_filetype_changed = 1
-let g:ale_lint_on_text_changed = 1
-let g:ale_lint_on_save = 1
-let g:ale_fix_on_save = 1
-let g:ale_set_highlights = 1
-let g:ale_set_signs = 1
-let g:ale_change_sign_column_always = 1
-let g:ale_change_sign_column_color = 0
-let g:ale_virtualtext_cursor = 1
-let g:ale_sign_error = '✕'
-let g:ale_sign_warning = '▲'
 " }}}
 " =========================== Searching ================================== {{{
 set ignorecase
@@ -916,7 +891,6 @@ function! s:goyo_enter()
   set noshowcmd
   set laststatus=0
   let g:goyo_on = 1
-  ALEDisable
   if exists('$TMUX')
     silent !tmux set status off
     silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
@@ -936,7 +910,6 @@ function! s:goyo_leave()
   endif
   let g:goyo_on = 0
   let &background=g:background
-  ALEEnable
   GitGutterBufferEnable
   call <SID>tweak_theme()
   call <SID>focus_enter()
