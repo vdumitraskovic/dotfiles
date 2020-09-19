@@ -594,10 +594,10 @@ function! s:focus_leave()
 endfunction
 
 augroup EditorFocus
-  autocmd! WinEnter * call <SID>focus_enter()
   autocmd! WinLeave * call <SID>focus_leave()
-  autocmd! FocusGained * call <SID>focus_enter()
+  autocmd! WinEnter * call <SID>focus_enter()
   autocmd! FocusLost * call <SID>focus_leave()
+  autocmd! FocusGained * call <SID>focus_enter()
 augroup END
 
 set foldmethod=syntax
