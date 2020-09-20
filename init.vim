@@ -108,7 +108,9 @@ let g:coc_user_config = {
   \ },
   \ 'emmet.includeLanguages': {
       \ 'javascriptreact': 'javascript'
-  \ }
+  \ },
+  \ 'eslint.autoFixOnSave': v:true,
+  \ 'eslint.filetypes': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact']
 \ }
 
 let g:coc_global_extensions = [
@@ -121,6 +123,7 @@ let g:coc_global_extensions = [
     \ 'coc-prettier',
     \ 'coc-vimlsp',
     \ 'coc-yaml',
+    \ 'coc-eslint'
 \ ]
 
 command! PackagerInstall call PackagerInit() | call packager#install()
