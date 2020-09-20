@@ -106,7 +106,9 @@ let g:coc_user_config = {
   \ },
   \ 'emmet.includeLanguages': {
       \ 'javascriptreact': 'javascript'
-  \ }
+  \ },
+  \ 'eslint.autoFixOnSave': v:true,
+  \ 'eslint.filetypes': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact']
 \ }
 
 let g:coc_global_extensions = [
