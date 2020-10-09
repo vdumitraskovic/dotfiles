@@ -71,7 +71,7 @@ antigen bundle tmuxinator
 antigen bundle fancy-ctrl-z
 antigen bundle zsh-users/zsh-autosuggestions
 
-antigen theme LasaleFamine/phi-zsh-theme
+antigen theme cloud
 
 antigen apply
 
