@@ -110,11 +110,6 @@ export CLICOLOR=1
 # Configure ls colors
 eval `dircolors ~/.dircolors`
 
-# Init nodenv
-if type nodenv > /dev/null; then
-  eval "$(nodenv init -)"
-fi
-
 # Vim mode bindings tweak
 autoload -z edit-command-line
 bindkey '^[OH' beginning-of-line
@@ -173,12 +168,6 @@ bindkey '^g^b' fzf-gb-widget
 LESSPIPE=`which src-hilite-lesspipe.sh`
 export LESSOPEN="| ${LESSPIPE} %s"
 export LESS=' -R'
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-[ -s "$HOME/.rvm/scripts/rvm" ] && source ~/.rvm/scripts/rvm
-if type rvm > /dev/null; then
-  export PATH="$HOME/.rvm/bin:$PATH"
-fi
 
 # NVM setup
 export NVM_DIR="$HOME/.nvm"
