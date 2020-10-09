@@ -29,3 +29,7 @@
 	rebase = true
 [rerere]
 	enabled = true
+[submodule]
+	recurse = true
+[status]
+	submoduleSummary = true
