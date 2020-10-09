@@ -21,6 +21,8 @@ alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 
+alias mux="tmuxinator"
+
 alias cmus='tmux new-session -s cmus -d "$(whence -p cmus)" 2> /dev/null; tmux switch-client -t cmus'
 
 alias t='tree -L 1'
