@@ -262,6 +262,8 @@ augroup nerdtree
 augroup END
 " }}}
 " =========================== Shortcuts ================================== {{{
+" Fast quit
+nnoremap ZQ :qa!<cr>
 " Command mode mappings
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
