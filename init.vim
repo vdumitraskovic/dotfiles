@@ -21,6 +21,8 @@ else
     execute '!git clone https://github.com/kristijanhusak/vim-packager ~/.config/nvim/pack/packager/opt/vim-packager'
   endif
 endif
+" Disable ALE's LSP because we're using CoC (check ALE manual for details)
+let g:ale_disable_lsp = 1
 " }}}
 " ============================ Plugins =================================== {{{
 function! PackagerInit() abort
