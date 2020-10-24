@@ -168,8 +168,6 @@ augroup END
 function! SetGitGutter() abort
   " Gitgutter
   augroup GitGutter
-    " tweak https://github.com/airblade/vim-gitgutter/issues/502
-    autocmd BufWritePost,WinEnter * GitGutter
     " disable realtime update
     autocmd! gitgutter CursorHold,CursorHoldI
     GitGutterAll
