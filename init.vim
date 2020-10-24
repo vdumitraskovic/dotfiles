@@ -75,6 +75,7 @@ function! PackagerInit() abort
   call packager#add('reedes/vim-colors-pencil')
   call packager#add('tmux-plugins/vim-tmux-focus-events')
   call packager#add('wellle/tmux-complete.vim')
+  call packager#add('Olical/conjure', { 'tag': 'v4.7.0' })
 endfunction
 
 " COC config
