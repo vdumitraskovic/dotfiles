@@ -892,6 +892,7 @@ endfunction
 " Goyo + Limelight
 function! s:goyo_enter()
   Limelight
+  GitGutterBufferDisable
   set nonumber
   set noshowmode
   set noshowcmd
@@ -910,6 +911,7 @@ function! s:goyo_leave()
   let g:goyo_on = 0
   let &background=g:background
   ALEEnable
+  GitGutterBufferEnable
   call <SID>tweak_theme()
   call <SID>focus_enter()
 endfunction
