@@ -184,6 +184,10 @@ set mouse=a
 set switchbuf=usetab
 syntax off
 
+" Disable default plugins
+let g:loaded_netrwPlugin = 1
+let g:loaded_matchit = 1
+
 " Vim-test
 let g:test#strategy = 'make'
 let g:test#javascript#reactscripts#options = '--reporters='.$HOME.'/dotfiles/jest-quickfix-reporter.js --watchAll=false'
@@ -245,9 +249,6 @@ set hidden
 set wildignore+=.git
 set wildignore+=node_modules,bower_components
 set wildignore+=dist
-
-" Disable NetRW
-let g:loaded_netrwPlugin = 1
 
 " Configure NERDTree
 let g:NERDTreeWinPos = 'right'
