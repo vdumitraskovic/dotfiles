@@ -27,6 +27,7 @@ function! PackagerInit() abort
   packadd vim-packager
   call packager#init({ 'depth': 1, 'jobs': 8  })
   call packager#add('kristijanhusak/vim-packager', { 'type': 'opt' })
+  call packager#add('nvim-treesitter/nvim-treesitter')
   call packager#add('lambdalisue/vim-backslash')
   call packager#add('tpope/vim-repeat')
   call packager#add('sheerun/vim-polyglot', { 'type': 'opt' })
@@ -165,6 +166,7 @@ augroup deferred_plugins
         \ call <sid>tweak_theme() |
         \ call SetGitGutter() |
         \ AirlineRefresh |
+        \ call SetupTreesitter() |
         \ doautoall BufRead |
         \ autocmd! deferred_plugins
 augroup END
@@ -909,12 +911,41 @@ augroup spelunker
   autocmd CursorHold *.vim,*.js,*.jsx,*.json,*.md,*.wiki,COMMIT_EDITMSG if expand('<afile>') != "package-lock.json" | call spelunker#check_displayed_words() | endif
 augroup END
 " }}}
+" ========================== Treesitter ================================== {{{
+function! SetupTreesitter() abort
+lua << END
+  require'nvim-treesitter.configs'.setup {
+    ensure_installed = "all",
+    highlight = { 
+      enable = true,
+    },
+    incremental_selection = {
+      enable = true,
+      keymaps = {
+        init_selection = "gnn",
+        node_incremental = "grn",
+        scope_incremental = "grc",
+        node_decremental = "grm",
+      }
+    },
+  }
+END
+endfunction
+function! TreeSitterFold() abort
+  setlocal foldmethod=expr
+  setlocal foldexpr=nvim_treesitter#foldexpr()
+endfunction
+" }}}
 " ========================== Javascript ================================== {{{
 augroup JavaScript
-  autocmd FileType javascript,javascriptreact,typescript,typescriptreact setlocal include=^\\s*[^\/]\\+\\(from\\\|require(['\"]\\)
+  autocmd Filetype javascript,javascriptreact,typescript,typescriptreact call JavascriptSyntax()
+augroup END
+
+function! JavascriptSyntax() abort
+  setlocal include=^\\s*[^\/]\\+\\(from\\\|require(['\"]\\)
   " Setup errorformat for Jest
-  autocmd FileType javascript,javascriptreact,typescript,typescriptreact setlocal errorformat=%f:%l:%c:\ %m
-  autocmd FileType javascript,javascriptreact,typescript,typescriptreact let b:splitjoin_split_callbacks = [
+  setlocal errorformat=%f:%l:%c:\ %m
+  let b:splitjoin_split_callbacks = [
       \ 'sj#html#SplitTags',
       \ 'sj#html#SplitAttributes',
       \ 'sj#js#SplitArray',
@@ -924,7 +955,7 @@ augroup JavaScript
       \ 'sj#js#SplitArgs'
       \ ]
 
-  autocmd FileType javascript,javascriptreact,typescript,typescriptreact let b:splitjoin_join_callbacks = [
+  let b:splitjoin_join_callbacks = [
       \ 'sj#html#JoinAttributes',
       \ 'sj#html#JoinTags',
       \ 'sj#js#JoinArray',
@@ -933,10 +964,13 @@ augroup JavaScript
       \ 'sj#js#JoinOneLineIf',
       \ 'sj#js#JoinObjectLiteral',
       \ ]
-  autocmd FileType javascript,javascriptreact,typescript,typescriptreact let b:delimitMate_matchpairs = "(:),[:],{:}"
-  autocmd FileType javascript,javascriptreact,typescript,typescriptreact nnoremap <silent> <buffer> ]] :call Jump('/function\\|.*=>\\|<\a')<cr>
-  autocmd Filetype javascript,javascriptreact,typescript,typescriptreact nnoremap <silent> <buffer> [[ :call Jump('?function\\|.*=>\\|<\a')<cr>
-augroup END
+  let b:delimitMate_matchpairs = "(:),[:],{:}"
+
+  call TreeSitterFold()
+
+  nnoremap <silent> <buffer> ]] :call Jump('/function\\|.*=>\\|<\a')<cr>
+  nnoremap <silent> <buffer> [[ :call Jump('?function\\|.*=>\\|<\a')<cr>
+endfunction
 
 " Enable JSDoc syntax
 let g:javascript_plugin_jsdoc = 1
@@ -967,10 +1001,14 @@ let g:gutentags_project_root = ['node_modules']
 " ============================= SCSS ===================================== {{{
 augroup SCSS
   autocmd FileType scss setlocal sw=2
+  autocmd FileType css scss call TreeSitterFold()
 augroup END
 " }}}
 " ============================= HTML ===================================== {{{
 " Configure closetag plugin
 let g:closetag_filenames = '*.html,*.jsx,*.js,*.mjml'
+augroup HTML
+  autocmd FileType html call TreeSitterFold()
+augroup END
 " }}}
 " vim:foldenable:foldmethod=marker
