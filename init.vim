@@ -21,14 +21,15 @@ else
     execute '!git clone https://github.com/kristijanhusak/vim-packager ~/.config/nvim/pack/packager/opt/vim-packager'
   endif
 endif
-" Disable ALE's LSP because we're using CoC (check ALE manual for details)
-let g:ale_disable_lsp = 1
 " }}}
 " ============================ Plugins =================================== {{{
 function! PackagerInit() abort
   packadd vim-packager
   call packager#init({ 'depth': 1, 'jobs': 8  })
   call packager#add('kristijanhusak/vim-packager', { 'type': 'opt' })
+  call packager#add('neovim/nvim-lspconfig', { 'type': 'opt' })
+  call packager#add('nvim-lua/completion-nvim', { 'type': 'opt' })
+  call packager#add('nvim-lua/diagnostic-nvim', { 'type': 'opt' })
   call packager#add('lambdalisue/vim-backslash')
   call packager#add('tpope/vim-repeat')
   call packager#add('sheerun/vim-polyglot', { 'type': 'opt' })
@@ -36,7 +37,6 @@ function! PackagerInit() abort
   call packager#add('airblade/vim-gitgutter', { 'type': 'opt' })
   call packager#add('vim-airline/vim-airline', { 'type': 'opt' })
   call packager#add('vim-airline/vim-airline-themes', { 'type': 'opt' })
-  call packager#add('w0rp/ale', { 'type': 'opt' })
   call packager#add('tpope/vim-fugitive', { 'type': 'opt' })
   call packager#add('dyng/ctrlsf.vim', { 'type': 'opt' })
   call packager#add('vimwiki/vimwiki')
@@ -85,7 +85,6 @@ command! PackagerStatus call PackagerInit() | call packager#status()
 augroup deferred_plugins
   autocmd!
   autocmd CursorHold,CursorHoldI *
-        \ packadd ale |
         \ packadd vim-closetag |
         \ packadd ctrlsf.vim |
         \ packadd delimitMate |
@@ -344,9 +343,6 @@ vnoremap <F2> :'<,'>Neoformat<CR>
 
 set pastetoggle=<F3>
 
-" Ale toggle
-nnoremap <F5> :ALEToggleBuffer<CR>
-
 " Goyo
 nnoremap <F11> :Goyo<CR>
 
@@ -558,10 +554,10 @@ function! s:tweak_theme() abort
   highlight MatchParen cterm=bold gui=bold
   highlight MatchWord cterm=bold gui=bold
 
-  highlight ALEErrorSign ctermbg=NONE ctermfg=160 guibg=NONE guifg=#dc322f
-  highlight ALEVirtualTextError ctermfg=160 guifg=#dc322f
-  highlight ALEWarningSign ctermbg=NONE ctermfg=32 guibg=NONE guifg=#268bd2
-  highlight ALEVirtualTextWarning ctermfg=32 guifg=#268bd2
+  highlight LspDiagnosticsErrorSign ctermbg=NONE ctermfg=160 guibg=NONE guifg=#dc322f
+  highlight LspDiagnosticsError ctermfg=160 guifg=#dc322f
+  highlight LspDiagnosticsHintSign ctermbg=NONE ctermfg=32 guibg=NONE guifg=#268bd2
+  highlight LspDiagnosticsHint ctermfg=32 guifg=#268bd2
 
   highlight HighlightedyankRegion ctermbg=254 guibg=#dddddd
 endfunction
@@ -627,6 +623,15 @@ let g:neoformat_javascriptreact_prettier = {
       \ 'args': ['--stdin', '--stdin-filepath', '"%:p"'],
       \ 'stdin': 1
       \ }
+
+let g:diagnostic_enable_virtual_text = 1
+let g:diagnostic_insert_delay = 1
+sign define LspDiagnosticsErrorSign text=✖
+sign define LspDiagnosticsWarningSign text=⚠
+sign define LspDiagnosticsInformationSign text=ℹ
+sign define LspDiagnosticsHintSign text=➤
+set completeopt=menuone,noinsert,noselect
+
 let g:neoformat_enabled_typescript = ['prettier']
 let g:neoformat_typescriptreact_prettier = g:neoformat_javascriptreact_prettier
 let g:neoformat_enabled_javascriptreact = ['prettier']
@@ -683,33 +688,6 @@ let g:matchup_matchparen_deferred = 1
 let g:matchup_matchparen_nomode = 'ivV\<c-v>'
 " }}}
 " ======================== Linter settings =============================== {{{
-" Ale config
-let g:ale_linters = {
-      \ 'javascript': ['eslint'],
-      \ 'scss': ['stylelint']
-      \ }
-if !exists('g:ale_fixers')
-  let g:ale_fixers = {}
-endif
-let g:ale_fixers['*'] = ['remove_trailing_lines', 'trim_whitespace']
-let g:ale_fixers.javascript = ['eslint']
-let g:ale_fixers.javascriptreact = ['eslint']
-let g:ale_fixers.typescript = ['eslint']
-let g:ale_fixers.typescriptreact = ['eslint']
-let g:ale_fixers.css = ['stylelint', 'prettier']
-let g:ale_fixers.scss = ['stylelint', 'prettier']
-let g:ale_lint_on_enter = 1
-let g:ale_lint_on_filetype_changed = 1
-let g:ale_lint_on_text_changed = 1
-let g:ale_lint_on_save = 1
-let g:ale_fix_on_save = 1
-let g:ale_set_highlights = 1
-let g:ale_set_signs = 1
-let g:ale_change_sign_column_always = 1
-let g:ale_change_sign_column_color = 0
-let g:ale_virtualtext_cursor = 1
-let g:ale_sign_error = '✕'
-let g:ale_sign_warning = '▲'
 " }}}
 " =========================== Searching ================================== {{{
 set ignorecase
@@ -797,7 +775,6 @@ function! s:goyo_enter()
   set noshowcmd
   set laststatus=0
   let g:goyo_on = 1
-  ALEDisable
   call <SID>focus_leave()
 endfunction
 
@@ -809,7 +786,6 @@ function! s:goyo_leave()
   set laststatus&
   let g:goyo_on = 0
   let &background=g:background
-  ALEEnable
   GitGutterBufferEnable
   call <SID>tweak_theme()
   call <SID>focus_enter()
@@ -839,32 +815,67 @@ augroup END
 " }}}
 " ========================== Javascript ================================== {{{
 augroup JavaScript
-  autocmd FileType javascript,javascriptreact,typescript,typescriptreact setlocal include=^\\s*[^\/]\\+\\(from\\\|require(['\"]\\)
-  " Setup errorformat for Jest
-  autocmd FileType javascript,javascriptreact,typescript,typescriptreact setlocal errorformat=%f:%l:%c:\ %m
-  autocmd FileType javascript,javascriptreact,typescript,typescriptreact let b:splitjoin_split_callbacks = [
-      \ 'sj#html#SplitTags',
-      \ 'sj#html#SplitAttributes',
-      \ 'sj#js#SplitArray',
-      \ 'sj#js#SplitObjectLiteral',
-      \ 'sj#js#SplitFunction',
-      \ 'sj#js#SplitOneLineIf',
-      \ 'sj#js#SplitArgs'
-      \ ]
-
-  autocmd FileType javascript,javascriptreact,typescript,typescriptreact let b:splitjoin_join_callbacks = [
-      \ 'sj#html#JoinAttributes',
-      \ 'sj#html#JoinTags',
-      \ 'sj#js#JoinArray',
-      \ 'sj#js#JoinArgs',
-      \ 'sj#js#JoinFunction',
-      \ 'sj#js#JoinOneLineIf',
-      \ 'sj#js#JoinObjectLiteral',
-      \ ]
-  autocmd FileType javascript,javascriptreact,typescript,typescriptreact let b:delimitMate_matchpairs = "(:),[:],{:}"
-  autocmd FileType javascript,javascriptreact,typescript,typescriptreact nnoremap <silent> <buffer> ]] :call Jump('/function\\|.*=>\\|<\a')<cr>
-  autocmd Filetype javascript,javascriptreact,typescript,typescriptreact nnoremap <silent> <buffer> [[ :call Jump('?function\\|.*=>\\|<\a')<cr>
+  autocmd FileType javascript,javascriptreact,typescript,typescriptreact call s:FTJavascript()
 augroup END
+
+function! s:Bind()
+  try
+    if nvim_win_get_var(0, 'textDocument/hover')
+      nnoremap <buffer> <silent> K :call nvim_win_close(0, v:true)<CR>
+      nnoremap <buffer> <silent> <Esc> :call nvim_win_close(0, v:true)<CR>
+    endif
+  catch /./
+    " Not a hover window.
+  endtry
+endfunction
+autocmd WinEnter * call s:Bind()
+
+function! s:FTJavascript() abort
+  setlocal include=^\\s*[^\/]\\+\\(from\\\|require(['\"]\\)
+  " Setup errorformat for Jest
+  setlocal errorformat=%f:%l:%c:\ %m
+  let b:splitjoin_split_callbacks = [
+        \ 'sj#html#SplitTags',
+        \ 'sj#html#SplitAttributes',
+        \ 'sj#js#SplitArray',
+        \ 'sj#js#SplitObjectLiteral',
+        \ 'sj#js#SplitFunction',
+        \ 'sj#js#SplitOneLineIf',
+        \ 'sj#js#SplitArgs'
+        \ ]
+
+  let b:splitjoin_join_callbacks = [
+        \ 'sj#html#JoinAttributes',
+        \ 'sj#html#JoinTags',
+        \ 'sj#js#JoinArray',
+        \ 'sj#js#JoinArgs',
+        \ 'sj#js#JoinFunction',
+        \ 'sj#js#JoinOneLineIf',
+        \ 'sj#js#JoinObjectLiteral',
+        \ ]
+  let b:delimitMate_matchpairs = "(:),[:],{:}"
+
+  nnoremap <silent> <buffer> ]] :call Jump('/function\\|.*=>\\|<\a')<cr>
+  nnoremap <silent> <buffer> [[ :call Jump('?function\\|.*=>\\|<\a')<cr>
+
+  nnoremap <buffer> <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+  nnoremap <buffer> <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+  nnoremap <buffer> <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+  nnoremap <buffer> <silent> <leader>ac <cmd>lua vim.lsp.buf.code_action()<CR>
+  nnoremap <buffer> <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+  nnoremap <buffer> <silent> <leader>rn    <cmd>lua vim.lsp.buf.rename()<CR>
+endfunction
+
+lua << END
+  vim.cmd('packadd nvim-lspconfig')
+  vim.cmd('packadd completion-nvim')
+  vim.cmd('packadd diagnostic-nvim')
+  local on_attach_vim = function(client)
+    require'completion'.on_attach(client)
+    require'diagnostic'.on_attach(client)
+  end
+  require'nvim_lsp'.tsserver.setup{on_attach=on_attach_vim}
+END
 
 " Enable JSDoc syntax
 let g:javascript_plugin_jsdoc = 1
