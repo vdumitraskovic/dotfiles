@@ -62,7 +62,6 @@ function! PackagerInit() abort
   call packager#add('scrooloose/nerdtree', { 'type': 'opt' })
   call packager#add('metakirby5/codi.vim')
   call packager#add('amadeus/vim-mjml')
-  call packager#add('neoclide/coc.nvim', { 'do': 'yarn install --frozen-lockfile', 'type': 'opt' })
   call packager#add('janko-m/vim-test', { 'type': 'opt' })
   call packager#add('tpope/vim-projectionist')
   call packager#add('editorconfig/editorconfig-vim', { 'type': 'opt' })
@@ -77,50 +76,6 @@ function! PackagerInit() abort
   call packager#add('wellle/tmux-complete.vim')
 endfunction
 
-" COC config
-let g:coc_user_config = {
-  \ 'codeLens.enable': v:false,
-  \ 'coc.preferences.formatOnType': v:false,
-  \ 'javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets': v:true,
-  \ 'list.source.location.defaultOptions': ['--number-select'],
-  \ 'suggest.noselect': v:false,
-  \ 'suggest.enablePreview': v:true,
-  \ 'suggest.timeout': 10000,
-  \ 'suggest.acceptSuggestionOnCommitCharacter': v:true,
-  \ 'suggest.autoTrigger': 'none',
-  \ 'suggest.minTriggerInputLength': 3,
-  \ 'diagnostic.displayByAle': v:true,
-  \ 'suggest.triggerCompletionWait': 60,
-  \ 'signature.hideOnTextChange': v:true,
-  \ 'languageserver': {
-      \ 'metals': {
-          \ 'command': 'metals-vim',
-          \ 'rootPatterns': ['build.sbt'],
-          \ 'filetypes': ['scala', 'sbt']
-      \ }
-  \ },
-  \ 'snippets.extends': {
-      \ 'javascriptreact': ['javascript'],
-      \ 'typescript': ['javascript'],
-      \ 'typescriptreact': ['javascript']
-  \ },
-  \ 'emmet.includeLanguages': {
-      \ 'javascriptreact': 'javascript'
-  \ }
-\ }
-
-let g:coc_global_extensions = [
-    \ 'coc-snippets',
-    \ 'coc-json',
-    \ 'coc-css',
-    \ 'coc-html',
-    \ 'coc-tag',
-    \ 'coc-tsserver',
-    \ 'coc-prettier',
-    \ 'coc-vimlsp',
-    \ 'coc-yaml',
-\ ]
-
 command! PackagerInstall call PackagerInit() | call packager#install()
 command! -bang PackagerUpdate call PackagerInit() | call packager#update({ 'force_hooks': '<bang>' })
 command! PackagerClean call PackagerInit() | call packager#clean()
@@ -132,7 +87,6 @@ augroup deferred_plugins
   autocmd CursorHold,CursorHoldI *
         \ packadd ale |
         \ packadd vim-closetag |
-        \ packadd coc.nvim |
         \ packadd ctrlsf.vim |
         \ packadd delimitMate |
         \ packadd editorconfig-vim |
@@ -213,13 +167,6 @@ function! Jump(motion) range
 endfunction
 
 " Vista settings
-let g:vista_executive_for = {
-  \ 'javascript': 'coc',
-  \ 'javascriptreact': 'coc',
-  \ 'typescript': 'coc',
-  \ 'typescriptreact': 'coc',
-  \ 'scala': 'coc',
-  \ }
 let g:vista#renderer#enable_icon = 0
 
 " Fixes bug with NEOVIM with pty for fugitive
@@ -422,44 +369,6 @@ nnoremap <F7> :silent execute 'grep -w ' . expand('<cword>')<CR> <BAR> :redraw!<
 
 " Don't load Scratch window mappings
 let g:scratch_no_mappings = 1
-
-" COC
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> K :call CocAction('doHover')<CR>
-nmap <leader>rn <Plug>(coc-rename)
-
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-xmap <leader>a <Plug>(coc-codeaction-selected)
-nmap <leader>a <Plug>(coc-codeaction-selected)
-
-" Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
-
-" Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Use +/- for select selections ranges, needs server support, like: coc-tsserver, coc-python
-vmap <silent> + <Plug>(coc-range-select)
-vmap <silent> - <Plug>(coc-range-select-backword)
-
-" COC Autocomplete/Snippets
-inoremap <silent><expr> <C-n> coc#refresh()
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-let g:coc_snippet_next = '<tab>'
 
 " Vim which key
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
@@ -676,12 +585,6 @@ augroup which-key-overrides
   " autocmd FileType which_key highlight WhichKeySeperator guibg=NONE ctermbg=NONE
 augroup END
 
-" COC
-augroup COC
-  autocmd CursorHold * silent call CocActionAsync('highlight')
-  autocmd CursorHoldI * silent! call CocActionAsync('showSignatureHelp')
-augroup END
-
 " Modified from http://dhruvasagar.com/2013/03/28/vim-better-foldtext
 function! NeatFoldText()
   let indent_level = indent(v:foldstart)
@@ -766,10 +669,6 @@ let g:delimitMate_expand_space = 1
 
 " Split join config
 let g:splitjoin_html_attributes_bracket_on_new_line = 1
-
-augroup COC
-  autocmd FileType javascript,javascriptreact,typescript,typescriptreact,json setl formatexpr=CocAction('formatSelected')
-augroup end
 
 " Codi settings
 let g:codi#interpreters = {
