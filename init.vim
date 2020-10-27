@@ -62,7 +62,7 @@ function! PackagerInit() abort
   call packager#add('scrooloose/nerdtree', { 'type': 'opt' })
   call packager#add('metakirby5/codi.vim')
   call packager#add('amadeus/vim-mjml')
-  call packager#add('neoclide/coc.nvim', { 'do': 'yarn install --frozen-lockfile', 'type': 'opt' })
+  call packager#add('neoclide/coc.nvim', { 'branch': 'release', 'type': 'opt' })
   call packager#add('janko-m/vim-test', { 'type': 'opt' })
   call packager#add('tpope/vim-projectionist')
   call packager#add('editorconfig/editorconfig-vim', { 'type': 'opt' })
