@@ -1,19 +1,24 @@
 [include]
-        path = .gitconfig.secret
+	path = .gitconfig.secret
 [core]
 	excludesfile = ~/.gitignore_global
 [push]
 	default = current
+[delta]
+	side-by-side = true
+	light = true
+	line-numbers = true
 [pager]
 	branch =
-	diff = diff-so-fancy | less --tabs=1,5 -RFX
-	show = diff-so-fancy | less --tabs=1,5 -RFX
+	diff = delta
+	show = delta
 [mergetool]
 	keepBackup = false
 [merge]
 	tool = meld
 [diff]
 	tool = vimdiff
+	colorMoved = default
 [difftool]
 	prompt = false
 [commit]
