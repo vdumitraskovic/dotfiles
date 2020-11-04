@@ -169,6 +169,7 @@ function! SetGitGutter() abort
   augroup GitGutter
     " disable realtime update
     autocmd! gitgutter CursorHold,CursorHoldI
+    autocmd BufWritePost * GitGutter
     GitGutterAll
     call gitgutter#setup_maps()
   augroup END
