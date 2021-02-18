@@ -2,6 +2,7 @@
 	path = .gitconfig.secret
 [core]
 	excludesfile = ~/.gitignore_global
+	pager = less -FX
 [push]
 	default = current
 [delta]
