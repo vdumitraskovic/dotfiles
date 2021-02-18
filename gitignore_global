@@ -16,3 +16,5 @@ launch.json
 .vscode
 .bloop
 .metals
+~notes.md
+.ignore
