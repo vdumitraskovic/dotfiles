@@ -28,6 +28,7 @@
 	squash = !COMMIT=`git log --oneline|fzf|cut -d' ' -f1` && git commit --squash=${COMMIT}
 	wip = !git add -A && git commit --no-verify -m 'WIP'
 	unwip = reset HEAD~1
+	root = rev-parse --show-toplevel
 [rebase]
 	autosquash = true
 [pull]
