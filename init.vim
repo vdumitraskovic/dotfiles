@@ -899,6 +899,10 @@ function! s:goyo_enter()
   set laststatus=0
   let g:goyo_on = 1
   ALEDisable
+  if exists('$TMUX')
+    silent !tmux set status off
+    silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  endif
   call <SID>focus_leave()
 endfunction
 
@@ -908,6 +912,10 @@ function! s:goyo_leave()
   set showmode
   set showcmd
   set laststatus&
+  if exists('$TMUX')
+    silent !tmux set status on
+    silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  endif
   let g:goyo_on = 0
   let &background=g:background
   ALEEnable
