@@ -38,3 +38,5 @@
 	recurse = true
 [status]
 	submoduleSummary = true
+[branch]
+	sort = -committerdate
