@@ -61,7 +61,6 @@ function! PackagerInit() abort
   call packager#add('alvan/vim-closetag', { 'type': 'opt' })
   call packager#add('scrooloose/nerdtree', { 'type': 'opt' })
   call packager#add('metakirby5/codi.vim')
-  call packager#add('amadeus/vim-mjml')
   call packager#add('neoclide/coc.nvim', { 'branch': 'release', 'type': 'opt' })
   call packager#add('janko-m/vim-test', { 'type': 'opt' })
   call packager#add('tpope/vim-projectionist')
@@ -1008,6 +1007,6 @@ augroup END
 " }}}
 " ============================= HTML ===================================== {{{
 " Configure closetag plugin
-let g:closetag_filenames = '*.html,*.jsx,*.js,*.mjml'
+let g:closetag_filenames = '*.html,*.jsx,*.js'
 " }}}
 " vim:foldenable:foldmethod=marker
