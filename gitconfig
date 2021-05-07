@@ -42,3 +42,5 @@
 	submoduleSummary = true
 [branch]
 	sort = -committerdate
+[init]
+	defaultBranch = main
