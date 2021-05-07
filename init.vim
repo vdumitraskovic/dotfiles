@@ -42,6 +42,7 @@ function! PackagerInit() abort
   call packager#add('tpope/vim-fugitive', { 'type': 'opt' })
   call packager#add('dyng/ctrlsf.vim', { 'type': 'opt' })
   call packager#add('vimwiki/vimwiki')
+  call packager#add('alok/notational-fzf-vim')
   call packager#add('AndrewRadev/splitjoin.vim', { 'type': 'opt' })
   call packager#add('tpope/vim-eunuch', { 'type': 'opt' })
   call packager#add('tpope/vim-surround', { 'type': 'opt' })
@@ -523,6 +524,9 @@ nnoremap <s-tab> za
 
 " Easy repeat macro
 nnoremap <expr> <CR> empty(&buftype) ? '@@' : '<CR>'
+
+" Notational-fzf-vim
+nnoremap <F4> :NV<CR>
 " }}}
 " ======================== Visual settings =============================== {{{
 set lazyredraw
@@ -953,6 +957,12 @@ augroup spelunker
   autocmd!
   autocmd CursorHold *.vim,*.js,*.jsx,*.json,*.md,*.wiki,COMMIT_EDITMSG if expand('<afile>') != "package-lock.json" | call spelunker#check_displayed_words() | endif
 augroup END
+
+" Notational FZF
+let g:nv_search_paths = ['~/vimwiki/', '~/localwiki/']
+let g:nv_window_direction = 'call FloatingFZF()'
+let g:nv_preview_direction = 'up'
+let g:nv_default_extension = '.wiki'
 " }}}
 " ========================== Javascript ================================== {{{
 augroup JavaScript
