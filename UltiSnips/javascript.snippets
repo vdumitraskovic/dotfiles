@@ -62,9 +62,23 @@ it('${1:test description}', () => {
 endsnippet
 
 snippet story "Storybook story"
-export default { title: '${1:title}', component: ${2:Component} };
+import { action } from '@storybook/addon-actions';
+import { Story } from '@storybook/react';
+import $2, { $2Props } from './$2';
 
-export const Default = () => (
-  <$2 />
-);
+export default {
+  title: '${1:title}',
+  component: ${2:Component},
+  parameters: {
+    layout: 'padded',
+  },
+};
+
+
+const Template: Story<$2Props> = args => <$2 {...args} />; // eslint-disable-line react/jsx-props-no-spreading
+
+export const Default = Template.bind({});
+Default.args = {
+  $3
+};
 endsnippet
