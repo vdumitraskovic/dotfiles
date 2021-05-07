@@ -7,6 +7,8 @@ endif
 execute 'set runtimepath+=' . expand(g:nvim_base)
 let g:goyo_on = 0
 let g:background = 'light'
+let s:bg = '#fff'
+let s:bg_dim = '#eee'
 " }}}
 " ========================== Plug Setup ================================== {{{
 " Install vim-packager if we don't already have it
@@ -580,7 +582,7 @@ function! s:focus_enter()
     let w:airline_section_y = g:airline_section_y
     let w:airline_section_z = g:airline_section_z
   endif
-  hi Normal guibg=#f1f1f1
+  execute "hi Normal guibg=" . s:bg
 endfunction
 function! s:focus_leave()
   set norelativenumber
@@ -591,7 +593,7 @@ function! s:focus_leave()
   let w:airline_section_y = ''
   let w:airline_section_z = ''
   if !g:goyo_on
-    hi Normal guibg=#e9e9e9
+    execute "hi Normal guibg=" . s:bg_dim
   endif
 endfunction
 
@@ -640,6 +642,12 @@ colorscheme pencil
 let g:airline_theme='pencil'
 
 function! s:tweak_theme() abort
+  let s:bg=synIDattr(synIDtrans(hlID("Normal")), "bg#")
+  if g:background == 'light'
+    let s:bg_dim='#e9e9e9'
+  else
+    let s:bg_dim='#424242'
+  endif
   set fillchars+=vert:│
   hi VertSplit guibg=NONE ctermbg=NONE " Just show fills please
   hi SpelunkerSpellBad cterm=undercurl gui=undercurl
@@ -652,8 +660,6 @@ function! s:tweak_theme() abort
   highlight ALEVirtualTextError ctermfg=160 guifg=#dc322f
   highlight ALEWarningSign ctermbg=NONE ctermfg=32 guibg=NONE guifg=#268bd2
   highlight ALEVirtualTextWarning ctermfg=32 guifg=#268bd2
-
-  highlight HighlightedyankRegion ctermbg=254 guibg=#dddddd
 endfunction
 augroup colorscheme
   autocmd ColorScheme * call <sid>tweak_theme()
