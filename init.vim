@@ -683,7 +683,7 @@ augroup END
 " COC
 augroup COC
   autocmd CursorHold * silent call CocActionAsync('highlight')
-  autocmd CursorHoldI * silent! call CocActionAsync('showSignatureHelp')
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup END
 
 " Modified from http://dhruvasagar.com/2013/03/28/vim-better-foldtext
