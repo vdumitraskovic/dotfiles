@@ -148,7 +148,7 @@ augroup deferred_plugins
         \ packadd vim-gitgutter |
         \ packadd vim-gutentags |
         \ packadd vim-matchup |
-        \ packadd! vim-polyglot | runtime! ftdetect/polyglot.vim |
+        \ packadd! vim-polyglot | runtime! ftdetect/polyglot.vim | filetype detect |
         \ packadd vim-sneak |
         \ packadd vim-surround |
         \ packadd vim-test |
