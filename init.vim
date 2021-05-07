@@ -786,6 +786,7 @@ let g:codi#interpreters = {
 " Matchup settings
 let g:matchup_matchparen_deferred = 1
 let g:matchup_matchparen_nomode = 'ivV\<c-v>'
+let g:matchup_matchparen_offscreen = {'method': 'popup'}
 " }}}
 " ======================== Linter settings =============================== {{{
 " Ale config
