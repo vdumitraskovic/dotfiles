@@ -535,7 +535,7 @@ set lazyredraw
 set nocursorline
 set nonumber
 set norelativenumber
-set signcolumn=yes
+set signcolumn=number
 set pumblend=10
 set winblend=10
 
