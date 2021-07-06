@@ -119,6 +119,7 @@ let g:coc_global_extensions = [
     \ 'coc-tsserver',
     \ 'coc-vimlsp',
     \ 'coc-yaml',
+    \ 'coc-styled-components',
 \ ]
 
 command! PackagerInstall call PackagerInit() | call packager#install()
