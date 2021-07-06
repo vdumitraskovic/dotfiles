@@ -167,7 +167,7 @@ bindkey '^g^b' fzf-gb-widget
 # Configure source-highlight (requires source-highlight package)
 LESSPIPE=`which src-hilite-lesspipe.sh`
 export LESSOPEN="| ${LESSPIPE} %s"
-export LESS=' -R'
+export LESS=' -R --mouse'
 
 # NVM setup
 export NVM_DIR="$HOME/.nvm"
