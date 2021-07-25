@@ -31,9 +31,9 @@ function! PackagerInit() abort
   packadd vim-packager
   call packager#init({ 'depth': 1, 'jobs': 8  })
   call packager#add('kristijanhusak/vim-packager', { 'type': 'opt' })
+  call packager#add('nvim-treesitter/nvim-treesitter', { 'do': 'TSUpdate' })
   call packager#add('lambdalisue/vim-backslash')
   call packager#add('tpope/vim-repeat')
-  call packager#add('sheerun/vim-polyglot', { 'type': 'opt' })
   call packager#add('tpope/vim-commentary')
   call packager#add('airblade/vim-gitgutter', { 'type': 'opt' })
   call packager#add('vim-airline/vim-airline', { 'type': 'opt' })
@@ -151,7 +151,6 @@ augroup deferred_plugins
         \ packadd vim-gitgutter |
         \ packadd vim-gutentags |
         \ packadd vim-matchup |
-        \ packadd! vim-polyglot | runtime! ftdetect/polyglot.vim | filetype detect |
         \ packadd vim-sneak |
         \ packadd vim-surround |
         \ packadd vim-test |
@@ -224,6 +223,19 @@ let g:vista_executive_for = {
   \ }
 let g:vista#renderer#enable_icon = 0
 " }}}
+
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true, -- false will disable the whole extension
+    disable = {},  -- list of language that will be disabled
+  },
+}
+EOF
+
+
 " ======================= Files and folders=============================== {{{
 set fileformats=unix,dos
 set path+=src,src/**,frontend,frontend/**
