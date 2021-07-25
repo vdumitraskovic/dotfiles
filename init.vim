@@ -32,6 +32,7 @@ function! PackagerInit() abort
   call packager#init({ 'depth': 1, 'jobs': 8  })
   call packager#add('kristijanhusak/vim-packager', { 'type': 'opt' })
   call packager#add('nvim-treesitter/nvim-treesitter', { 'do': 'TSUpdate' })
+  call packager#add('nvim-treesitter/nvim-treesitter-textobjects')
   call packager#add('lambdalisue/vim-backslash')
   call packager#add('tpope/vim-repeat')
   call packager#add('tpope/vim-commentary')
@@ -230,6 +231,17 @@ require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   highlight = { enable = true },
   incremental_selection = { enable = true },
+  textobjects = {
+    select = {
+      enable = true,
+      keymaps = {
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+      },
+    }
+  }
 }
 EOF
 
