@@ -411,13 +411,13 @@ noremap <F13> :helpclose<CR>
 nmap <F8> :Vista!!<CR>
 
 " Show git status
-nnoremap <F9> :Gstatus<CR>
+nnoremap <F9> :Git<CR>
 
 " Fold git gutters
 nnoremap <S-F9> :GitGutterFold<CR>
 
-" Close loclists and quicfix and git status
-nnoremap <F12> :windo lcl\|ccl\|Gstatus\|q<CR>
+" Close loclists and quickfix and git status
+nnoremap <F12> :windo lcl\|ccl\|Git\|q<CR>
 nnoremap <F7> :silent execute 'grep -w ' . expand('<cword>')<CR> <BAR> :redraw!<CR>
 
 " Don't load Scratch window mappings
