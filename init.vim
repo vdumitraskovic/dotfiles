@@ -1025,6 +1025,6 @@ augroup END
 " }}}
 " ============================= HTML ===================================== {{{
 " Configure closetag plugin
-let g:closetag_filenames = '*.html,*.jsx,*.js'
+let g:closetag_filenames = '*.html,*.jsx,*.js,*.ts,*.tsx'
 " }}}
 " vim:foldenable:foldmethod=marker
