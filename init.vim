@@ -883,7 +883,10 @@ let g:sneak#label = 1
 " }}}
 " ======================== Writing plugins =============================== {{{
 let g:vimwiki_folding = 'syntax'
-let g:vimwiki_list = [{'path': '~/vimwiki/'}, {'path': '~/localwiki/'}]
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'auto_toc': 1}, {'path': '~/localwiki/', 'auto_toc': 1}]
+let g:vimwiki_toc_header_level = 2
+let g:vimwiki_list_margin = 0
+
 function! VimwikiLinkHandler(link)
   " Use Vim to open external files with the 'vfile:' scheme.  E.g.:
   "   1) [[vfile:~/Code/PythonProject/abc123.py]]
