@@ -737,7 +737,11 @@ let g:neoformat_enabled_javascriptreact = ['prettier']
 let g:neoformat_enabled_typescriptreact = ['prettier']
 
 let g:neoformat_enabled_vimwiki = ['prettier']
-let g:neoformat_vimwiki_prettier = g:neoformat_javascriptreact_prettier
+let g:neoformat_vimwiki_prettier = {
+      \ 'exe': 'prettier',
+      \ 'args': ['--prose-wrap=always', '--parser=markdown', '--stdin', '--stdin-filepath', '"%:p"'],
+      \ 'stdin': 1
+      \ }
 
 " Emmet settings
 let g:user_emmet_settings = {
