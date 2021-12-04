@@ -76,6 +76,7 @@ function! PackagerInit() abort
   call packager#add('liuchengxu/vista.vim', { 'type': 'opt' })
   call packager#add('reedes/vim-colors-pencil')
   call packager#add('wellle/tmux-complete.vim')
+  call packager#add('github/copilot.vim')
 endfunction
 
 " COC config
@@ -797,6 +798,11 @@ let g:codi#interpreters = {
 let g:matchup_matchparen_deferred = 1
 let g:matchup_matchparen_nomode = 'ivV\<c-v>'
 let g:matchup_matchparen_offscreen = {'method': 'popup'}
+
+" Copilot settings
+let g:copilot_filetypes = {
+      \ 'vimwiki': v:false,
+      \ }
 " }}}
 " ======================== Linter settings =============================== {{{
 " Ale config
