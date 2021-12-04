@@ -4,6 +4,9 @@
 --exclude=tmp
 --exclude=node_modules/*
 --exclude=bower_components/*
+--exclude=build/*
+--exclude=package-lock.json
+--exclude=package.json
 
 --langmap=css:.css
 --langmap=css:+.scss
