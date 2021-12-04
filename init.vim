@@ -644,7 +644,7 @@ colorscheme pencil
 let g:airline_theme='pencil'
 
 function! s:tweak_theme() abort
-  let s:bg=synIDattr(synIDtrans(hlID("Normal")), "bg#")
+  let s:bg=synIDattr(synIDtrans(hlID("Normal")), "bg", "gui")
   if g:background == 'light'
     let s:bg_dim='#e9e9e9'
   else
