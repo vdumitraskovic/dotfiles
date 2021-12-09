@@ -83,6 +83,7 @@ endfunction
 let g:coc_user_config = {
   \ 'codeLens.enable': v:false,
   \ 'coc.preferences.formatOnType': v:false,
+  \ 'coc.preferences.listOfWorkspaceEdit': 'location',
   \ 'javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets': v:true,
   \ 'list.source.location.defaultOptions': ['--number-select'],
   \ 'suggest.noselect': v:false,
