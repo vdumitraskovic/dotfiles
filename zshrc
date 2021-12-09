@@ -71,8 +71,6 @@ antigen bundle tmuxinator
 antigen bundle fancy-ctrl-z
 antigen bundle zsh-users/zsh-autosuggestions
 
-antigen theme cloud
-
 antigen apply
 
 # You may need to manually set your language environment
@@ -176,6 +174,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval "$(starship init zsh)"
 
 # Increase file limits
 ulimit -n 512
