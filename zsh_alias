@@ -1,6 +1,9 @@
 ## Show hidden files ##
 alias l.='ls -d .*'
 
+## Show files sorted by time
+alias lt='ls -ltr'
+
 ## Colorize the grep command output for ease of use (good for log files)##
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
