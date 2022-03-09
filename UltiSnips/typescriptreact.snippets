@@ -28,3 +28,27 @@ export const $1 = ({ $2 }) => (
   ${0:<div>Dumi Car</div>}
 );
 endsnippet
+
+snippet story "Storybook story"
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import $2 from './${2}';
+
+export default {
+  component: ${2:Component},
+  parameters: {
+    layout: 'padded',
+  },
+} as ComponentMeta<typeof $2>;
+
+
+const Template: ComponentStory<typeof $2> = args => <$2 {...args} />;
+
+export const Default = Template.bind({});
+Default.args = {
+  $3
+};
+endsnippet
+
+snippet usestate "React useState Hook"
+const [$1, set${1/\w+/${0:/capitalize}/}] = useState($2);
+endsnippet
