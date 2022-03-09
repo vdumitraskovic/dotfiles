@@ -110,7 +110,8 @@ let g:coc_user_config = {
       \ 'javascriptreact': 'javascript'
   \ },
   \ 'eslint.autoFixOnSave': v:true,
-  \ 'eslint.filetypes': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact']
+  \ 'eslint.filetypes': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact'],
+  \ 'typescript.preferences.importModuleSpecifier': 'shortest'
 \ }
 
 let g:coc_global_extensions = [
