@@ -9,6 +9,7 @@ let g:goyo_on = 0
 let g:background = 'light'
 let s:bg = '#fff'
 let s:bg_dim = '#eee'
+let s:codelens = v:false
 " }}}
 " ========================== Plug Setup ================================== {{{
 " Install vim-packager if we don't already have it
@@ -80,6 +81,7 @@ endfunction
 " COC config
 let g:coc_user_config = {
   \ 'codeLens.enable': v:false,
+  \ 'codeLens.position': 'eol',
   \ 'coc.preferences.formatOnType': v:false,
   \ 'coc.preferences.listOfWorkspaceEdit': 'location',
   \ 'javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets': v:true,
@@ -433,6 +435,18 @@ nmap <leader>a <Plug>(coc-codeaction-selected)
 
 " Remap for do codeAction of current line
 nmap <leader>ac  <Plug>(coc-codeaction)
+
+function ToggleCodeLens()
+  if s:codelens
+    let s:codelens = v:false
+  else
+    let s:codelens = v:true
+  endif
+  call coc#config('codeLens', { 'enable': s:codelens })
+  call coc#refresh()
+endfunction
+
+nmap <leader>cl :call ToggleCodeLens()<CR>
 
 " Fix autofix problem of current line
 nmap <leader>qf  <Plug>(coc-fix-current)
