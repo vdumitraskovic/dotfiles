@@ -731,16 +731,10 @@ set shortmess+=s
 set clipboard=unnamed,unnamedplus
 
 " Use prettier for formating javascript
-let g:neoformat_enabled_javascript = ['prettier']
-let g:neoformat_javascriptreact_prettier = {
-      \ 'exe': 'prettier',
-      \ 'args': ['--stdin', '--stdin-filepath', '"%:p"'],
-      \ 'stdin': 1
-      \ }
-let g:neoformat_enabled_typescript = ['prettier']
-let g:neoformat_typescriptreact_prettier = g:neoformat_javascriptreact_prettier
-let g:neoformat_enabled_javascriptreact = ['prettier']
-let g:neoformat_enabled_typescriptreact = ['prettier']
+let g:neoformat_enabled_javascript = ['prettierd']
+let g:neoformat_enabled_typescript = ['prettierd']
+let g:neoformat_enabled_javascriptreact = ['prettierd']
+let g:neoformat_enabled_typescriptreact = ['prettierd']
 
 let g:neoformat_enabled_vimwiki = ['prettier']
 let g:neoformat_vimwiki_prettier = {
