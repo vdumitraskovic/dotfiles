@@ -869,7 +869,9 @@ let g:sneak#label = 1
 " }}}
 " ======================== Writing plugins =============================== {{{
 let g:vimwiki_folding = 'syntax'
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'auto_toc': 1}, {'path': '~/localwiki/', 'auto_toc': 1}]
+let g:vimwiki_list = [
+      \ { 'path': '~/Notes', 'auto_toc': 1, 'syntax': 'markdown', 'ext': '.md' }
+      \]
 let g:vimwiki_toc_header_level = 2
 let g:vimwiki_list_margin = 0
 
@@ -949,7 +951,7 @@ augroup spelunker
 augroup END
 
 " Notational FZF
-let g:nv_search_paths = ['~/vimwiki/', '~/localwiki/']
+let g:nv_search_paths = ['~/Notes/']
 let g:nv_window_direction = 'call FloatingFZF()'
 let g:nv_preview_direction = 'up'
 let g:nv_default_extension = '.wiki'
