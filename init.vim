@@ -7,8 +7,8 @@ endif
 execute 'set runtimepath+=' . expand(g:nvim_base)
 let g:goyo_on = 0
 let g:background = 'light'
-let s:bg = '#fff'
-let s:bg_dim = '#eee'
+let s:bg = '#f1f1f1'
+let s:bg_dim = '#e9e9e9'
 let s:codelens = v:false
 " }}}
 " ========================== Plug Setup ================================== {{{
@@ -630,6 +630,24 @@ function! s:focus_leave()
   if !g:goyo_on
     execute "hi Normal guibg=" . s:bg_dim
   endif
+endfunction
+
+function s:Set_Window_BG_Colors()
+  " Background colors for active vs inactive windows
+  execute "hi ActiveWindow guibg=" . s:bg
+  execute "hi InactiveWindow guibg=" . s:bg_dim
+endfunction
+
+" Call method on window enter
+augroup WindowManagement
+  autocmd!
+  autocmd ColorScheme * call s:Set_Window_BG_Colors()
+  autocmd WinEnter * call Handle_Win_Enter()
+augroup END
+
+" Change highlight group of active/inactive windows
+function! Handle_Win_Enter()
+  setlocal winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
 endfunction
 
 augroup EditorFocus
