@@ -228,6 +228,21 @@ let g:vista_executive_for = {
   \ 'scala': 'coc',
   \ }
 let g:vista#renderer#enable_icon = 0
+
+if has('wsl') 
+  let g:clipboard = {
+        \   'name': 'myClipboard',
+        \   'copy': {
+        \      '+': ['win32yank.exe', '-i', '--crlf'],
+        \      '*': ['win32yank.exe', '-i', '--crlf'],
+        \    },
+        \   'paste': {
+        \      '+': ['win32yank.exe', '-o', '--lf'],
+        \      '*': ['win32yank.exe', '-o', '--lf'],
+        \   },
+        \   'cache_enabled': 0,
+      \ }
+endif
 " }}}
 " ======================= Files and folders=============================== {{{
 set fileformats=unix,dos
