@@ -73,7 +73,6 @@ function! PackagerInit() abort
   call packager#add('andymass/vim-matchup', { 'type': 'opt' })
   call packager#add('christoomey/vim-tmux-navigator')
   call packager#add('AndrewRadev/tagalong.vim')
-  call packager#add('liuchengxu/vista.vim', { 'type': 'opt' })
   call packager#add('reedes/vim-colors-pencil')
   call packager#add('wellle/tmux-complete.vim')
 endfunction
@@ -161,7 +160,6 @@ augroup deferred_plugins
         \ packadd vim-surround |
         \ packadd vim-test |
         \ packadd vim-wordmotion |
-        \ packadd vista.vim |
         \ set updatetime=100 |
         \ syntax enable |
         \ call <sid>tweak_theme() |
@@ -218,16 +216,6 @@ function! Jump(motion) range
   call histdel('/', -1)
   call setreg('/', save)
 endfunction
-
-" Vista settings
-let g:vista_executive_for = {
-  \ 'javascript': 'coc',
-  \ 'javascriptreact': 'coc',
-  \ 'typescript': 'coc',
-  \ 'typescriptreact': 'coc',
-  \ 'scala': 'coc',
-  \ }
-let g:vista#renderer#enable_icon = 0
 
 if has('wsl') 
   let g:clipboard = {
@@ -423,9 +411,6 @@ nnoremap <F11> :Goyo<CR>
 noremap <S-F1> :helpclose<CR>
 noremap <F13> :helpclose<CR>
 
-" Open vista.vim
-nmap <F8> :Vista!!<CR>
-
 " Show git status
 nnoremap <F9> :Git<CR>
 
@@ -443,6 +428,7 @@ let g:scratch_no_mappings = 1
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> K :call CocAction('doHover')<CR>
+nmap <silent> <F8> :call CocAction('showOutline')<CR>
 nmap <leader>rn <Plug>(coc-rename)
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
