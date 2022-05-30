@@ -83,6 +83,8 @@ let g:coc_user_config = {
   \ 'codeLens.position': 'eol',
   \ 'coc.preferences.formatOnType': v:false,
   \ 'coc.preferences.listOfWorkspaceEdit': 'location',
+  \ 'coc.preferences.enableMessageDialog': v:true,
+  \ 'semanticTokens.filetypes': '[*]',
   \ 'javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets': v:true,
   \ 'javascript.suggestionActions.enabled': v:true,
   \ 'list.source.location.defaultOptions': ['--number-select'],
@@ -427,8 +429,10 @@ let g:scratch_no_mappings = 1
 " COC
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
-nmap <silent> K :call CocAction('doHover')<CR>
+nmap <silent> K :call CocAction('definitionHover')<CR>
 nmap <silent> <F8> :call CocAction('showOutline')<CR>
+nmap <silent> <leader>ic :call CocAction('showIncomingCalls')<CR>
+nmap <silent> <leader>oc :call CocAction('showOutgoingCalls')<CR>
 nmap <leader>rn <Plug>(coc-rename)
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
