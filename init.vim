@@ -84,7 +84,6 @@ let g:coc_user_config = {
   \ 'coc.preferences.formatOnType': v:false,
   \ 'coc.preferences.listOfWorkspaceEdit': 'location',
   \ 'coc.preferences.enableMessageDialog': v:true,
-  \ 'semanticTokens.filetypes': '[*]',
   \ 'javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets': v:true,
   \ 'javascript.suggestionActions.enabled': v:true,
   \ 'list.source.location.defaultOptions': ['--number-select'],
@@ -628,6 +627,11 @@ function s:Set_Window_BG_Colors()
   execute "hi InactiveWindow guibg=" . s:bg_dim
 endfunction
 
+function s:Unset_Window_BG_Colors()
+  execute "hi ActiveWindow guibg=" . s:bg
+  execute "hi InactiveWindow guibg=" . s:bg
+endfunction
+
 " Call method on window enter
 augroup WindowManagement
   autocmd!
@@ -932,6 +936,7 @@ function! s:goyo_enter()
     silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
   endif
   call <SID>focus_leave()
+  call <SID>Unset_Window_BG_Colors()
 endfunction
 
 function! s:goyo_leave()
@@ -949,6 +954,7 @@ function! s:goyo_leave()
   GitGutterBufferEnable
   call <SID>tweak_theme()
   call <SID>focus_enter()
+  call <SID>Set_Window_BG_Colors()
 endfunction
 
 augroup Goyo
