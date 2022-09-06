@@ -708,7 +708,7 @@ function! s:tweak_theme() abort
   highlight MatchWord cterm=bold gui=bold
 
   highlight CocErrorSign ctermbg=NONE ctermfg=160 guibg=NONE guifg=#dc322f
-  highlight CocErrorHighlight ctermbg=NONE ctermfg=160 cterm=undercurl guibg=NONE guifg=#dc322f
+  highlight CocErrorHighlight ctermbg=NONE ctermfg=160 gui=undercurl guibg=NONE guifg=#dc322f
   highlight CocVirtualTextError ctermfg=160 guifg=#dc322f
   highlight CocWarningSign ctermbg=NONE ctermfg=32 guibg=NONE guifg=#268bd2
   highlight CocInfoSign ctermbg=NONE ctermfg=32 guibg=NONE guifg=#268bd2
