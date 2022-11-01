@@ -725,6 +725,7 @@ function! s:tweak_theme() abort
   highlight CocVirtualTextWarning ctermfg=32 guifg=#268bd2
   highlight clear CocMenuSel
   highlight link CocMenuSel WildMenu
+  highlight link jsxCloseString htmlTag
 endfunction
 augroup colorscheme
   autocmd ColorScheme * call <sid>tweak_theme()
