@@ -570,6 +570,22 @@ augroup END
 
 " Terminal tweaking
 au TermOpen * setlocal nonumber norelativenumber
+let g:terminal_color_0 = '#212121'
+let g:terminal_color_8 = '#424242'
+let g:terminal_color_1 = '#c30771'
+let g:terminal_color_9 = '#fb007a'
+let g:terminal_color_2 = '#10a778'
+let g:terminal_color_10 = '#5fd7af'
+let g:terminal_color_3 = '#a89c14'
+let g:terminal_color_11 = '#f3e430'
+let g:terminal_color_4 = '#008ec4'
+let g:terminal_color_12 = '#20bbfc'
+let g:terminal_color_5 = '#523c79'
+let g:terminal_color_13 = '#6855de'
+let g:terminal_color_6 = '#20a5ba'
+let g:terminal_color_14 = '#4fb8cc'
+let g:terminal_color_7 = '#d9d9d9'
+let g:terminal_color_15 = '#f1f1f1'
 
 " FZF tweaking
 let g:fzf_colors = {
