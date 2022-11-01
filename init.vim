@@ -603,14 +603,6 @@ let g:fzf_colors = {
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment']
   \  }
-" let g:fzf_colors = {
-"   \ 'fg':      ['fg', 'Normal'],
-"   \ 'bg':      ['bg', 'Normal'],
-"   \ 'hl':      ['fg', 'ErrorMsg'],
-"   \ 'fg+':     ['fg', 'Normal'],
-"   \ 'bg+':     ['bg', 'CursorLine'],
-"   \ 'hl+':     ['fg', 'ErrorMsg'],
-"   \}
 
 function! s:focus_enter()
   if g:goyo_on
@@ -1042,7 +1034,7 @@ let g:javascript_plugin_jsdoc = 1
 
 " Javascript lib syntax setup
 let g:used_javascript_libs = 'underscore,react,ramda'
-"
+
 " Tagbar setup
 let g:tagbar_type_javascript = {
     \ 'ctagsbin': 'ctags',
