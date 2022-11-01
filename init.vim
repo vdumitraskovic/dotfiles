@@ -96,9 +96,10 @@ let g:coc_user_config = {
   \ 'diagnostic.virtualText': v:true,
   \ 'diagnostic.virtualTextCurrentLineOnly': v:false,
   \ 'diagnostic.displayByAle': v:false,
-  \ 'diagnostic.errorSign': '',
-  \ 'diagnostic.infoSign': '',
-  \ 'diagnostic.hintSign': '',
+  \ 'diagnostic.errorSign': '',
+  \ 'diagnostic.warningSign': '',
+  \ 'diagnostic.infoSign': '',
+  \ 'diagnostic.hintSign': '',
   \ 'suggest.triggerCompletionWait': 60,
   \ 'signature.hideOnTextChange': v:true,
   \ 'snippets.extends': {
