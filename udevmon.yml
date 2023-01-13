@@ -1,0 +1,3 @@
+- JOB: intercept -g $DEVNODE | caps2esc | uinput -d $DEVNODE
+  DEVICE:
+    LINK: /dev/input/by-id/usb-Metadot_-_Das_Keyboard_Das_Keyboard-event-kbd
