@@ -7,6 +7,9 @@ endif
 execute 'set runtimepath+=' . expand(g:nvim_base)
 let g:goyo_on = 0
 let g:background = 'light'
+if filereadable(expand("~/.cli-theme")) && match(readfile(expand("$HOME/.cli-theme")),"DARK") != -1
+  let g:background = 'dark'
+endif
 let s:bg = '#f1f1f1'
 let s:bg_dim = '#e9e9e9'
 let s:codelens = v:false
