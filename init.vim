@@ -11,7 +11,13 @@ if filereadable(expand("~/.cli-theme")) && match(readfile(expand("$HOME/.cli-the
   let g:background = 'dark'
 endif
 let s:bg = '#f1f1f1'
+if g:background == 'dark'
+  let s:bg = '#212121'
+endif
 let s:bg_dim = '#e9e9e9'
+if g:background == 'dark'
+  let s:bg_dim = '#1f1f1f'
+endif
 let s:codelens = v:false
 " }}}
 " ========================== Plug Setup ================================== {{{
