@@ -33,8 +33,6 @@ else
     execute '!git clone https://github.com/kristijanhusak/vim-packager ~/.config/nvim/pack/packager/opt/vim-packager'
   endif
 endif
-" Disable ALE's LSP because we're using CoC (check ALE manual for details)
-let g:ale_disable_lsp = 1
 " }}}
 " ============================ Plugins =================================== {{{
 function! PackagerInit() abort
@@ -73,7 +71,7 @@ function! PackagerInit() abort
   call packager#add('alvan/vim-closetag', { 'type': 'opt' })
   call packager#add('scrooloose/nerdtree', { 'type': 'opt' })
   call packager#add('metakirby5/codi.vim')
-  call packager#add('neoclide/coc.nvim', { 'branch': 'release', 'type': 'opt' })
+  call packager#add('neoclide/coc.nvim', { 'branch': 'release' })
   call packager#add('janko-m/vim-test', { 'type': 'opt' })
   call packager#add('tpope/vim-projectionist')
   call packager#add('editorconfig/editorconfig-vim', { 'type': 'opt' })
@@ -103,8 +101,7 @@ let g:coc_user_config = {
   \ 'suggest.autoTrigger': 'none',
   \ 'suggest.minTriggerInputLength': 3,
   \ 'diagnostic.virtualText': v:true,
-  \ 'diagnostic.virtualTextCurrentLineOnly': v:false,
-  \ 'diagnostic.displayByAle': v:false,
+  \ 'diagnostic.virtualTextCurrentLineOnly': v:true,
   \ 'diagnostic.errorSign': '',
   \ 'diagnostic.warningSign': '',
   \ 'diagnostic.infoSign': '',
@@ -148,7 +145,6 @@ augroup deferred_plugins
   autocmd!
   autocmd CursorHold,CursorHoldI *
         \ packadd vim-closetag |
-        \ packadd coc.nvim |
         \ packadd ctrlsf.vim |
         \ packadd delimitMate |
         \ packadd editorconfig-vim |
@@ -382,8 +378,6 @@ nnoremap <Leader>O O<Esc>
 noremap <C-S> :update<CR>
 
 " Find file
-" noremap <C-p> :find<Space>
-let g:ctrlp_map = ''
 noremap <C-p> :Files<CR>
 
 " Open NERDTree for opened file
@@ -430,6 +424,8 @@ nnoremap <S-F9> :GitGutterFold<CR>
 
 " Close loclists and quickfix and git status
 nnoremap <F12> :windo lcl\|ccl\|Git\|q<CR>
+
+" Search word under cursor
 nnoremap <F7> :silent execute 'grep -w ' . expand('<cword>')<CR> <BAR> :redraw!<CR>
 
 " Don't load Scratch window mappings
@@ -451,6 +447,11 @@ nmap <leader>a <Plug>(coc-codeaction-selected)
 " Remap for do codeAction of current line
 nmap <leader>ac  <Plug>(coc-codeaction)
 
+" Remap keys for refactor code actions.
+nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
+xmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
+nmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
+
 function ToggleCodeLens()
   if s:codelens
     let s:codelens = v:false
@@ -461,7 +462,10 @@ function ToggleCodeLens()
   call coc#refresh()
 endfunction
 
-nmap <leader>cl :call ToggleCodeLens()<CR>
+nmap <leader>clt :call ToggleCodeLens()<CR>
+
+" Run the Code Lens action on the current line.
+nmap <leader>cla <Plug>(coc-codelens-action)
 
 " Fix autofix problem of current line
 nmap <leader>qf  <Plug>(coc-fix-current)
@@ -720,7 +724,6 @@ function! s:tweak_theme() abort
   set fillchars+=vert:│
   hi VertSplit guibg=NONE ctermbg=NONE " Just show fills please
   hi SpelunkerSpellBad cterm=undercurl gui=undercurl
-  " highlight CCSpellBad cterm=undercurl gui=undercurl
 
   highlight MatchParen cterm=bold gui=bold
   highlight MatchWord cterm=bold gui=bold
@@ -871,7 +874,7 @@ set smartcase
 
 " Setup rg(ripgrep) / ag (the_silver_searcher)
 if executable('rg')
-  set grepprg=rg\ -S\ --vimgrep\ -g\ '!tags'
+  set grepprg=rg\ -S\ --vimgrep\ -g\ '!tags'\ -g\ '!package-lock.json'
   set grepformat^=%f:%l:%c:%m
   let g:ctrlp_user_command = ['.git', 'rg %s --files --color=never', 'rg %s --files --no-ignore']
   let g:ctrlp_use_caching = 0
@@ -960,6 +963,7 @@ function! s:goyo_enter()
     silent !tmux set status off
     silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
   endif
+  call CocAction('diagnosticToggle', 0)
   call <SID>focus_leave()
   call <SID>Unset_Window_BG_Colors()
 endfunction
@@ -977,6 +981,7 @@ function! s:goyo_leave()
   let g:goyo_on = 0
   let &background=g:background
   GitGutterBufferEnable
+  call CocAction('diagnosticToggle', 1)
   call <SID>tweak_theme()
   call <SID>focus_enter()
   call <SID>Set_Window_BG_Colors()
