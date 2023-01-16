@@ -701,6 +701,7 @@ set splitright
 set list
 
 let g:gitgutter_override_sign_column_highlight = 1
+let g:gitgutter_max_signs = 100
 
 " Colorize vimwiki headers
 let g:vimwiki_hl_headers = 1
