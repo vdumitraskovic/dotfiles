@@ -1,3 +1,6 @@
+## Color ls
+alias ls='ls --color'
+
 ## Show hidden files ##
 alias l.='ls -d .*'
 
