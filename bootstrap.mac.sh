@@ -75,8 +75,9 @@ tic -x $HOME/dotfiles/tmux-256color.terminfo
 ln -s $HOME/dotfiles/gitconfig $HOME/.gitconfig
 ln -s $HOME/dotfiles/gitignore_global $HOME/.gitignore_global
 brew install git-lfs
-## TODO: Read from stdin git user and email
-touch $HOME/.gitconfig.secret
+echo "[user]" > $HOME/.gitconfig.secret
+read -p "Enter Git name: " REPLY && echo "\tname = $REPLY" >> $HOME/.gitconfig.secret
+read -p "Enter Git email:" REPLY && echo "\temail = $REPLY" >> $HOME/.gitconfig.secret
 
 # Setup tig
 brew install tig
