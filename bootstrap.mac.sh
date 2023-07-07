@@ -87,7 +87,8 @@ brew install universal-ctags
 
 # Setup Karabiner
 brew install karabiner-elements
-## TODO Setup caps-lock/escape/ctrl
+mkdir -p $HOME/.config/karabiner && ln -s $HOME/dotfiles/karabiner/assets $HOME/.config/karabiner/assets
+ln -s $HOME/dotfiles/karabiner/karabiner.json $HOME/.config/karabiner/karabiner.json
 
 # Setup FZF
 brew install fzf
