@@ -4,6 +4,7 @@ brew install fnm
 fnm install --lts
 
 # Setup node tools
+# TODO: load node after fnm install
 npm i -g npm-check-updates
 npm i -g yarn
 npm i -g @fsouza/prettierd
