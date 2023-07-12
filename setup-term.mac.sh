@@ -6,7 +6,6 @@ echo 'PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"' >> $HOME/.zpro
 echo 'MANPATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:$MANPATH"' >> $HOME/.zprofile
 
 # Install term dependencies
-brew install fnm
 brew install starship
 
 # Install antigen
@@ -55,4 +54,3 @@ brew install bat
 
 # Setup source-highlight
 brew install source-highlight
-

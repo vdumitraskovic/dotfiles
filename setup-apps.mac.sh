@@ -6,6 +6,8 @@ brew install google-chrome
 brew install microsoft-edge
 brew install slack
 brew install notion
+brew install figma
+brew install alfred
 
 # Install apps from marketplace
 brew install mas
