@@ -8,6 +8,8 @@ brew install slack
 brew install notion
 brew install figma
 brew install alfred
+brew install --cask syncthing
+brew install logseq
 
 # Install apps from marketplace
 brew install mas
