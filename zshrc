@@ -167,6 +167,8 @@ LESSPIPE=`which src-hilite-lesspipe.sh`
 export LESSOPEN="| ${LESSPIPE} %s"
 export LESS=' -R --mouse'
 
+export BAT_THEME=GitHub
+
 # fnm
 export PATH="$HOME/.fnm":$PATH
 eval "`fnm env`"
