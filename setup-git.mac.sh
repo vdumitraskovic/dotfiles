@@ -16,3 +16,8 @@ brew install meld
 # Setup Tig
 brew install tig
 
+# Setup Absorb
+brew install git-absorb
+
+# Setup Git Extras
+brew install git-extras
