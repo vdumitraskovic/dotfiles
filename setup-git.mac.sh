@@ -6,6 +6,7 @@ brew install git-lfs
 echo "[user]" > $HOME/.gitconfig.secret
 read -p "Enter Git name: " REPLY && echo "\tname = $REPLY" >> $HOME/.gitconfig.secret
 read -p "Enter Git email:" REPLY && echo "\temail = $REPLY" >> $HOME/.gitconfig.secret
+mkdir $HOME/.local/bin && ln -s $HOME/dotfiles/git-churn $HOME/.local/bin/git-churn
 
 # Setup Delta
 brew install git-delta
