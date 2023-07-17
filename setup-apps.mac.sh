@@ -10,6 +10,7 @@ brew install figma
 brew install alfred
 brew install --cask syncthing
 brew install logseq
+brew install ffmpeg
 
 # Install apps from marketplace
 brew install mas
