@@ -103,7 +103,7 @@ let g:coc_user_config = {
   \ 'diagnostic.virtualText': v:true,
   \ 'diagnostic.virtualTextCurrentLineOnly': v:true,
   \ 'diagnostic.errorSign': '',
-  \ 'diagnostic.warningSign': '',
+  \ 'diagnostic.warningSign': '',
   \ 'diagnostic.infoSign': '',
   \ 'diagnostic.hintSign': '',
   \ 'suggest.triggerCompletionWait': 60,
