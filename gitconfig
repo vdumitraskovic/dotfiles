@@ -32,6 +32,7 @@
 	root = rev-parse --show-toplevel
 [rebase]
 	autosquash = true
+	autoStash = true
 [pull]
 	rebase = true
 [rerere]
