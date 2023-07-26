@@ -14,6 +14,6 @@ brew install ffmpeg
 
 # Install apps from marketplace
 brew install mas
-mas install 1451685025 # WireGuard
+# mas install 1451685025 # WireGuard
 mas install 585829637  # Todoist
 mas install 732710998  # Enpass
