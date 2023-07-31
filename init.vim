@@ -102,10 +102,10 @@ let g:coc_user_config = {
   \ 'suggest.minTriggerInputLength': 3,
   \ 'diagnostic.virtualText': v:true,
   \ 'diagnostic.virtualTextCurrentLineOnly': v:true,
-  \ 'diagnostic.errorSign': '',
+  \ 'diagnostic.errorSign': '',
   \ 'diagnostic.warningSign': '',
   \ 'diagnostic.infoSign': '',
-  \ 'diagnostic.hintSign': '',
+  \ 'diagnostic.hintSign': '',
   \ 'suggest.triggerCompletionWait': 60,
   \ 'signature.hideOnTextChange': v:true,
   \ 'snippets.extends': {
