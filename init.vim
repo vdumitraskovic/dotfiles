@@ -718,9 +718,12 @@ function! s:tweak_theme() abort
   let s:bg=synIDattr(synIDtrans(hlID("Normal")), "bg", "gui")
   if g:background == 'light'
     let s:bg_dim='#e9e9e9'
+    let g:limelight_conceal_guifg='#dddddd'
   else
     let s:bg_dim='#424242'
+    let g:limelight_conceal_guifg='#666666'
   endif
+
   set fillchars+=vert:│
   hi VertSplit guibg=NONE ctermbg=NONE " Just show fills please
   hi SpelunkerSpellBad cterm=undercurl gui=undercurl
