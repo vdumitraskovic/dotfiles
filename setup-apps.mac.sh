@@ -11,6 +11,7 @@ brew install alfred
 brew install --cask syncthing
 brew install logseq
 brew install ffmpeg
+brew install watchman
 brew install --cask docker
 
 # Install apps from marketplace
