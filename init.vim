@@ -81,7 +81,6 @@ function! PackagerInit() abort
   call packager#add('christoomey/vim-tmux-navigator')
   call packager#add('AndrewRadev/tagalong.vim')
   call packager#add('reedes/vim-colors-pencil')
-  call packager#add('zbirenbaum/copilot.lua')
 endfunction
 
 " COC config
@@ -167,7 +166,6 @@ augroup deferred_plugins
         \ packadd vim-surround |
         \ packadd vim-test |
         \ packadd vim-wordmotion |
-        \ call luaeval('require("copilot").setup({ suggestion = { auto_trigger = true } })') |
         \ set updatetime=100 |
         \ syntax enable |
         \ call <sid>tweak_theme() |
