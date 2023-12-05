@@ -38,7 +38,6 @@ brew install tmux
 ln -s $HOME/dotfiles/tmux.conf $HOME/.tmux.conf
 ln -s $HOME/dotfiles/tmux-osx.conf $HOME/.tmux-osx.conf
 ln -s $HOME/dotfiles/tmux-pencilcolors.conf $HOME/.tmux-colors.conf
-brew install reattach-to-user-namespace
 git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 tic -x $HOME/dotfiles/tmux-256color.terminfo
 
