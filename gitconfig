@@ -3,11 +3,14 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	pager = less -FX
+[interactive]
+	diffFilter = delta --color-only
 [push]
 	default = current
 [delta]
 	side-by-side = true
 	light = true
+	navigate = true
 	line-numbers = true
 [pager]
 	branch =
@@ -15,11 +18,14 @@
 	show = delta
 [mergetool]
 	keepBackup = false
+	hideResolved = true
 [merge]
 	tool = meld
+	conflictStyle = zdiff3
 [diff]
 	tool = vimdiff
 	colorMoved = default
+	algorithm = histogram
 [difftool]
 	prompt = false
 [commit]
@@ -31,12 +37,14 @@
 	unwip = reset HEAD~1
 	root = rev-parse --show-toplevel
 [rebase]
-	autosquash = true
+	autoSquash = true
 	autoStash = true
+	updateRefs = true
 [pull]
 	rebase = true
 [rerere]
 	enabled = true
+	autoUpdate = true
 [submodule]
 	recurse = true
 [status]
@@ -50,3 +58,5 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+[clean]
+	requireForce = false
