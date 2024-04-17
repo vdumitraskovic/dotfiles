@@ -60,6 +60,19 @@ export GOPATH=$HOME/go
 export PATH="$GOPATH/bin:$HOME/bin:$HOME/.local/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
+# History config
+HISTSIZE=10000000
+SAVEHIST=10000000
+
+export HISTORY_IGNORE="(ls|cd|pwd|exit|cd)*"
+
+setopt INC_APPEND_HISTORY    # Write to the history file immediately, not when the shell exits.
+setopt HIST_IGNORE_ALL_DUPS  # Delete an old recorded event if a new event is a duplicate.
+setopt HIST_SAVE_NO_DUPS     # Do not write a duplicate event to the history file.
+setopt HIST_NO_STORE         # Don't store history commands
+setopt HIST_REDUCE_BLANKS    # Remove superfluous blanks from each command line being added to the history.
+HIST_STAMPS="yyyy-mm-dd"
+
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle command-not-found
 antigen bundle git
