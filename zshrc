@@ -1,18 +1,25 @@
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+#~ Antidote loading starts here
 
-[ -f ~/.zsh/antigen.zsh ] && source ~/.zsh/antigen.zsh
-[ -f /usr/share/zsh/share/antigen.zsh ] && source /usr/share/zsh/share/antigen.zsh
-antigen use oh-my-zsh
+# Set the root name of the plugins files (.txt and .zsh) antidote will use.
+zsh_plugins=${ZDOTDIR:-~}/.zsh_plugins
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
+# Ensure the .zsh_plugins.txt file exists so you can add plugins.
+[[ -f ${zsh_plugins}.txt ]] || touch ${zsh_plugins}.txt
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# Lazy-load antidote from its functions directory.
+fpath=($HOME/.antidote/functions $fpath)
+autoload -Uz antidote
 
+# Generate a new static file whenever .zsh_plugins.txt is updated.
+if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins}.txt ]]; then
+  antidote bundle <${zsh_plugins}.txt >|${zsh_plugins}.zsh
+fi
+
+# Source your static plugins file.
+source ${zsh_plugins}.zsh
+#~ End of Antidote loading
+
+# Oh My Zsh configuration
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
 HYPHEN_INSENSITIVE="true"
@@ -72,19 +79,6 @@ setopt HIST_SAVE_NO_DUPS     # Do not write a duplicate event to the history fil
 setopt HIST_NO_STORE         # Don't store history commands
 setopt HIST_REDUCE_BLANKS    # Remove superfluous blanks from each command line being added to the history.
 HIST_STAMPS="yyyy-mm-dd"
-
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle command-not-found
-antigen bundle git
-antigen bundle ssh-agent
-antigen bundle z
-antigen bundle tmux
-antigen bundle vi-mode
-antigen bundle tmuxinator
-antigen bundle fancy-ctrl-z
-antigen bundle zsh-users/zsh-autosuggestions
-
-antigen apply
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
