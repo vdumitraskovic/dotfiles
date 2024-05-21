@@ -8,15 +8,15 @@ echo 'MANPATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:$MANPATH"' >> $HOME
 # Install term dependencies
 brew install starship
 
-# Install antigen
-mkdir $HOME/.zsh/
-curl -L git.io/antigen > $HOME/.zsh/antigen.zsh
+# Install antidote
+git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
 
 # Setup ZSH 
 ln -s $HOME/dotfiles/zshrc $HOME/.zshrc
 ln -s $HOME/dotfiles/zsh_alias $HOME/.zsh_alias
 ln -s $HOME/dotfiles/zsh.pencil $HOME/.zsh.theme
 ln -s $HOME/dotfiles/dircolors-light $HOME/.dircolors
+ln -s $HOME/dotfiles/zsh_plugins.txt $HOME/.zsh_plugins.txt
 touch $HOME/.zsh_secret
 source $HOME/.zshrc
 
