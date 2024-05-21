@@ -740,6 +740,7 @@ function! s:tweak_theme() abort
   highlight CocInfoSign ctermbg=NONE ctermfg=32 guibg=NONE guifg=#268bd2
   highlight CocHintSign ctermbg=NONE ctermfg=32 guibg=NONE guifg=#268bd2
   highlight CocVirtualTextWarning ctermfg=32 guifg=#268bd2
+  highlight CocInlayHint guifg=#bbbbbb
   highlight clear CocMenuSel
   highlight link CocMenuSel WildMenu
   highlight link jsxCloseString htmlTag
