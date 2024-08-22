@@ -31,13 +31,13 @@ brew install font-jetbrains-mono-nerd-font
 brew install kitty
 mkdir -p $HOME/.config/kitty && ln -s $HOME/dotfiles/kitty.conf $HOME/.config/kitty/kitty.conf
 ln -s $HOME/dotfiles/kitty-font-jetbrains-nf.conf $HOME/.config/kitty/fonts.conf
-ln -s $HOME/dotfiles/kitty-pencil-light.conf $HOME/.config/kitty/colors.conf
+ln -s /Users/dumitrv/dotfiles/kitty-modus-operandi.conf $HOME/.config/kitty/colors.conf
 
 # Setup TMUX
 brew install tmux
 ln -s $HOME/dotfiles/tmux.conf $HOME/.tmux.conf
 ln -s $HOME/dotfiles/tmux-osx.conf $HOME/.tmux-osx.conf
-ln -s $HOME/dotfiles/tmux-pencilcolors.conf $HOME/.tmux-colors.conf
+ln -s /Users/dumitrv/dotfiles/tmux-modus-operandi.conf $HOME/.tmux-colors.conf
 git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 tic -x $HOME/dotfiles/tmux-256color.terminfo
 
