@@ -60,3 +60,5 @@
 	smudge = git-lfs smudge -- %f
 [clean]
 	requireForce = false
+[fetch]
+	prune = true
