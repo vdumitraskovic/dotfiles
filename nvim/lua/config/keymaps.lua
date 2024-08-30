@@ -1,7 +1,8 @@
 vim.keymap.set("n", "<leader><space>", "<cmd>nohlsearch<cr>")
 vim.keymap.set("n", "<C-s>", "<cmd>:w<cr>")
 
-vim.keymap.set("n", "", require("telescope.builtin").git_files, { silent = true, desc = "Open Files" })
+vim.keymap.set("n", "", require("telescope.builtin").git_files, { desc = "Open Files" })
+vim.keymap.set("n", "<leader><enter>", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
 
 -- Find references for the word under your cursor.
 vim.keymap.set("n", "gr", function()

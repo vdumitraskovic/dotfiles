@@ -18,6 +18,9 @@ return {
 					show_untracked = true,
 					theme = "dropdown",
 				},
+				buffers = {
+					theme = "dropdown",
+				},
 			},
 			extensions = {
 				["ui-select"] = {
