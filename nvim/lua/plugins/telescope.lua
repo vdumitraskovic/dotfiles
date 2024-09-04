@@ -20,6 +20,14 @@ return {
 				},
 				buffers = {
 					theme = "dropdown",
+					mappings = {
+						n = {
+							["<c-d>"] = require("telescope.actions").delete_buffer,
+						},
+						i = {
+							["<c-d>"] = require("telescope.actions").delete_buffer,
+						},
+					},
 				},
 			},
 			extensions = {
