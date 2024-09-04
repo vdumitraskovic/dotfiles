@@ -50,6 +50,8 @@ brew install fd
 
 # Setup Bat
 brew install bat
+mkdir -p $HOME/.config/bat/themes
+ln -s $HOME/dotfiles/bat-theme-modus-operandi.tmTheme $HOME/.config/bat/themes
 
 # Setup source-highlight
 brew install source-highlight

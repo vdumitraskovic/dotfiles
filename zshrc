@@ -53,7 +53,7 @@ LESSPIPE=`which src-hilite-lesspipe.sh`
 export LESSOPEN="| ${LESSPIPE} %s"
 export LESS=' -R --mouse'
 
-export BAT_THEME=GitHub
+export BAT_THEME=bat-theme-modus-operandi
 
 # Configure ls colors
 eval `dircolors ~/.dircolors`

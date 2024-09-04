@@ -10,7 +10,6 @@
 	autoSetupRemote = true
 [delta]
 	side-by-side = true
-	light = true
 	navigate = true
 	line-numbers = true
 [pager]
