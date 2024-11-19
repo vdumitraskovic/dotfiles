@@ -28,3 +28,6 @@ brew install tldr
 
 # Setup JQ
 brew install jq
+
+# Setup SCC
+brew install scc
