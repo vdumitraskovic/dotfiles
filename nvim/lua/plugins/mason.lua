@@ -9,7 +9,6 @@ return {
 		local masonlsp = require("mason-lspconfig")
 		masonlsp.setup({
 			ensure_installed = {
-				"vtsls",
 				"eslint",
 			},
 		})
