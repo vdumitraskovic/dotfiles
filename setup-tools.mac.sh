@@ -24,7 +24,7 @@ mkdir -p $HOME/.config/coc && ln -s $HOME/dotfiles/UltiSnips $HOME/.config/coc/U
 brew install universal-ctags
 
 # Setup TLDR
-brew install tldr
+brew install tlrc
 
 # Setup JQ
 brew install jq
