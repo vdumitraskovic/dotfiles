@@ -11,7 +11,14 @@ return {
 		dashboard = { enabled = false },
 		explorer = { enabled = true, replace_netrw = true },
 		indent = { enabled = false },
-		input = { enabled = false },
+		input = { enabled = true },
+		styles = {
+			input = {
+				relative = "cursor",
+				row = -1,
+				col = -1,
+			},
+		},
 		picker = {
 			sources = {
 				explorer = {
