@@ -9,10 +9,20 @@ return {
 	opts = {
 		bigfile = { enabled = false },
 		dashboard = { enabled = false },
-		explorer = { enabled = false },
+		explorer = { enabled = true, replace_netrw = true },
 		indent = { enabled = false },
 		input = { enabled = false },
-		picker = { enabled = true },
+		picker = {
+			sources = {
+				explorer = {
+					layout = {
+						layout = {
+							position = "right",
+						},
+					},
+				},
+			},
+		},
 		notifier = { enabled = false },
 		quickfile = { enabled = false },
 		scope = { enabled = false },
@@ -21,6 +31,16 @@ return {
 		words = { enabled = false },
 	},
 	keys = {
+		-- File explorer mappings
+		{
+			"<leader>e",
+			function()
+				Snacks.explorer.reveal()
+			end,
+			desc = "File Explorer",
+		},
+
+		-- Buffer delete mappings
 		{
 			"<leader>bd",
 			function()
