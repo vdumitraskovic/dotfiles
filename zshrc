@@ -62,7 +62,7 @@ source ~/.zsh_alias
 
 # Config FZF
 export FZF_DEFAULT_COMMAND="rg --follow --files --hidden"
-export FZF_DEFAULT_OPTS="--color=light"
+export FZF_DEFAULT_OPTS="--color=light --tmux"
 export FZF_TMUX=1
 
 is_in_git_repo() {
