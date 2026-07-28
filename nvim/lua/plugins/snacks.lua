@@ -36,6 +36,7 @@ return {
 		scroll = { enabled = false },
 		statuscolumn = { enabled = false },
 		words = { enabled = false },
+		image = { enabled = false },
 	},
 	keys = {
 		-- File explorer mappings
