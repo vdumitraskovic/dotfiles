@@ -23,6 +23,7 @@ source ${zsh_plugins}.zsh
 HYPHEN_INSENSITIVE="true" # Hyphen insensitive completion _ and - will be interchangeable.
 DISABLE_AUTO_UPDATE="true" # Disable auto-update checks.
 VI_MODE_SET_CURSOR=true
+bindkey -M viins '^[.' insert-last-word
 # Autosuggestions
 bindkey '^ ' autosuggest-execute
 
