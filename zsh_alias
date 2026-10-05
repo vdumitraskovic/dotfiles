@@ -62,6 +62,7 @@ function PR() {
 
 alias \]='open'
 alias n=nvim
+alias gd='git diff --ignore-all-space --ignore-blank-lines'
 
 # Go to git root parent
 alias cdroot='cd $(git root)'
