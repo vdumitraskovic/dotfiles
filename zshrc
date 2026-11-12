@@ -15,6 +15,9 @@ if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins}.txt ]]; then
   antidote bundle <${zsh_plugins}.txt >|${zsh_plugins}.zsh
 fi
 
+# Cache compinit (rebuilt at most once per ~20h) instead of a full scan on every shell.
+zstyle ':zephyr:plugin:completion' use-cache yes
+
 # Source your static plugins file.
 source ${zsh_plugins}.zsh
 #~ End of Antidote loading
