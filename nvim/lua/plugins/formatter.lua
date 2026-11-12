@@ -5,12 +5,12 @@ return {
 		conform.setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
-				css = { "prettierd" },
-				javascript = { "prettierd" },
-				javascriptreact = { "prettierd" },
-				typescript = { "prettierd" },
-				typescriptreact = { "prettierd" },
-				json = { "prettierd" },
+				css = { "oxfmt" },
+				javascript = { "oxfmt" },
+				javascriptreact = { "oxfmt" },
+				typescript = { "oxfmt" },
+				typescriptreact = { "oxfmt" },
+				json = { "oxfmt" },
 			},
 			format_on_save = {
 				lsp_format = "fallback",
