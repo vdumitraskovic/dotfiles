@@ -5,7 +5,12 @@ return {
 		"neovim/nvim-lspconfig",
 	},
 	config = function()
-		require("mason").setup()
+		require("mason").setup({
+			registries = {
+				"github:mason-org/mason-registry",
+				"github:Crashdummyy/mason-registry",
+			},
+		})
 		local masonlsp = require("mason-lspconfig")
 		masonlsp.setup({
 			ensure_installed = {
